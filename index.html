@@ -862,6 +862,7 @@
       };
 
       const selectNode = (node) => {
+        handleNodeInteractionEnd(); // マスを選択して移動する際に、裏技のタイマーを確実に止める
         if (node.type === 'NORMAL' || node.type === 'ELITE' || node.type === 'BOSS') {
           startCombat(node.type, node.id, node.floor);
         } else if (node.type === 'REST') {
