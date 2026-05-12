@@ -45,9 +45,10 @@
         startingDeck: ['strike', 'strike', 'strike', 'strike', 'strike', 'defend', 'defend', 'defend', 'defend', 'bash'],
         cardPool: [
           'strike', 'defend', 'bash', 'cleave', 'ironwave', 'shrug', 'inflame', 'uppercut', 'bodyslam', 'limitbreak', 'iron_wall', 'entrench', 'shield_tackle', 'power_guard', 'defense_mastery', 
-          'pommel_strike', 'explosive_slash', 'offering', 'unyielding_spirit', 'demon_form', 'blood_covenant',
+          'pommel_strike', 'explosive_slash', 'offering', 'unyielding_spirit', 'demon_form',
           'twin_strike', 'furious_blade', 'ghostly_armor', 'blood_shield', 'metallicize', 'cursed_blood',
-          'sword_boomerang', 'carnage', 'intimidate', 'shockwave', 'combust', 'brutality'
+          'sword_boomerang', 'carnage', 'intimidate', 'shockwave', 'combust', 'brutality',
+          'heavy_blade', 'impervious', 'dropkick', 'bloodletting', 'crimson_strike'
         ]
       },
       POISON: {
@@ -62,7 +63,8 @@
           'strike_p', 'defend_p', 'poisonstab', 'deadlypoison', 'backflip', 'neutralize', 'survivor', 'adrenaline', 'catalyst', 'terror', 'bouncingflask', 'heal', 'quick_step', 'poison_cloud', 'calculated_plan', 'bane', 'venom_burst',
           'dagger_spray', 'toxic_flurry', 'leg_sweep', 'poison_smoke', 'noxious_fumes', 'serpents_reflex',
           'slice', 'venom_fang', 'blur', 'shadow_dodge', 'caltrops', 'toxic_amplification',
-          'dash', 'die_die_die', 'dodge_and_roll', 'crippling_cloud', 'envenom', 'after_image'
+          'dash', 'die_die_die', 'dodge_and_roll', 'crippling_cloud', 'envenom', 'after_image',
+          'blade_dance', 'cloak_and_dagger', 'infinite_blades', 'accuracy', 'venomous_shivs'
         ]
       }
     };
@@ -104,11 +106,16 @@
       offering: { id: 'offering', name: '供物', rarity: 'RARE', type: 'SKILL', cost: 0, target: 'SELF', draw: 3, upDraw: 5, desc: 'HPを6失う。エナジーを2得て、カードを${draw}枚引く。', exhaust: true }, 
       unyielding_spirit: { id: 'unyielding_spirit', name: '不屈の闘志', rarity: 'RARE', type: 'SKILL', cost: 1, target: 'SELF', magic: 3, upMagic: 5, desc: 'HPを${mgc}回復する。自身の脱力と弱点を1減らす。' }, 
       demon_form: { id: 'demon_form', name: '悪魔化', rarity: 'RARE', type: 'POWER', cost: 3, target: 'SELF', magic: 2, upMagic: 3, desc: '毎ターン開始時、筋力を${mgc}得る。' }, 
-      blood_covenant: { id: 'blood_covenant', name: '血の盟約', rarity: 'RARE', type: 'POWER', cost: 1, costUp: 0, target: 'SELF', magic: 2, upMagic: 2, desc: '毎ターン終了時、HPを${mgc}回復する。' }, 
       blood_shield: { id: 'blood_shield', name: '血の盾', rarity: 'RARE', type: 'SKILL', cost: 0, target: 'SELF', baseBlock: 8, upBlock: 11, desc: 'HPを3失う。${blk}ブロックを得る。' }, 
       cursed_blood: { id: 'cursed_blood', name: '呪われた血', rarity: 'RARE', type: 'POWER', cost: 1, target: 'SELF', magic: 1, upMagic: 2, desc: '毎ターン開始時、HPを1失い、エナジーを${mgc}得る。' }, 
       limitbreak: { id: 'limitbreak', name: 'リミットブレイク', rarity: 'RARE', type: 'SKILL', cost: 1, target: 'SELF', desc: '自身の筋力を2倍にする。', exhaust: true, upExhaust: false },
       brutality: { id: 'brutality', name: '残虐', rarity: 'RARE', type: 'POWER', cost: 0, target: 'SELF', magic: 1, upMagic: 2, desc: '毎ターン開始時、HPを1失い、カードを${mgc}枚引く。' },
+
+      heavy_blade: { id: 'heavy_blade', name: 'ヘヴィブレード', rarity: 'COMMON', type: 'ATTACK', cost: 2, target: 'ENEMY', baseDamage: 14, upDamage: 14, desc: '敵に${dmg}ダメージを与える。筋力によるダメージ増加が3倍(アップグレードで5倍)になる。' },
+      impervious: { id: 'impervious', name: '強靭な砦', rarity: 'RARE', type: 'SKILL', cost: 2, target: 'SELF', baseBlock: 30, upBlock: 40, exhaust: true, desc: '${blk}ブロックを得る。廃棄。' },
+      dropkick: { id: 'dropkick', name: 'ドロップキック', rarity: 'UNCOMMON', type: 'ATTACK', cost: 1, target: 'ENEMY', baseDamage: 5, upDamage: 8, desc: '敵に${dmg}ダメージを与える。対象が弱点状態の場合、エナジーを1得てカードを1枚引く。' },
+      bloodletting: { id: 'bloodletting', name: '供血', rarity: 'UNCOMMON', type: 'SKILL', cost: 0, target: 'SELF', magic: 1, upMagic: 2, desc: 'HPを3失い、エナジーを${mgc}得る。' },
+      crimson_strike: { id: 'crimson_strike', name: '紅蓮撃', rarity: 'COMMON', type: 'ATTACK', cost: 1, target: 'ENEMY', baseDamage: 8, upDamage: 11, desc: '敵に${dmg}ダメージを与える。自身のHPが最大HPの半分以下なら、もう一度ダメージを与える。' },
 
       // ポイズンニキ
       neutralize: { id: 'neutralize', name: '無力化', rarity: 'BASIC', type: 'ATTACK', cost: 0, target: 'ENEMY', baseDamage: 3, upDamage: 4, magic: 1, upMagic: 2, desc: '敵に${dmg}ダメージを与え、脱力を${mgc}与える。' },
@@ -148,6 +155,13 @@
       envenom: { id: 'envenom', name: '毒の仕込み', rarity: 'RARE', type: 'POWER', cost: 2, costUp: 1, target: 'SELF', magic: 1, upMagic: 1, desc: 'アタックでダメージを与えるたび、毒を${mgc}与える。' },
       after_image: { id: 'after_image', name: '残像', rarity: 'RARE', type: 'POWER', cost: 1, target: 'SELF', magic: 1, upMagic: 2, desc: 'カードを使用するたび、${mgc}ブロックを得る。' },
 
+      shiv: { id: 'shiv', name: 'ナイフ', rarity: 'SPECIAL', type: 'ATTACK', cost: 0, target: 'ENEMY', baseDamage: 4, upDamage: 6, exhaust: true, desc: '敵に${dmg}ダメージを与える。廃棄。' },
+      blade_dance: { id: 'blade_dance', name: '剣の舞', rarity: 'COMMON', type: 'SKILL', cost: 1, target: 'SELF', magic: 3, upMagic: 4, desc: '「ナイフ」を${mgc}枚手札に加える。' },
+      cloak_and_dagger: { id: 'cloak_and_dagger', name: '外套と短剣', rarity: 'COMMON', type: 'SKILL', cost: 1, target: 'SELF', baseBlock: 6, upBlock: 6, magic: 1, upMagic: 2, desc: '${blk}ブロックを得て、「ナイフ」を${mgc}枚手札に加える。' },
+      infinite_blades: { id: 'infinite_blades', name: '無限の刃', rarity: 'UNCOMMON', type: 'POWER', cost: 1, costUp: 0, target: 'SELF', magic: 1, desc: '毎ターン開始時、「ナイフ」を${mgc}枚手札に加える。' },
+      accuracy: { id: 'accuracy', name: '精度', rarity: 'UNCOMMON', type: 'POWER', cost: 1, target: 'SELF', magic: 4, upMagic: 6, desc: 'この戦闘中、「ナイフ」のダメージが${mgc}増加する。' },
+      venomous_shivs: { id: 'venomous_shivs', name: '毒塗りの刃', rarity: 'RARE', type: 'POWER', cost: 2, costUp: 1, target: 'SELF', magic: 2, desc: '「ナイフ」を使用するたび、対象に毒を${mgc}与える。' },
+
       regret: { id: 'regret', name: '後悔', rarity: 'CURSE', type: 'CURSE', cost: '×', target: 'NONE', desc: 'プレイ不可。手札に引いたターン、最大エナジーが1になる。' },
       injury: { id: 'injury', name: '怪我', rarity: 'CURSE', type: 'CURSE', cost: '×', target: 'NONE', desc: 'プレイ不可。' }
     };
@@ -160,11 +174,15 @@
       goldenIdol: { id: 'goldenIdol', name: '黄金の偶像', rarity: 'EVENT', icon: '🗿', desc: '敵から得られるゴールドが25%増加する。', flavor: '眩い輝きが、さらなる富を呼び寄せる。ただし、その代償は…' },
       singingBowl: { id: 'singingBowl', name: '無視の花', rarity: 'UNCOMMON', icon: '🌸', desc: 'カード報酬をスキップするたび、最大HPが2増加し、HPを2回復する。', flavor: 'その花は、欲を手放した者にだけ美しく咲き誇る。' },
       stoneCalendar: { id: 'stoneCalendar', name: '暦石', rarity: 'RARE', icon: '🪨', desc: '10ターン目の終了時、敵全体に35ダメージを与える。', flavor: '長い時を経て、石に刻まれた力が解放される。' },
-      blueCage: { id: 'blueCage', name: '青いカゴ', rarity: 'UNCOMMON', icon: '🧺', desc: '取得時、デッキ内のランダムなスキルカード2枚をアップグレードする。', flavor: '中には神秘的な青い光が満ちている。' }
+      blueCage: { id: 'blueCage', name: '青いカゴ', rarity: 'UNCOMMON', icon: '🧺', desc: '取得時、デッキ内のランダムなスキルカード2枚をアップグレードする。', flavor: '中には神秘的な青い光が満ちている。' },
+      fish: { id: 'fish', name: 'う、魚', rarity: 'COMMON', icon: '🐟', desc: '毎ターン終了時、敵全体に3ダメージを与える。', flavor: '水がなくてもぴちぴちと跳ねている。' },
+      umiwatari: { id: 'umiwatari', name: 'ウミワタリ', rarity: 'UNCOMMON', icon: '🌊', desc: '休憩所でカードを削除できるようになる。', flavor: 'かつて海を渡ったとされる鳥の羽。' },
+      blackSword: { id: 'blackSword', name: '黒い剣', rarity: 'RARE', icon: '🗡️', desc: '各戦闘で最初に受けるダメージを10軽減する。', flavor: '闇より出でし刃。持ち主を守るように動く。' }
     };
 
     // 敵データベース
     const ENEMY_DB = {
+      // Act 1
       slime: { name: 'スライム', hp: 20, desc: '単純な攻撃と防御を繰り返す下級モンスター。', intents: [{type: 'attack', val: 5}, {type: 'defend', val: 5}] },
       cultist: { name: '狂信者', hp: 45, desc: '自身の筋力を高めながら強力な攻撃を放つ危険な信者。', intents: [{type: 'buff', stat: 'strength', val: 3}, {type: 'attack', val: 6}] },
       jawworm: { name: '顎蟲', hp: 40, desc: '高い攻撃力と、筋力上昇を伴う防御を織り交ぜる硬い蟲。', intents: [{type: 'attack', val: 11}, {type: 'buff_defend', val: 5, stat: 'strength', statVal: 1}] },
@@ -173,7 +191,20 @@
       nob: { name: 'グレムリンノブ', hp: 80, isElite: true, desc: 'ひたすらに高火力の攻撃を連発してくる凶暴なエリートモンスター。', intents: [{type: 'attack', val: 14}, {type: 'attack', val: 16}] },
       lagavulin: { name: 'ラガヴーリン', hp: 110, isElite: true, desc: '最初は眠っているが、目を覚ますと強力な攻撃と筋力低下デバフを放つ。', intents: [{type: 'sleep'}, {type: 'attack', val: 18}, {type: 'debuff', stat: 'strength', val: -1}] },
       sentry: { name: 'セントリー', hp: 60, isElite: true, desc: '高い防御力で身を固めつつ、着実にダメージを与えてくる古代の機械。', intents: [{type: 'attack', val: 9}, {type: 'defend', val: 10}] },
-      guardian: { name: 'ガーディアン(BOSS)', hp: 250, isBoss: true, desc: '圧倒的なHPと、猛烈な連撃、強固な防御を誇る階層の主。', intents: [{type: 'attack', val: 20}, {type: 'defend', val: 20}, {type: 'attack', val: 10, times: 2}] }
+      guardian: { name: 'ガーディアン(BOSS)', hp: 250, isBoss: true, desc: '圧倒的なHPと、猛烈な連撃、強固な防御を誇る階層の主。', intents: [{type: 'attack', val: 20}, {type: 'defend', val: 20}, {type: 'attack', val: 10, times: 2}] },
+
+      // Act 2
+      sphere_guardian: { name: 'スフィアガーディアン', hp: 20, desc: '強固なシールドを張る球体。', startingBlock: 10, intents: [{type: 'defend', val: 20}, {type: 'attack', val: 10}] },
+      rotten_plant: { name: '腐ったプラント', hp: 60, desc: '攻撃を受けると硬くなる植物。', statuses: { malleable: 3 }, intents: [{type: 'attack', val: 8}] },
+      fly_bomb: { name: 'フライボム', hp: 70, desc: '一定時間経過で自爆する危険な爆弾。', statuses: { explosion: 7 }, intents: [{type: 'attack', val: 3}, {type: 'attack_heal', val: 5, heal: 5}, {type: 'attack', val: 5}] },
+      wall_vortex: { name: '壁の渦', hp: 999, desc: '崩壊間際に巨大な一撃を放つ渦。', statuses: { collapse: 3 }, intents: [{type: 'attack', val: 1}, {type: 'attack', val: 2}, {type: 'attack', val: 20}] },
+      caboon: { name: 'カブーン', hp: 20, desc: '血を吸って回復する蚊。', statuses: { lifesteal: true }, intents: [{type: 'attack', val: 4}, {type: 'attack', val: 6}] },
+      
+      boss_thief: { name: '親玉', hp: 80, isElite: true, desc: '盗賊を束ねる悪の元締め。', intents: [{type: 'debuff', stat: 'weak', val: 2}, {type: 'attack', val: 12}] },
+      floating_rock: { name: '浮遊する岩', hp: 100, isElite: true, desc: '非常に硬く、1ターンに少しのダメージしか受けない。', statuses: { sturdy: 25 }, intents: [{type: 'attack', val: 10}, {type: 'attack', val: 15}] },
+      angry_nob: { name: '激昂するノブ', hp: 100, isElite: true, desc: '怒り狂ったグレムリンノブ。', intents: [{type: 'attack', val: 18}, {type: 'attack', val: 24}] },
+      
+      silent: { name: 'サイレント(BOSS)', hp: 200, isBoss: true, desc: '沈黙を強いる第2層の主。', statuses: { silence_aura: true }, intents: [{type: 'debuff', stat: 'weak', val: 2}, {type: 'attack', val: 8}, {type: 'buff', stat: 'strength', val: 2}] }
     };
 
     const EVENTS = [
@@ -190,7 +221,7 @@
         name: '黄金の像',
         desc: '薄暗い部屋の中央に、六本の腕を持つ不気味な黄金の像が鎮座している。足元には無数の白骨が散乱し、紅い宝石の瞳が魅惑的な光を放つ。相応の「供物」を捧げれば、見返りに富を与えてくれるようだが…。',
         choices: [
-          { text: '血を捧げる', desc: '10ダメージを受け、100ゴールドを得る', effect: (state) => ({ ...state, player: { ...state.player, hp: Math.max(1, state.player.hp - 10), gold: state.player.gold + 100 } }) },
+          { text: '血を捧げる', desc: '10ダメージを受け、100ゴールドを得る', effect: (state) => ({ ...state, player: { ...state.player, hp: Math.max(1, state.player.hp - 10), eventDamageTaken: (state.player.eventDamageTaken || 0) + 10, gold: state.player.gold + 100 } }) },
           { text: '立ち去る', desc: '何もせずスキップする', effect: (state) => state }
         ]
       },
@@ -229,7 +260,7 @@
             effect: (state) => {
               const newHp = Math.max(1, state.player.hp - 12);
               const newRelics = [...state.player.relics, 'goldenIdol'];
-              return { newState: { ...state, player: { ...state.player, hp: newHp, relics: newRelics } }, unlockRelics: ['goldenIdol'] };
+              return { newState: { ...state, player: { ...state.player, hp: newHp, eventDamageTaken: (state.player.eventDamageTaken || 0) + 12, relics: newRelics } }, unlockRelics: ['goldenIdol'] };
             }
           },
           {
@@ -244,6 +275,32 @@
             }
           },
           { text: '無視する', desc: '触らぬ神に祟りなし。', effect: (state) => state }
+        ]
+      },
+      {
+        id: 'shrineOfUpgrade',
+        name: '職人の祠',
+        desc: '部屋の中央に、不思議な熱気を放つ金床がある。その熱はあなたのカードの潜在能力を引き出してくれそうだ。',
+        choices: [
+          {
+            text: '鍛え直す',
+            desc: 'カードを1枚アップグレードする。',
+            effect: (state) => ({ newState: { ...state, screen: 'UPGRADE' } })
+          },
+          { text: '立ち去る', desc: '何もせずスキップする', effect: (state) => state }
+        ]
+      },
+      {
+        id: 'purifyingFire',
+        name: '浄化の炎',
+        desc: '青白い炎が静かに燃えている。この炎は物質ではなく、概念や記憶を焼き尽くす力があるようだ。不要なものを捨てる良い機会かもしれない。',
+        choices: [
+          {
+            text: 'くべる',
+            desc: 'デッキからカードを1枚削除する。',
+            effect: (state) => ({ newState: { ...state, screen: 'REMOVE_CARD' } })
+          },
+          { text: '立ち去る', desc: '何もせずスキップする', effect: (state) => state }
         ]
       }
     ];
@@ -294,7 +351,7 @@
             }
           }
           return { 
-            newState: { ...state, player: { ...state.player, hp: Math.max(1, state.player.hp - 10), deck: newDeck, relics: [...state.player.relics, relic] } },
+            newState: { ...state, player: { ...state.player, hp: Math.max(1, state.player.hp - 10), eventDamageTaken: (state.player.eventDamageTaken || 0) + 10, deck: newDeck, relics: [...state.player.relics, relic] } },
             unlockRelics: [relic]
           };
         }
@@ -307,7 +364,7 @@
           const rareCardId = rareCards[Math.floor(Math.random() * rareCards.length)];
           const rareCard = { ...CARD_DB[rareCardId], uniqueId: uid(), upgraded: false };
           return { 
-            newState: { ...state, player: { ...state.player, hp: Math.max(1, state.player.hp - 10), deck: [...state.player.deck, rareCard] } },
+            newState: { ...state, player: { ...state.player, hp: Math.max(1, state.player.hp - 10), eventDamageTaken: (state.player.eventDamageTaken || 0) + 10, deck: [...state.player.deck, rareCard] } },
             unlockCards: [rareCardId]
           };
         }
@@ -315,7 +372,7 @@
       {
         type: 'PENALTY',
         text: '5ダメージ受けて、最初の3回の戦闘の敵のHPが1になる',
-        effect: (state) => ({ newState: { ...state, player: { ...state.player, hp: Math.max(1, state.player.hp - 5), neowsLament: 3 } } })
+        effect: (state) => ({ newState: { ...state, player: { ...state.player, hp: Math.max(1, state.player.hp - 5), eventDamageTaken: (state.player.eventDamageTaken || 0) + 5, neowsLament: 3 } } })
       }
     ];
 
@@ -327,8 +384,10 @@
       rich: { id: 'rich', name: '大富豪', desc: '所持金が300Gに到達する。', secret: false, icon: '💰' },
       ironclad_victory: { id: 'ironclad_victory', name: '鉄の覇者', desc: 'アイアンクラッドでゲームをクリアする。', secret: false, icon: '🌋' },
       poison_victory: { id: 'poison_victory', name: '猛毒の達人', desc: 'ポイズンニキでゲームをクリアする。', secret: false, icon: '☠️' },
+      unlucky: { id: 'unlucky', name: '不運な冒険者', desc: '1回の冒険中、イベント等で合計30ダメージ以上受ける。', secret: false, icon: '🩸' },
       absolute_defense: { id: 'absolute_defense', name: '絶対防御', desc: '戦闘中にブロックを100以上得る。', secret: true, icon: '🛡️' },
-      completionist: { id: 'completionist', name: '完全無欠', desc: '全ての図鑑収集率を100%にする。', secret: false, icon: '👑' }
+      completionist: { id: 'completionist', name: '完全無欠', desc: '全ての図鑑収集率を100%にする。', secret: false, icon: '👑' },
+      true_master: { id: 'true_master', name: '真の伝説', desc: 'この実績以外のすべての実績を獲得する。', secret: false, icon: '✨' }
     };
 
     // --- ヘルパー関数 ---
@@ -513,8 +572,9 @@
 
         return {
           screen: 'TITLE', 
+          act: 1,
           floor: 1,
-          player: { characterId: null, hp: 80, maxHp: 80, maxEnergy: 3, gold: 50, deck: [], relics: [], relicStates: { starClockTurn: 0 }, neowsLament: 0 },
+          player: { characterId: null, hp: 80, maxHp: 80, maxEnergy: 3, gold: 50, deck: [], relics: [], relicStates: { starClockTurn: 0 }, neowsLament: 0, eventDamageTaken: 0 },
           mapData: null,
           currentNodeId: null,
           visitedNodes: [],
@@ -524,6 +584,7 @@
           eventInfo: null,
           neowChoices: null,
           treasureInfo: null,
+          isBossDefeated: false,
           unlocks: initialUnlocks
         };
       });
@@ -531,6 +592,7 @@
       const [selectedCardIndex, setSelectedCardIndex] = useState(null);
       const [viewPile, setViewPile] = useState(null); 
       const [upgradePreviewIndex, setUpgradePreviewIndex] = useState(null); 
+      const [removePreviewIndex, setRemovePreviewIndex] = useState(null); 
       
       const [compendiumTab, setCompendiumTab] = useState('IRONCLAD');
       const [upgradedView, setUpgradedView] = useState({});
@@ -548,6 +610,7 @@
 
       const mapRef = useRef(null);
       const cheatClicksRef = useRef([]); 
+      const bossCheatTimerRef = useRef(null);
 
       const MAP_HEIGHT = 1350;
       const getMapY = (floor) => MAP_HEIGHT - (floor * 80);
@@ -600,6 +663,15 @@
               }
             }
 
+            // 全実績コンプリートチェック (true_master)
+            if (!newUnlocks.achievements.includes('true_master')) {
+              const allAchIds = Object.keys(ACHIEVEMENTS_DB).filter(id => id !== 'true_master');
+              const hasAllOthers = allAchIds.every(id => newUnlocks.achievements.includes(id));
+              if (hasAllOthers) {
+                newUnlocks.achievements = [...newUnlocks.achievements, 'true_master'];
+              }
+            }
+
             try {
               localStorage.setItem('slay_the_web_unlocks', JSON.stringify(newUnlocks));
             } catch(e) {}
@@ -637,7 +709,12 @@
             unlockData('achievements', ['deck_builder']);
           }
         }
-      }, [state.player.gold, state.player.deck.length, state.unlocks, unlockData]);
+        if (state.player.eventDamageTaken >= 30) {
+          if (!state.unlocks?.achievements?.includes('unlucky')) {
+            unlockData('achievements', ['unlucky']);
+          }
+        }
+      }, [state.player.gold, state.player.deck.length, state.player.eventDamageTaken, state.unlocks, unlockData]);
 
       useEffect(() => {
         if (state.combat && state.combat.playerBlock >= 100) {
@@ -675,6 +752,7 @@
 
       const saveAndQuit = () => {
         const dataToSave = {
+          act: state.act,
           floor: state.floor,
           player: state.player,
           mapData: state.mapData,
@@ -685,6 +763,7 @@
           rewards: state.rewards,
           shopItems: state.shopItems,
           treasureInfo: state.treasureInfo,
+          isBossDefeated: state.isBossDefeated,
           eventInfoId: state.eventInfo ? state.eventInfo.id : null,
           neowChoiceTexts: state.neowChoices ? state.neowChoices.map(c => c.text) : null
         };
@@ -757,14 +836,29 @@
         const neowChoices = [...buffs, ...penalties];
 
         setState(prev => ({
-          ...prev, screen: 'NEOW', floor: 1,
-          player: { characterId: charId, hp: charData.hp, maxHp: charData.maxHp, maxEnergy: 3, gold: 50, deck: startingDeck, relics: [], relicStates: { starClockTurn: 0 }, neowsLament: 0 },
+          ...prev, screen: 'NEOW', act: 1, floor: 1, isBossDefeated: false,
+          player: { characterId: charId, hp: charData.hp, maxHp: charData.maxHp, maxEnergy: 3, gold: 50, deck: startingDeck, relics: [], relicStates: { starClockTurn: 0 }, neowsLament: 0, eventDamageTaken: 0 },
           mapData: generatedMap,
           currentNodeId: null,
           visitedNodes: [],
           neowChoices: neowChoices,
           treasureInfo: null
         }));
+      };
+
+      const handleNodeInteractionStart = (node) => {
+        if (state.act === 1 && node.type === 'BOSS') {
+          bossCheatTimerRef.current = setTimeout(() => {
+            startCombat('BOSS', node.id, node.floor, true);
+          }, 5000);
+        }
+      };
+
+      const handleNodeInteractionEnd = () => {
+        if (bossCheatTimerRef.current) {
+          clearTimeout(bossCheatTimerRef.current);
+          bossCheatTimerRef.current = null;
+        }
       };
 
       const selectNode = (node) => {
@@ -780,7 +874,7 @@
         } else if (node.type === 'SHOP') {
           const shopCards = getRandomCards(3, state.player.characterId).map(c => ({...c, price: 50 + Math.floor(Math.random()*30)}));
           unlockData('cards', shopCards.map(c => c.id)); 
-          setState(p => ({ ...p, currentNodeId: node.id, visitedNodes: [...p.visitedNodes, node.id], floor: node.floor, screen: 'SHOP', shopItems: shopCards }));
+          setState(p => ({ ...p, currentNodeId: node.id, visitedNodes: [...p.visitedNodes, node.id], floor: node.floor, screen: 'SHOP', shopItems: shopCards, shopRemovedCard: false }));
         } else if (node.type === 'TREASURE') {
           const rand = Math.random();
           let targetRarity = 'COMMON';
@@ -817,7 +911,7 @@
         }
       };
 
-      const startCombat = (type, nodeId, floor) => {
+      const startCombat = (type, nodeId, floor, cheatBossHp1 = false) => {
         const createEnemy = (enemyId) => {
           const enemyBase = ENEMY_DB[enemyId];
           return {
@@ -825,8 +919,8 @@
             id: uid(),
             dbId: enemyId, 
             maxHp: enemyBase.hp,
-            block: 0,
-            statuses: { poison: 0, weak: 0, vulnerable: 0, strength: 0 },
+            block: enemyBase.startingBlock || 0,
+            statuses: { poison: 0, weak: 0, vulnerable: 0, strength: 0, turnDamage: 0, ...enemyBase.statuses },
             intentIndex: 0,
             intent: enemyBase.intents[0],
             stolenGold: 0,
@@ -837,35 +931,59 @@
         let enemies = [];
         
         if (type === 'BOSS') {
-          enemies.push(createEnemy('guardian'));
+          enemies.push(createEnemy(state.act === 1 ? 'guardian' : 'silent'));
         } else if (type === 'ELITE') {
-          const elitePool = ['nob', 'lagavulin', 'sentry'];
-          enemies.push(createEnemy(elitePool[Math.floor(Math.random() * elitePool.length)]));
-        } else {
-          if (Math.random() < 0.10) {
-            const pairPool = [
-              ['slime', 'acidslime'],
-              ['cultist', 'jawworm']
-            ];
-            const selectedPair = pairPool[Math.floor(Math.random() * pairPool.length)];
-            enemies.push(createEnemy(selectedPair[0]));
-            enemies.push(createEnemy(selectedPair[1]));
+          if (state.act === 1) {
+            const elitePool = ['nob', 'lagavulin', 'sentry'];
+            enemies.push(createEnemy(elitePool[Math.floor(Math.random() * elitePool.length)]));
           } else {
-            const normalPool = ['slime', 'cultist', 'jawworm', 'thief', 'acidslime'];
+            const elitePool = ['boss_thief', 'floating_rock', 'angry_nob'];
+            const eId = elitePool[Math.floor(Math.random() * elitePool.length)];
+            enemies.push(createEnemy(eId));
+            if (eId === 'boss_thief') {
+              enemies.push(createEnemy('thief'));
+            }
+          }
+        } else {
+          if (state.act === 1) {
+            if (Math.random() < 0.10) {
+              const pairPool = [
+                ['slime', 'acidslime'],
+                ['cultist', 'jawworm']
+              ];
+              const selectedPair = pairPool[Math.floor(Math.random() * pairPool.length)];
+              enemies.push(createEnemy(selectedPair[0]));
+              enemies.push(createEnemy(selectedPair[1]));
+            } else {
+              const normalPool = ['slime', 'cultist', 'jawworm', 'thief', 'acidslime'];
+              const enemyId = normalPool[Math.floor(Math.random() * normalPool.length)];
+              if (enemyId === 'slime') {
+                enemies.push(createEnemy('slime'));
+                enemies.push(createEnemy('slime'));
+              } else if (enemyId === 'thief') {
+                enemies.push(createEnemy('thief'));
+                enemies.push(createEnemy('thief')); 
+              } else {
+                enemies.push(createEnemy(enemyId));
+              }
+            }
+          } else {
+            // Act 2 Normal
+            const normalPool = ['sphere_guardian', 'rotten_plant', 'fly_bomb', 'wall_vortex', 'caboon', 'cultist', 'thief'];
             const enemyId = normalPool[Math.floor(Math.random() * normalPool.length)];
-            if (enemyId === 'slime') {
-              enemies.push(createEnemy('slime'));
-              enemies.push(createEnemy('slime'));
+            if (enemyId === 'caboon') {
+              enemies.push(createEnemy('caboon'));
+              enemies.push(createEnemy('caboon'));
             } else if (enemyId === 'thief') {
               enemies.push(createEnemy('thief'));
-              enemies.push(createEnemy('thief')); 
+              enemies.push(createEnemy('thief'));
             } else {
               enemies.push(createEnemy(enemyId));
             }
           }
         }
 
-        if (state.player.neowsLament > 0) {
+        if (state.player.neowsLament > 0 || cheatBossHp1) {
           enemies = enemies.map(e => ({ ...e, hp: 1, maxHp: 1 }));
         }
 
@@ -883,9 +1001,9 @@
 
         setState(p => {
           let currentNeowsLament = p.player.neowsLament;
-          if (currentNeowsLament > 0) {
-            currentNeowsLament -= 1;
-            initialLogs.push('🐋 ネオーの祝福で敵のHPが1になった！');
+          if (currentNeowsLament > 0 || cheatBossHp1) {
+            if (currentNeowsLament > 0) currentNeowsLament -= 1;
+            initialLogs.push('🐋 ネオーの祝福（または不思議な力）で敵のHPが1になった！');
           }
 
           if (p.player.relics.includes('starClock')) {
@@ -899,6 +1017,11 @@
           if (p.player.relics.includes('ironCrest')) {
             initialBlock += 3;
             initialLogs.push('🛡️ アイアンクレストが発動！ブロック+3');
+          }
+          
+          if (p.player.relics.includes('blackSword')) {
+            newRelicStates.blackSwordActive = true;
+            initialLogs.push('🗡️ 黒い剣が輝き、守りの態勢に入った。');
           }
 
           return {
@@ -917,8 +1040,8 @@
               playerBlock: initialBlock,
               playerStatuses: { 
                 weak: 0, vulnerable: 0, strength: 0, poison: 0, retainBlock: false, retainBlockOnce: false, 
-                demonForm: 0, bloodCovenant: 0, noxiousFumes: 0, poisonThorns: 0, metallicize: 0, cursedBlood: 0, caltrops: 0, toxicAmplification: 0,
-                nextTurnBlock: 0, envenom: 0, afterImage: 0, combust: 0, brutality: 0
+                demonForm: 0, noxiousFumes: 0, poisonThorns: 0, metallicize: 0, cursedBlood: 0, caltrops: 0, toxicAmplification: 0,
+                nextTurnBlock: 0, envenom: 0, afterImage: 0, combust: 0, brutality: 0, infiniteBlades: 0, accuracy: 0, venomous_shivs: 0
               },
               discardSelectCount: 0,
               turn: 1,
@@ -953,6 +1076,9 @@
         const cardCost = card.upgraded && card.costUp !== undefined ? card.costUp : card.cost;
         if (combat.energy < cardCost) return;
 
+        const isSilencedTurn = combat.turn % 3 === 0 && combat.enemies.some(e => e.statuses.silence_aura && e.hp > 0);
+        if (isSilencedTurn && card.type === 'ATTACK') return;
+
         let newCombat = { ...combat, hand: [...combat.hand], discardPile: [...combat.discardPile], enemies: [...combat.enemies], playerStatuses: {...combat.playerStatuses} };
         let newPlayer = { ...player };
 
@@ -972,10 +1098,17 @@
           newCombat.playerBlock += newCombat.playerStatuses.afterImage;
         }
 
-        const dmg = card.upgraded && card.upDamage !== undefined ? card.upDamage : card.baseDamage;
+        let dmg = card.upgraded && card.upDamage !== undefined ? card.upDamage : card.baseDamage;
         let blk = card.upgraded && card.upBlock !== undefined ? card.upBlock : card.baseBlock;
         const mgc = card.upgraded && card.upMagic !== undefined ? card.upMagic : card.magic;
         const drw = card.upgraded && card.upDraw !== undefined ? card.upDraw : card.draw;
+
+        if (card.id === 'heavy_blade') {
+            dmg += newCombat.playerStatuses.strength * (card.upgraded ? 4 : 2); 
+        }
+        if (card.id === 'shiv') {
+            dmg += (newCombat.playerStatuses.accuracy || 0);
+        }
 
         if (card.id === 'power_guard') {
           blk = newCombat.playerStatuses.strength * (card.upgraded ? 5 : 3);
@@ -1047,9 +1180,6 @@
         else if (card.id === 'demon_form') {
           newCombat.playerStatuses.demonForm += mgc;
         }
-        else if (card.id === 'blood_covenant') {
-          newCombat.playerStatuses.bloodCovenant += mgc;
-        }
         else if (card.id === 'noxious_fumes') {
           newCombat.playerStatuses.noxiousFumes += mgc;
         }
@@ -1089,6 +1219,24 @@
         else if (card.id === 'after_image') {
           newCombat.playerStatuses.afterImage += mgc;
         }
+        else if (card.id === 'bloodletting') {
+          newPlayer.hp = Math.max(1, newPlayer.hp - 3);
+          newCombat.energy += mgc;
+        }
+        else if (card.id === 'blade_dance' || card.id === 'cloak_and_dagger') {
+          for(let i=0; i<mgc; i++) {
+             newCombat.hand.push({ ...CARD_DB['shiv'], uniqueId: uid(), upgraded: false });
+          }
+        }
+        else if (card.id === 'infinite_blades') {
+          newCombat.playerStatuses.infiniteBlades = (newCombat.playerStatuses.infiniteBlades || 0) + mgc;
+        }
+        else if (card.id === 'accuracy') {
+          newCombat.playerStatuses.accuracy = (newCombat.playerStatuses.accuracy || 0) + mgc;
+        }
+        else if (card.id === 'venomous_shivs') {
+          newCombat.playerStatuses.venomous_shivs = (newCombat.playerStatuses.venomous_shivs || 0) + mgc;
+        }
 
         if (card.target === 'ENEMY' && targetEnemyIdx !== null) {
           if (card.id === 'twin_strike') {
@@ -1109,6 +1257,28 @@
             if (newCombat.playerStatuses.envenom > 0) p += newCombat.playerStatuses.envenom;
             if (p > 0 && newCombat.enemies[targetEnemyIdx].hp > 0) {
                newCombat.enemies[targetEnemyIdx].statuses.poison += p;
+            }
+          } else if (card.id === 'dropkick') {
+            let target = newCombat.enemies[targetEnemyIdx];
+            applyDamageToEnemy(targetEnemyIdx, dmg, newCombat);
+            if (target && target.hp > 0 && target.statuses.vulnerable > 0) {
+               newCombat.energy += 1;
+               drawCards(1, newCombat);
+               addLog(`対象が弱点状態のため、エナジーとカードを獲得！`, newCombat);
+            }
+          } else if (card.id === 'crimson_strike') {
+            applyDamageToEnemy(targetEnemyIdx, dmg, newCombat);
+            if (newPlayer.hp <= newPlayer.maxHp / 2 && newCombat.enemies[targetEnemyIdx].hp > 0) {
+               applyDamageToEnemy(targetEnemyIdx, dmg, newCombat);
+               addLog(`HPが半分以下のため、紅蓮撃が2回発動！`, newCombat);
+            }
+          } else if (card.id === 'shiv') {
+            applyDamageToEnemy(targetEnemyIdx, dmg, newCombat);
+            if (newCombat.playerStatuses.venomous_shivs > 0 && newCombat.enemies[targetEnemyIdx].hp > 0) {
+               newCombat.enemies[targetEnemyIdx].statuses.poison += newCombat.playerStatuses.venomous_shivs;
+            }
+            if (newCombat.playerStatuses.envenom > 0 && newCombat.enemies[targetEnemyIdx].hp > 0) {
+               newCombat.enemies[targetEnemyIdx].statuses.poison += newCombat.playerStatuses.envenom;
             }
           } else {
             if (dmg) {
@@ -1224,7 +1394,7 @@
         setSelectedCardIndex(null);
 
         if (newCombat.enemies.every(e => e.hp <= 0)) {
-           handleVictory(newCombat.enemies[0]);
+           handleVictory(newCombat.enemies[0], newPlayer);
         }
       };
 
@@ -1237,11 +1407,23 @@
         if (combatState.playerStatuses.weak > 0) finalDmg = Math.floor(finalDmg * 0.75); 
         if (enemy.statuses.vulnerable > 0) finalDmg = Math.floor(finalDmg * 1.5);
 
+        if (enemy.statuses.sturdy) {
+            const remaining = enemy.statuses.sturdy - (enemy.statuses.turnDamage || 0);
+            if (remaining <= 0) finalDmg = 0;
+            else if (finalDmg > remaining) finalDmg = remaining;
+            enemy.statuses.turnDamage = (enemy.statuses.turnDamage || 0) + finalDmg;
+        }
+
         if (enemy.block >= finalDmg) {
           enemy.block -= finalDmg;
         } else {
           enemy.hp -= (finalDmg - enemy.block);
           enemy.block = 0;
+        }
+
+        if (enemy.statuses.malleable && finalDmg > 0 && enemy.hp > 0) {
+            enemy.block += enemy.statuses.malleable;
+            addLog(`🌱 ${enemy.name}の鍛錬！ブロックを${enemy.statuses.malleable}得た！`, combatState);
         }
       };
 
@@ -1303,11 +1485,6 @@
         });
         newCombat.discardPile = [...newCombat.discardPile, ...discardCards];
         newCombat.hand = [];
-
-        if (newCombat.playerStatuses.bloodCovenant > 0) {
-          newPlayer.hp = Math.min(newPlayer.maxHp, newPlayer.hp + newCombat.playerStatuses.bloodCovenant);
-          addLog(`血の盟約でHPを${newCombat.playerStatuses.bloodCovenant}回復。`, newCombat);
-        }
         
         if (newCombat.playerStatuses.metallicize > 0) {
           newCombat.playerBlock += newCombat.playerStatuses.metallicize;
@@ -1335,8 +1512,8 @@
           if (amp) addLog(`毒の増幅で敵の毒が増加！`, newCombat);
         }
 
-        newCombat.enemies.forEach(enemy => {
-          if (enemy.hp <= 0) return;
+        for (let enemy of newCombat.enemies) {
+          if (enemy.hp <= 0) continue;
 
           enemy.block = 0; 
 
@@ -1344,7 +1521,25 @@
             enemy.hp -= enemy.statuses.poison;
             addLog(`${enemy.name}は毒で${enemy.statuses.poison}ダメージを受けた。`, newCombat);
             enemy.statuses.poison--;
-            if(enemy.hp <= 0) { enemy.dead = true; return; }
+            if(enemy.hp <= 0) { enemy.dead = true; continue; }
+          }
+
+          if (enemy.statuses.explosion !== undefined) {
+              enemy.statuses.explosion--;
+              if (enemy.statuses.explosion <= 0) {
+                  let dmgToTake = 30;
+                  if (newPlayer.relicStates.blackSwordActive && dmgToTake > 0) {
+                      const reduction = Math.min(10, dmgToTake);
+                      dmgToTake -= reduction;
+                      newPlayer.relicStates.blackSwordActive = false;
+                      addLog(`🗡️ 黒い剣が発動！ダメージを${reduction}軽減した！`, newCombat);
+                  }
+                  newPlayer.hp -= dmgToTake;
+                  addLog(`💥 ${enemy.name}が大爆発！ ${dmgToTake}ダメージを受けた！`, newCombat);
+                  enemy.hp = 0;
+                  enemy.dead = true;
+                  continue;
+              }
           }
 
           const intent = enemy.intent;
@@ -1354,7 +1549,7 @@
             enemy.dead = true;
             enemy.escaped = true;
             addLog(`${enemy.name}は戦場から逃げ去った！`, newCombat);
-            return; 
+            continue; 
           }
 
           let times = intent.times || 1;
@@ -1366,10 +1561,18 @@
               if (enemy.statuses.weak > 0) dmg = Math.floor(dmg * 0.75); 
               if (newCombat.playerStatuses.vulnerable > 0) dmg = Math.floor(dmg * 1.5);
 
+              let dealt = 0;
               if (newCombat.playerBlock >= dmg) {
                 newCombat.playerBlock -= dmg;
               } else {
-                newPlayer.hp -= (dmg - newCombat.playerBlock);
+                dealt = dmg - newCombat.playerBlock;
+                if (newPlayer.relicStates.blackSwordActive && dealt > 0) {
+                    const reduction = Math.min(10, dealt);
+                    dealt -= reduction;
+                    newPlayer.relicStates.blackSwordActive = false;
+                    addLog(`🗡️ 黒い剣が発動！ダメージを${reduction}軽減した！`, newCombat);
+                }
+                newPlayer.hp -= dealt;
                 newCombat.playerBlock = 0;
                 
                 if (newCombat.playerStatuses.poisonThorns > 0) {
@@ -1387,13 +1590,21 @@
                   addLog(`${enemy.name}に${stealAmount}G奪われた！`, newCombat);
                 }
               }
+
+              if (intent.type === 'attack_heal') {
+                enemy.hp = Math.min(enemy.maxHp, enemy.hp + intent.heal);
+                addLog(`✨ ${enemy.name}が${intent.heal}回復した！`, newCombat);
+              }
+
+              if (enemy.statuses.lifesteal && dealt > 0 && enemy.hp > 0) {
+                enemy.hp = Math.min(enemy.maxHp, enemy.hp + dealt);
+                addLog(`🩸 ${enemy.name}が血を吸い、${dealt}回復した！`, newCombat);
+              }
               
               if (newCombat.playerStatuses.caltrops > 0 && enemy.hp > 0) {
                 enemy.hp -= newCombat.playerStatuses.caltrops;
                 addLog(`まきびしにより${enemy.name}に${newCombat.playerStatuses.caltrops}ダメージ！`, newCombat);
-                if(enemy.hp <= 0) { enemy.dead = true; return; }
               }
-              
             } 
             
             if (intent.type.includes('defend')) {
@@ -1406,7 +1617,12 @@
             }
             
             if (intent.type.includes('buff')) {
-              enemy.statuses[intent.stat] += (intent.val || intent.statVal);
+              if (intent.type === 'buff_heal') {
+                  enemy.hp = Math.min(enemy.maxHp, enemy.hp + intent.val);
+                  addLog(`${enemy.name}が${intent.val}回復した！`, newCombat);
+              } else {
+                  enemy.statuses[intent.stat] += (intent.val || intent.statVal);
+              }
             }
             if (intent.type.includes('debuff')) {
               newCombat.playerStatuses[intent.stat] += (intent.val || intent.statVal);
@@ -1421,7 +1637,17 @@
           
           if (enemy.statuses.weak > 0) enemy.statuses.weak--;
           if (enemy.statuses.vulnerable > 0) enemy.statuses.vulnerable--;
-        });
+          if (enemy.statuses.sturdy) enemy.statuses.turnDamage = 0;
+
+          if (enemy.hp > 0 && enemy.statuses.collapse !== undefined) {
+              enemy.statuses.collapse--;
+              if (enemy.statuses.collapse <= 0) {
+                  addLog(`〽︎ ${enemy.name}は崩壊した...`, newCombat);
+                  enemy.hp = 0;
+                  enemy.dead = true;
+              }
+          }
+        }
 
         if (newCombat.playerStatuses.poison > 0) {
           newPlayer.hp -= newCombat.playerStatuses.poison;
@@ -1499,9 +1725,30 @@
           });
           addLog('🪨 暦石が発動！敵全体に35ダメージ！', newCombat);
         }
+        
+        if (newPlayer.relics.includes('fish')) {
+          newCombat.enemies.forEach(e => {
+            if (e.hp > 0) {
+              if (e.block >= 3) {
+                e.block -= 3;
+              } else {
+                e.hp -= (3 - e.block);
+                e.block = 0;
+              }
+            }
+          });
+          addLog('🐟 う、魚が跳ねて敵全体に3ダメージ！', newCombat);
+        }
 
         newCombat.turn += 1;
         
+        if (newCombat.playerStatuses.infiniteBlades > 0) {
+          for(let i=0; i<newCombat.playerStatuses.infiniteBlades; i++) {
+            newCombat.hand.push({ ...CARD_DB['shiv'], uniqueId: uid(), upgraded: false });
+          }
+          addLog(`無限の刃によりナイフを${newCombat.playerStatuses.infiniteBlades}枚手札に加えた！`, newCombat);
+        }
+
         drawCards(5, newCombat);
 
         if (newCombat.playerStatuses.brutality > 0) {
@@ -1518,13 +1765,13 @@
         checkEnemiesDead(newCombat, newPlayer);
 
         if (newCombat.enemies.every(e => e.hp <= 0)) {
-          handleVictory(newCombat.enemies[0]);
+          handleVictory(newCombat.enemies[0], newPlayer);
         } else {
           setState(p => ({ ...p, combat: newCombat, player: newPlayer }));
         }
       };
 
-      const handleVictory = (enemyData) => {
+      const handleVictory = (enemyData, finalPlayerState) => {
         // 実績: 初陣
         if (!state.unlocks?.achievements?.includes('first_blood')) {
           unlockData('achievements', ['first_blood']);
@@ -1535,40 +1782,28 @@
         }
 
         const isBoss = enemyData.name.includes('BOSS');
-        if (isBoss) {
-          // 実績: 各キャラクターでのクリア
-          if (state.player.characterId === 'IRONCLAD' && !state.unlocks?.achievements?.includes('ironclad_victory')) {
-            unlockData('achievements', ['ironclad_victory']);
-          }
-          if (state.player.characterId === 'POISON' && !state.unlocks?.achievements?.includes('poison_victory')) {
-            unlockData('achievements', ['poison_victory']);
-          }
-          setState(p => ({ ...p, screen: 'VICTORY' }));
-        } else {
-          let goldReward = Math.floor(Math.random() * 20) + 15;
-          
-          if (state.player.relics.includes('goldenIdol')) {
-            goldReward = Math.floor(goldReward * 1.25);
-          }
-
-          const cardRewards = getRandomCards(3, state.player.characterId);
-          unlockData('cards', cardRewards.map(c => c.id)); 
-          
-          let droppedRelic = null;
-          if (enemyData.isElite) {
-            const availableRelics = Object.keys(RELICS_DB).filter(id => !state.player.relics.includes(id) && id !== 'goldenIdol');
-            if (availableRelics.length > 0) {
-              droppedRelic = availableRelics[Math.floor(Math.random() * availableRelics.length)];
-            }
-          }
-
-          setState(p => ({
-            ...p,
-            screen: 'REWARD',
-            player: { ...p.player, gold: p.player.gold + goldReward },
-            rewards: { gold: goldReward, cards: cardRewards, relic: droppedRelic }
-          }));
+        let goldReward = Math.floor(Math.random() * 20) + 15;
+        if (state.player.relics.includes('goldenIdol')) {
+          goldReward = Math.floor(goldReward * 1.25);
         }
+        const cardRewards = getRandomCards(3, state.player.characterId);
+        unlockData('cards', cardRewards.map(c => c.id)); 
+        
+        let droppedRelic = null;
+        if (enemyData.isElite) {
+          const availableRelics = Object.keys(RELICS_DB).filter(id => !state.player.relics.includes(id) && id !== 'goldenIdol');
+          if (availableRelics.length > 0) {
+            droppedRelic = availableRelics[Math.floor(Math.random() * availableRelics.length)];
+          }
+        }
+
+        setState(p => ({
+          ...p,
+          screen: 'REWARD',
+          isBossDefeated: isBoss,
+          player: { ...(finalPlayerState || p.player), gold: (finalPlayerState ? finalPlayerState.gold : p.player.gold) + goldReward },
+          rewards: { gold: goldReward, cards: cardRewards, relic: droppedRelic }
+        }));
       };
 
       const claimRelic = () => {
@@ -1591,22 +1826,43 @@
         });
       };
 
+      const proceedToNext = (newState) => {
+        if (newState.isBossDefeated) {
+          if (newState.act === 1) {
+            const nextMap = generateMapData();
+            return {
+              ...newState, screen: 'MAP', act: 2, floor: 1, currentNodeId: null, visitedNodes: [], mapData: nextMap, isBossDefeated: false
+            };
+          } else {
+            if (newState.player.characterId === 'IRONCLAD' && !newState.unlocks?.achievements?.includes('ironclad_victory')) {
+              unlockData('achievements', ['ironclad_victory']);
+            }
+            if (newState.player.characterId === 'POISON' && !newState.unlocks?.achievements?.includes('poison_victory')) {
+              unlockData('achievements', ['poison_victory']);
+            }
+            return { ...newState, screen: 'VICTORY', isBossDefeated: false };
+          }
+        } else {
+          return { ...newState, screen: 'MAP' };
+        }
+      };
+
       const claimCard = (card) => {
         unlockData('cards', [card.id]);
-        setState(p => ({
-          ...p, screen: 'MAP',
-          player: { ...p.player, deck: [...p.player.deck, card] }
-        }));
+        setState(p => {
+          let np = { ...p, player: { ...p.player, deck: [...p.player.deck, card] } };
+          return proceedToNext(np);
+        });
       };
 
       const skipReward = () => {
         setState(p => {
-          let newPlayer = { ...p.player };
-          if (p.screen === 'REWARD' && newPlayer.relics.includes('singingBowl')) {
-            newPlayer.maxHp += 2;
-            newPlayer.hp += 2;
+          let np = { ...p };
+          if (p.screen === 'REWARD' && np.player.relics.includes('singingBowl')) {
+            np.player.maxHp += 2;
+            np.player.hp += 2;
           }
-          return { ...p, screen: 'MAP', player: newPlayer };
+          return proceedToNext(np);
         });
       };
 
@@ -1649,7 +1905,9 @@
 
       const renderCard = (card, index, isHand = false, isCompendium = false, toggleUpgrade = null) => {
         const isSelected = index === selectedCardIndex;
-        const canPlay = state.combat && card.type !== 'CURSE' && state.combat.energy >= (card.upgraded && card.costUp !== undefined ? card.costUp : card.cost) && (!state.combat.discardSelectCount || state.combat.discardSelectCount === 0);
+        const cardCost = card.upgraded && card.costUp !== undefined ? card.costUp : card.cost;
+        const isSilencedTurn = state.combat && state.combat.turn % 3 === 0 && state.combat.enemies.some(e => e.statuses.silence_aura && e.hp > 0);
+        const canPlay = state.combat && card.type !== 'CURSE' && state.combat.energy >= cardCost && (!state.combat.discardSelectCount || state.combat.discardSelectCount === 0) && !(isSilencedTurn && card.type === 'ATTACK');
         
         let bg = 'bg-slate-700';
         if(card.type === 'ATTACK') bg = 'bg-red-900';
@@ -1685,8 +1943,13 @@
               ${isCompendium && card.type !== 'CURSE' ? 'cursor-pointer hover:border-green-400' : ''}
               ${bg} p-1 sm:p-2 flex flex-col shadow-lg transition-all duration-200 overflow-hidden`}
           >
+            {isHand && isSilencedTurn && card.type === 'ATTACK' && (
+              <div className="absolute inset-0 bg-slate-900/60 flex items-center justify-center z-20 rounded-lg">
+                  <span className="font-bold text-red-500 text-sm sm:text-lg border-2 border-red-500 p-1 bg-slate-900/80 -rotate-12">沈黙</span>
+              </div>
+            )}
             <div className={`absolute top-0.5 sm:top-1 left-0.5 sm:left-1 rounded-full w-4 h-4 sm:w-6 sm:h-6 flex items-center justify-center font-bold text-[9px] sm:text-sm ${card.upgraded ? 'bg-green-500 text-white' : 'bg-blue-500'} ${card.type === 'CURSE' ? 'bg-gray-800 text-gray-400' : ''}`}>
-              {card.upgraded && card.costUp !== undefined ? card.costUp : card.cost}
+              {cardCost}
             </div>
             <div className={`text-center font-bold text-[8px] sm:text-[10px] lg:text-sm mt-3 sm:mt-4 border-b border-slate-500 pb-0.5 sm:pb-1 ${getRarityColor(card.rarity, card.type === 'CURSE')}`}>
               <div className="truncate w-full">{card.name}{card.upgraded ? <span className="text-green-400">+</span> : ''}</div>
@@ -1719,6 +1982,9 @@
           if (intent.type === 'attack_steal') {
              tooltipText += `追加効果: ${intent.steal}ゴールド奪う\n`;
           }
+          if (intent.type === 'attack_heal') {
+             tooltipText += `追加効果: 自身を${intent.heal}回復\n`;
+          }
         }
         
         if (intent.type.includes('defend')) {
@@ -1736,6 +2002,7 @@
           if (intent.type.includes('buff')) {
             tooltipText += `強化(バフ): `;
             if (intent.stat === 'strength') tooltipText += `筋力上昇\n`;
+            else if (intent.type === 'buff_heal') tooltipText += `回復\n`;
             else tooltipText += `ステータス上昇\n`;
           }
           if (intent.type.includes('debuff') || intent.type === 'poison') {
@@ -1834,6 +2101,60 @@
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
                     <div className="font-bold text-green-400 mb-1">毒</div>
                     <div className="text-[10px] text-slate-300">ターン開始時に数値分のダメージを受け、<br/>その後数値が1減る。</div>
+                  </div>
+                </div>
+              )}
+              {enemy.statuses.malleable > 0 && (
+                <div className="relative group cursor-help">
+                  <span className="text-green-300 bg-green-900/50 px-1 rounded">🌱鍛錬</span>
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                    <div className="font-bold text-green-300 mb-1">鍛錬</div>
+                    <div className="text-[10px] text-slate-300">ダメージを受けるたび、<br/>ブロックを{enemy.statuses.malleable}得る。</div>
+                  </div>
+                </div>
+              )}
+              {enemy.statuses.explosion !== undefined && (
+                <div className="relative group cursor-help">
+                  <span className="text-red-400 bg-red-900/50 px-1 rounded">💥{enemy.statuses.explosion}</span>
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                    <div className="font-bold text-red-400 mb-1">爆発</div>
+                    <div className="text-[10px] text-slate-300">カウントが0になると自爆し、<br/>30ダメージを与える。</div>
+                  </div>
+                </div>
+              )}
+              {enemy.statuses.collapse !== undefined && (
+                <div className="relative group cursor-help">
+                  <span className="text-purple-400 bg-purple-900/50 px-1 rounded">〽︎{enemy.statuses.collapse}</span>
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                    <div className="font-bold text-purple-400 mb-1">崩壊</div>
+                    <div className="text-[10px] text-slate-300">カウントが0になると自爆する。</div>
+                  </div>
+                </div>
+              )}
+              {enemy.statuses.lifesteal && (
+                <div className="relative group cursor-help">
+                  <span className="text-red-500 bg-red-900/50 px-1 rounded">🩸血吸い</span>
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                    <div className="font-bold text-red-500 mb-1">血吸い</div>
+                    <div className="text-[10px] text-slate-300">与えたダメージ分、<br/>HPを回復する。</div>
+                  </div>
+                </div>
+              )}
+              {enemy.statuses.sturdy > 0 && (
+                <div className="relative group cursor-help">
+                  <span className="text-slate-300 bg-slate-700 px-1 rounded">🪨頑丈</span>
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                    <div className="font-bold text-slate-300 mb-1">頑丈</div>
+                    <div className="text-[10px] text-slate-300">1ターンに{enemy.statuses.sturdy}ダメージまでしか<br/>受けない。</div>
+                  </div>
+                </div>
+              )}
+              {enemy.statuses.silence_aura && (
+                <div className="relative group cursor-help">
+                  <span className="text-gray-400 bg-gray-800 px-1 rounded">🌪️沈黙のオーラ</span>
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                    <div className="font-bold text-gray-400 mb-1">沈黙のオーラ</div>
+                    <div className="text-[10px] text-slate-300">3の倍数のターン、<br/>プレイヤーはアタックカードを使えない。</div>
                   </div>
                 </div>
               )}
@@ -1949,7 +2270,7 @@
                     <section>
                       <h3 className="text-lg sm:text-2xl font-bold text-yellow-400 mb-3 border-l-4 border-yellow-400 pl-3">🔰 基本ルール</h3>
                       <p className="text-sm sm:text-base leading-relaxed">
-                        このゲームはデッキ構築型ローグライクカードゲームです。15階層の最奥に待ち受けるボスを倒すことが目標です。<br/>
+                        このゲームはデッキ構築型ローグライクカードゲームです。第2層（全30階層）の最奥に待ち受けるボスを倒すことが目標です。<br/>
                         戦闘では、毎ターン全回復する「エナジー（⚡）」を消費して手札からカードを使用します。エナジーが足りなくなるか、出せるカードが無くなったら「ターン終了」ボタンを押してください。<br/>
                         ターン終了時、残った手札と使用したカードはすべて「捨て札」に行き、次のターンに山札から新しく5枚引きます。山札がゼロになると、捨て札をシャッフルして新しい山札にします。
                       </p>
@@ -1972,7 +2293,7 @@
                         <li><span className="font-bold text-red-400">🔥 休憩所 (REST)</span> : HPを回復するか、カードを1枚強化できます。</li>
                         <li><span className="font-bold text-yellow-400">🏪 ショップ (SHOP)</span> : ゴールドを消費してカードや回復薬を購入できます。</li>
                         <li><span className="font-bold text-sky-400">❓ イベント (EVENT)</span> : 様々なランダムイベントが発生します。所持金やHPなど、条件を満たさないと選べない選択肢もあります。</li>
-                        <li><span className="font-bold text-red-600">👹 ボス (BOSS)</span> : 15階層の最後で待ち受ける強力な敵です。</li>
+                        <li><span className="font-bold text-red-600">👹 ボス (BOSS)</span> : 15階層、30階層の最後で待ち受ける強力な敵です。</li>
                       </ul>
                     </section>
 
@@ -2031,6 +2352,18 @@
                           ターン開始時に数値分のダメージを受けます。ダメージを与えた後、毒の数値は1減ります。
                         </div>
                       </div>
+                    </section>
+                    
+                    <section>
+                      <h3 className="text-lg sm:text-2xl font-bold text-sky-400 mb-3 border-l-4 border-sky-400 pl-3">🎭 敵の特殊能力</h3>
+                      <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                        <li><span className="font-bold text-green-300">🌱 鍛錬</span> : ダメージを受けるたび、ブロックを得ます。</li>
+                        <li><span className="font-bold text-red-400">💥 爆発</span> : カウントダウンが0になると自爆し、大ダメージを受けます。</li>
+                        <li><span className="font-bold text-purple-400">〽︎ 崩壊</span> : カウントダウンが0になると自爆し、死滅します。</li>
+                        <li><span className="font-bold text-red-500">🩸 血吸い</span> : プレイヤーに与えたダメージ分、HPを回復します。</li>
+                        <li><span className="font-bold text-slate-300">🪨 頑丈</span> : 1ターンに受けるダメージに上限があります。</li>
+                        <li><span className="font-bold text-gray-400">🌪️ 沈黙のオーラ</span> : 3の倍数のターン、プレイヤーのアタックカードが使用不可になります。</li>
+                      </ul>
                     </section>
 
                     <section>
@@ -2359,7 +2692,6 @@
         );
       }
 
-      // ★ 新規追加: レリック図鑑
       if (state.screen === 'RELIC_DEX') {
         const relicGroups = {
           COMMON: [],
@@ -2517,7 +2849,7 @@
             <h1 className={`text-4xl sm:text-6xl font-bold mb-4 text-center ${state.screen === 'VICTORY' ? 'text-yellow-400' : 'text-red-500'}`}>
               {state.screen === 'VICTORY' ? 'VICTORY!' : 'GAME OVER'}
             </h1>
-            <p className="mb-8 text-lg sm:text-xl">到達階層: {state.floor} 階</p>
+            <p className="mb-8 text-lg sm:text-xl">到達階層: {state.act === 2 ? state.floor + 15 : state.floor} 階</p>
             <button onClick={() => {
               try { localStorage.removeItem('slay_the_web_save'); } catch(e) {}
               setHasSaveData(false);
@@ -2555,7 +2887,7 @@
           <div className="bg-slate-950 p-2 sm:p-3 flex flex-wrap justify-between items-center border-b border-slate-700 shadow-md shrink-0 z-10 gap-y-2">
             
             <div className="flex flex-wrap gap-2 sm:gap-6 items-center text-xs sm:text-base">
-              <div className="font-bold text-white whitespace-nowrap">階層: {state.floor}/15</div>
+              <div className="font-bold text-white whitespace-nowrap">階層: {state.act === 2 ? state.floor + 15 : state.floor}/30</div>
               {state.player.characterId && (
                 <div className="font-bold text-slate-300 ml-1 sm:ml-2 whitespace-nowrap">
                   {CHARACTERS[state.player.characterId].icon} {CHARACTERS[state.player.characterId].name}
@@ -2688,6 +3020,11 @@
                       <div 
                         key={node.id}
                         onClick={() => isSelectable && selectNode(node)}
+                        onMouseEnter={() => handleNodeInteractionStart(node)}
+                        onMouseLeave={handleNodeInteractionEnd}
+                        onTouchStart={() => handleNodeInteractionStart(node)}
+                        onTouchEnd={handleNodeInteractionEnd}
+                        onTouchCancel={handleNodeInteractionEnd}
                         style={{ left: `${getMapX(node.x, node.floor)}%`, top: `${getMapY(node.floor)}px`, transform: 'translate(-50%, -50%)' }}
                         className={`absolute z-10 flex flex-col items-center justify-center w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 transition-all shadow-lg ${bgClass}`}
                       >
@@ -2720,6 +3057,14 @@
                     <span className="font-bold text-lg sm:text-xl">鍛錬</span>
                     <span className="text-xs sm:text-sm text-slate-400 text-center mt-1">カードを1枚アップグレード</span>
                   </button>
+                  {state.player.relics.includes('umiwatari') && (
+                    <button onClick={() => setState(p => ({ ...p, screen: 'REMOVE_CARD' }))} 
+                      className="flex flex-col items-center p-4 sm:p-6 w-40 sm:w-48 bg-slate-800 rounded-xl hover:bg-slate-700 border-2 border-transparent hover:border-red-400 shrink-0">
+                      <span className="text-3xl sm:text-4xl mb-2">🗑️</span>
+                      <span className="font-bold text-lg sm:text-xl">忘却</span>
+                      <span className="text-xs sm:text-sm text-slate-400 text-center mt-1">デッキからカードを1枚削除する</span>
+                    </button>
+                  )}
                 </div>
               </div>
             )}
@@ -2736,6 +3081,14 @@
                       {renderCard(card, idx)}
                     </div>
                   ))}
+                </div>
+
+                <div className="mt-4 mb-8">
+                  <button onClick={() => {
+                    setState(p => ({ ...p, screen: 'MAP' }));
+                  }} className="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base border border-slate-500">
+                    やめる
+                  </button>
                 </div>
 
                 {upgradePreviewIndex !== null && (
@@ -2768,6 +3121,61 @@
                           });
                         }} className="px-6 py-3 sm:px-8 sm:py-4 bg-green-700 hover:bg-green-600 text-white font-bold rounded-xl border-2 border-green-400 transition-colors shadow-xl shadow-green-500/50 text-sm sm:text-xl shrink-0">
                           決定 (OK)
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {state.screen === 'REMOVE_CARD' && (
+              <div className="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full relative">
+                <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-red-400">デッキから削除するカードを選択</h2>
+                <div className="flex flex-wrap gap-4 justify-center max-w-4xl pb-8">
+                  {state.player.deck.map((card, idx) => (
+                    <div key={idx} onClick={() => {
+                      setRemovePreviewIndex(idx);
+                    }} className="cursor-pointer hover:-translate-y-2 transition">
+                      {renderCard(card, idx)}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 mb-8">
+                  <button onClick={() => {
+                    setState(p => ({ ...p, screen: p.returnScreen || 'MAP', returnScreen: null, removeCost: null }));
+                  }} className="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base border border-slate-500">
+                    やめる
+                  </button>
+                </div>
+
+                {removePreviewIndex !== null && (
+                  <div className="fixed inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 sm:p-8 backdrop-blur-sm overflow-y-auto">
+                    <div className="flex flex-col items-center justify-center min-h-full w-full py-8">
+                      <h2 className="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center text-red-400">このカードを削除しますか？</h2>
+                      
+                      <div className="flex flex-wrap justify-center gap-4 sm:gap-16 items-center mb-8 sm:mb-12">
+                        <div className="flex flex-col items-center">
+                          {renderCard(state.player.deck[removePreviewIndex], removePreviewIndex, false)}
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 sticky bottom-4 z-10">
+                        <button onClick={() => setRemovePreviewIndex(null)} className="px-6 py-3 sm:px-8 sm:py-4 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-xl border-2 border-slate-500 transition-colors text-sm sm:text-xl shrink-0 shadow-xl">
+                          考え直す
+                        </button>
+                        <button onClick={() => {
+                          let newDeck = [...state.player.deck];
+                          newDeck.splice(removePreviewIndex, 1);
+                          setRemovePreviewIndex(null);
+                          setState(p => {
+                            const cost = p.removeCost || 0;
+                            const newGold = p.player.gold - cost;
+                            return { ...p, screen: p.returnScreen || 'MAP', player: {...p.player, deck: newDeck, gold: newGold}, returnScreen: null, removeCost: null, shopRemovedCard: p.returnScreen === 'SHOP' ? true : p.shopRemovedCard };
+                          });
+                        }} className="px-6 py-3 sm:px-8 sm:py-4 bg-red-700 hover:bg-red-600 text-white font-bold rounded-xl border-2 border-red-400 transition-colors shadow-xl shadow-red-500/50 text-sm sm:text-xl shrink-0">
+                          決定 (削除)
                         </button>
                       </div>
                     </div>
@@ -2860,13 +3268,17 @@
                         onClick={() => {
                           if (!canSelect) return;
                           const result = choice.effect(state);
-                          if (result.newState) {
-                            setState({ ...result.newState, screen: 'MAP' });
-                            if (result.unlockCards) unlockData('cards', result.unlockCards);
-                            if (result.unlockRelics) unlockData('relics', result.unlockRelics);
-                          } else {
-                            setState({ ...result, screen: 'MAP' });
+                          let nextState = result.newState ? { ...result.newState } : { ...result };
+                          
+                          // 明示的に画面指定がない、またはEVENT画面のままの場合はマップへ戻す
+                          if (!nextState.screen || nextState.screen === 'EVENT') {
+                            nextState.screen = 'MAP';
                           }
+                          
+                          if (result.unlockCards) unlockData('cards', result.unlockCards);
+                          if (result.unlockRelics) unlockData('relics', result.unlockRelics);
+                          
+                          setState(nextState);
                         }} 
                         className={`w-full p-3 sm:p-4 border-2 rounded-xl text-left flex flex-col transition-colors
                           ${canSelect 
@@ -2910,17 +3322,17 @@
                     </div>
                   ))}
                   
-                  <div className="w-28 h-40 sm:w-32 sm:h-44 lg:w-36 lg:h-48 border-2 border-green-600 bg-green-900/50 rounded-lg flex flex-col items-center justify-center p-2 sm:p-4 shrink-0">
-                    <span className="text-3xl sm:text-4xl mb-1 sm:mb-2">🧪</span>
-                    <span className="font-bold mb-1 sm:mb-2 text-xs sm:text-sm">回復薬</span>
-                    <span className="text-[10px] sm:text-xs text-center mb-2 sm:mb-4 text-slate-300">HPを20回復</span>
+                  <div className="w-28 h-40 sm:w-32 sm:h-44 lg:w-36 lg:h-48 border-2 border-red-600 bg-red-900/50 rounded-lg flex flex-col items-center justify-center p-2 sm:p-4 shrink-0">
+                    <span className="text-3xl sm:text-4xl mb-1 sm:mb-2">🗑️</span>
+                    <span className="font-bold mb-1 sm:mb-2 text-xs sm:text-sm">カード削除</span>
+                    <span className="text-[10px] sm:text-xs text-center mb-2 sm:mb-4 text-slate-300">デッキからカードを<br/>1枚削除する</span>
                     <button 
-                        disabled={state.player.gold < 50}
+                        disabled={state.player.gold < 40 || state.shopRemovedCard}
                         onClick={() => {
-                          setState(p => ({ ...p, player: {...p.player, gold: p.player.gold - 50, hp: Math.min(p.player.maxHp, p.player.hp + 20)} }));
+                          setState(p => ({ ...p, screen: 'REMOVE_CARD', returnScreen: 'SHOP', removeCost: 40 }));
                         }}
-                        className={`px-2 py-1 sm:px-4 sm:py-1 rounded font-bold text-[10px] sm:text-sm ${state.player.gold >= 50 ? 'bg-yellow-600 hover:bg-yellow-500 text-white' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}>
-                        50Gで購入
+                        className={`px-2 py-1 sm:px-4 sm:py-1 rounded font-bold text-[10px] sm:text-sm ${(state.player.gold >= 40 && !state.shopRemovedCard) ? 'bg-yellow-600 hover:bg-yellow-500 text-white' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}>
+                        {state.shopRemovedCard ? '売切' : '40Gで購入'}
                     </button>
                   </div>
                 </div>
