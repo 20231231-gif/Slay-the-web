@@ -1,33 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slay The Web</title>
-
-  <!-- React CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <style>
-    body {
-      margin: 0;
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-    #root {
-      width: 100vw;
-      height: 100vh;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Converted GitHub HTML</title>
 </head>
 <body>
-  <div id="root"></div>
-
-  <script type="text/babel">
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+<script>
 
 // --- データ定義 ---
 
@@ -557,8 +536,8 @@ const generateMapData = () => {
 };
 
 // --- メインコンポーネント ---
-export default function App() {
-  const [state, setState] = useState(() => {
+function App() {
+  const [state, setState] = // useState(() => {
     let initialUnlocks = { cards: [], enemies: [], relics: [], events: [], achievements: [] };
     try {
       const saved = localStorage.getItem('slay_the_web_unlocks');
@@ -587,31 +566,31 @@ export default function App() {
     };
   });
 
-  const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-  const [viewPile, setViewPile] = useState(null); 
-  const [upgradePreviewIndex, setUpgradePreviewIndex] = useState(null); 
-  const [removePreviewIndex, setRemovePreviewIndex] = useState(null); 
+  const [selectedCardIndex, setSelectedCardIndex] = // useState(null);
+  const [viewPile, setViewPile] = // useState(null); 
+  const [upgradePreviewIndex, setUpgradePreviewIndex] = // useState(null); 
+  const [removePreviewIndex, setRemovePreviewIndex] = // useState(null); 
   
-  const [compendiumTab, setCompendiumTab] = useState('IRONCLAD');
-  const [upgradedView, setUpgradedView] = useState({});
+  const [compendiumTab, setCompendiumTab] = // useState('IRONCLAD');
+  const [upgradedView, setUpgradedView] = // useState({});
 
-  const [hasSeenTutorial, setHasSeenTutorial] = useState(false);
-  const [showTutorial, setShowTutorial] = useState(false);
+  const [hasSeenTutorial, setHasSeenTutorial] = // useState(false);
+  const [showTutorial, setShowTutorial] = // useState(false);
   
-  const [hasSaveData, setHasSaveData] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
-  const [showDeckView, setShowDeckView] = useState(false);
+  const [hasSaveData, setHasSaveData] = // useState(false);
+  const [showMenu, setShowMenu] = // useState(false);
+  const [showDeckView, setShowDeckView] = // useState(false);
 
-  const [showTransferMenu, setShowTransferMenu] = useState(false);
-  const [transferInput, setTransferInput] = useState('');
-  const [transferOutput, setTransferOutput] = useState('');
-  const [transferMessage, setTransferMessage] = useState('');
+  const [showTransferMenu, setShowTransferMenu] = // useState(false);
+  const [transferInput, setTransferInput] = // useState('');
+  const [transferOutput, setTransferOutput] = // useState('');
+  const [transferMessage, setTransferMessage] = // useState('');
 
-  const [deleteStep, setDeleteStep] = useState(0);
+  const [deleteStep, setDeleteStep] = // useState(0);
 
-  const mapRef = useRef(null);
-  const cheatClicksRef = useRef([]); 
-  const bossCheatTimerRef = useRef(null);
+  const mapRef = // useRef(null);
+  const cheatClicksRef = // useRef([]); 
+  const bossCheatTimerRef = // useRef(null);
 
   const MAP_HEIGHT = 1350;
   const getMapY = (floor) => MAP_HEIGHT - (floor * 80);
@@ -632,7 +611,7 @@ export default function App() {
     }
   };
 
-  const unlockData = useCallback((type, ids) => {
+  const unlockData = // useCallback((type, ids) => {
     setState(p => {
       let currentUnlocks = p.unlocks || {};
       if (!currentUnlocks.cards) currentUnlocks.cards = [];
@@ -682,14 +661,14 @@ export default function App() {
     });
   }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
     if (state.screen === 'MAP' && mapRef.current) {
       const currentY = state.currentNodeId ? getMapY(state.mapData[state.currentNodeId].floor) : getMapY(1);
       mapRef.current.scrollTop = currentY - window.innerHeight / 2 + 100;
     }
   }, [state.screen, state.currentNodeId, state.mapData]);
 
-  useEffect(() => {
+  // useEffect(() => {
     try {
       const saved = localStorage.getItem('slay_the_web_save');
       if (saved) {
@@ -699,7 +678,7 @@ export default function App() {
   }, []);
 
   // 実績の監視用エフェクト
-  useEffect(() => {
+  // useEffect(() => {
     if (state.player.gold >= 300) {
       if (!state.unlocks?.achievements?.includes('rich')) {
         unlockData('achievements', ['rich']);
@@ -717,7 +696,7 @@ export default function App() {
     }
   }, [state.player.gold, state.player.deck.length, state.player.eventDamageTaken, state.unlocks, unlockData]);
 
-  useEffect(() => {
+  // useEffect(() => {
     if (state.combat && state.combat.playerBlock >= 100) {
       if (!state.unlocks?.achievements?.includes('absolute_defense')) {
         unlockData('achievements', ['absolute_defense']);
@@ -1979,29 +1958,29 @@ export default function App() {
             playCard(index);
           }
         }}
-        className={`relative rounded-lg border-2 ${baseSizeClasses} ${isSelected ? 'border-yellow-400 -translate-y-4 lg:-translate-y-6 z-10 shadow-[0_0_15px_rgba(234,179,8,0.5)]' : 'border-slate-500'} 
+        class={`relative rounded-lg border-2 ${baseSizeClasses} ${isSelected ? 'border-yellow-400 -translate-y-4 lg:-translate-y-6 z-10 shadow-[0_0_15px_rgba(234,179,8,0.5)]' : 'border-slate-500'} 
           ${isHand && canPlay ? 'cursor-pointer' : ''}
           ${isHand && !canPlay ? 'opacity-80 cursor-not-allowed' : ''}
           ${isCompendium && card.type !== 'CURSE' ? 'cursor-pointer hover:border-green-400' : ''}
           ${bg} p-1 sm:p-2 flex flex-col shadow-lg transition-all duration-200 overflow-hidden`}
       >
         {isHand && isSilencedTurn && card.type === 'ATTACK' && (
-          <div className="absolute inset-0 bg-slate-900/60 flex items-center justify-center z-20 rounded-lg">
-              <span className="font-bold text-red-500 text-sm sm:text-lg border-2 border-red-500 p-1 bg-slate-900/80 -rotate-12">沈黙</span>
+          <div class="absolute inset-0 bg-slate-900/60 flex items-center justify-center z-20 rounded-lg">
+              <span class="font-bold text-red-500 text-sm sm:text-lg border-2 border-red-500 p-1 bg-slate-900/80 -rotate-12">沈黙</span>
           </div>
         )}
-        <div className={`absolute top-0.5 sm:top-1 left-0.5 sm:left-1 rounded-full w-4 h-4 sm:w-6 sm:h-6 flex items-center justify-center font-bold text-[9px] sm:text-sm ${card.upgraded ? 'bg-green-500 text-white' : 'bg-blue-500'} ${card.type === 'CURSE' ? 'bg-gray-800 text-gray-400' : ''}`}>
+        <div class={`absolute top-0.5 sm:top-1 left-0.5 sm:left-1 rounded-full w-4 h-4 sm:w-6 sm:h-6 flex items-center justify-center font-bold text-[9px] sm:text-sm ${card.upgraded ? 'bg-green-500 text-white' : 'bg-blue-500'} ${card.type === 'CURSE' ? 'bg-gray-800 text-gray-400' : ''}`}>
           {cardCost}
         </div>
-        <div className={`text-center font-bold text-[8px] sm:text-[10px] lg:text-sm mt-3 sm:mt-4 border-b border-slate-500 pb-0.5 sm:pb-1 ${getRarityColor(card.rarity, card.type === 'CURSE')}`}>
-          <div className="truncate w-full">{card.name}{card.upgraded ? <span className="text-green-400">+</span> : ''}</div>
+        <div class={`text-center font-bold text-[8px] sm:text-[10px] lg:text-sm mt-3 sm:mt-4 border-b border-slate-500 pb-0.5 sm:pb-1 ${getRarityColor(card.rarity, card.type === 'CURSE')}`}>
+          <div class="truncate w-full">{card.name}{card.upgraded ? <span class="text-green-400">+</span> : ''}</div>
         </div>
-        <div className="text-[7px] sm:text-[9px] lg:text-xs mt-1 text-slate-200 flex-grow text-center flex flex-col items-center justify-center leading-tight overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div class="text-[7px] sm:text-[9px] lg:text-xs mt-1 text-slate-200 flex-grow text-center flex flex-col items-center justify-center leading-tight overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {parseCardText(card)}
-          {isExhaust && <span className="text-purple-300 mt-0.5 font-bold">廃棄</span>}
+          {isExhaust && <span class="text-purple-300 mt-0.5 font-bold">廃棄</span>}
         </div>
-        <div className="text-center text-[7px] sm:text-[10px] lg:text-xs font-bold text-slate-400 shrink-0">
-          {renderIcon(card.type)} <span className="hidden sm:inline">{card.type}</span>
+        <div class="text-center text-[7px] sm:text-[10px] lg:text-xs font-bold text-slate-400 shrink-0">
+          {renderIcon(card.type)} <span class="hidden sm:inline">{card.type}</span>
         </div>
       </div>
     );
@@ -2083,7 +2062,7 @@ export default function App() {
     return (
       <div 
         key={enemy.id} 
-        className={`flex flex-col items-center p-2 sm:p-3 rounded-lg bg-slate-800 border-2 shrink-0 min-w-[90px] sm:min-w-[120px] max-w-[140px]
+        class={`flex flex-col items-center p-2 sm:p-3 rounded-lg bg-slate-800 border-2 shrink-0 min-w-[90px] sm:min-w-[120px] max-w-[140px]
           ${isTargetable ? 'border-red-500 cursor-pointer hover:bg-slate-700 animate-pulse' : 'border-transparent'}`}
         onClick={() => {
           if (isTargetable) {
@@ -2091,130 +2070,130 @@ export default function App() {
           }
         }}
       >
-        <div className="relative group flex justify-center w-full">
-          <div className="text-yellow-400 font-bold mb-1 text-xs sm:text-base cursor-help px-2">{intentText}</div>
-          <div className="absolute bottom-full mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block group-active:block shadow-lg z-50 whitespace-pre-wrap text-center">
+        <div class="relative group flex justify-center w-full">
+          <div class="text-yellow-400 font-bold mb-1 text-xs sm:text-base cursor-help px-2">{intentText}</div>
+          <div class="absolute bottom-full mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block group-active:block shadow-lg z-50 whitespace-pre-wrap text-center">
             {tooltipText.trim()}
           </div>
         </div>
-        <div className="text-3xl sm:text-5xl mb-1 sm:mb-2">{enemy.isBoss ? '👹' : enemy.isElite ? '👿' : (enemy.dbId === 'thief' ? '🥷' : '👾')}</div>
-        <div className="text-white font-bold text-[10px] sm:text-sm text-center break-words w-full leading-tight">{enemy.name}</div>
+        <div class="text-3xl sm:text-5xl mb-1 sm:mb-2">{enemy.isBoss ? '👹' : enemy.isElite ? '👿' : (enemy.dbId === 'thief' ? '🥷' : '👾')}</div>
+        <div class="text-white font-bold text-[10px] sm:text-sm text-center break-words w-full leading-tight">{enemy.name}</div>
         
         {/* HP Bar */}
-        <div className="w-full bg-slate-900 rounded-full h-2 sm:h-3 mt-1 sm:mt-2 relative border border-slate-600">
-          <div className="bg-red-500 h-full rounded-full" style={{ width: `${(enemy.hp/enemy.maxHp)*100}%` }}></div>
-          <div className="absolute inset-0 flex items-center justify-center text-[8px] sm:text-[10px] font-bold text-white leading-none">
+        <div class="w-full bg-slate-900 rounded-full h-2 sm:h-3 mt-1 sm:mt-2 relative border border-slate-600">
+          <div class="bg-red-500 h-full rounded-full" style={{ width: `${(enemy.hp/enemy.maxHp)*100}%` }}></div>
+          <div class="absolute inset-0 flex items-center justify-center text-[8px] sm:text-[10px] font-bold text-white leading-none">
             {enemy.hp} / {enemy.maxHp}
           </div>
         </div>
         
         {/* Block & Statuses */}
-        <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mt-1 sm:mt-2 text-[9px] sm:text-xs">
+        <div class="flex flex-wrap justify-center gap-1 sm:gap-2 mt-1 sm:mt-2 text-[9px] sm:text-xs">
           {enemy.block > 0 && (
-            <div className="relative group cursor-help">
-              <span className="text-blue-300 bg-blue-900/50 px-1 rounded">🛡️{enemy.block}</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-blue-300 mb-1">ブロック</div>
-                <div className="text-[10px] text-slate-300">受けるダメージを数値分軽減する。<br/>ターン終了時に消滅する。</div>
+            <div class="relative group cursor-help">
+              <span class="text-blue-300 bg-blue-900/50 px-1 rounded">🛡️{enemy.block}</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-blue-300 mb-1">ブロック</div>
+                <div class="text-[10px] text-slate-300">受けるダメージを数値分軽減する。<br/>ターン終了時に消滅する。</div>
               </div>
             </div>
           )}
           {enemy.statuses.strength !== 0 && (
-            <div className="relative group cursor-help">
-              <span className={`px-1 rounded ${enemy.statuses.strength > 0 ? 'text-red-400 bg-red-900/50' : 'text-blue-400 bg-blue-900/50'}`}>💪{enemy.statuses.strength}</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-red-400 mb-1">筋力</div>
-                <div className="text-[10px] text-slate-300">アタックによるダメージが<br/>数値分変化する。</div>
+            <div class="relative group cursor-help">
+              <span class={`px-1 rounded ${enemy.statuses.strength > 0 ? 'text-red-400 bg-red-900/50' : 'text-blue-400 bg-blue-900/50'}`}>💪{enemy.statuses.strength}</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-red-400 mb-1">筋力</div>
+                <div class="text-[10px] text-slate-300">アタックによるダメージが<br/>数値分変化する。</div>
               </div>
             </div>
           )}
           {enemy.statuses.weak > 0 && (
-            <div className="relative group cursor-help">
-              <span className="text-gray-400 bg-gray-800 px-1 rounded">📉{enemy.statuses.weak}</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-gray-400 mb-1">脱力</div>
-                <div className="text-[10px] text-slate-300">アタックで与えるダメージが<br/>25%減少する。<br/>(残り {enemy.statuses.weak} ターン)</div>
+            <div class="relative group cursor-help">
+              <span class="text-gray-400 bg-gray-800 px-1 rounded">📉{enemy.statuses.weak}</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-gray-400 mb-1">脱力</div>
+                <div class="text-[10px] text-slate-300">アタックで与えるダメージが<br/>25%減少する。<br/>(残り {enemy.statuses.weak} ターン)</div>
               </div>
             </div>
           )}
           {enemy.statuses.vulnerable > 0 && (
-            <div className="relative group cursor-help">
-              <span className="text-purple-400 bg-purple-900/50 px-1 rounded">💔{enemy.statuses.vulnerable}</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-purple-400 mb-1">弱点</div>
-                <div className="text-[10px] text-slate-300">アタックから受けるダメージが<br/>1.5倍になる。<br/>(残り {enemy.statuses.vulnerable} ターン)</div>
+            <div class="relative group cursor-help">
+              <span class="text-purple-400 bg-purple-900/50 px-1 rounded">💔{enemy.statuses.vulnerable}</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-purple-400 mb-1">弱点</div>
+                <div class="text-[10px] text-slate-300">アタックから受けるダメージが<br/>1.5倍になる。<br/>(残り {enemy.statuses.vulnerable} ターン)</div>
               </div>
             </div>
           )}
           {enemy.statuses.poison > 0 && (
-            <div className="relative group cursor-help">
-              <span className="text-green-400 bg-green-900/50 px-1 rounded">🧪{enemy.statuses.poison}</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-green-400 mb-1">毒</div>
-                <div className="text-[10px] text-slate-300">ターン開始時に数値分のダメージを受け、<br/>その後数値が1減る。</div>
+            <div class="relative group cursor-help">
+              <span class="text-green-400 bg-green-900/50 px-1 rounded">🧪{enemy.statuses.poison}</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-green-400 mb-1">毒</div>
+                <div class="text-[10px] text-slate-300">ターン開始時に数値分のダメージを受け、<br/>その後数値が1減る。</div>
               </div>
             </div>
           )}
           {enemy.statuses.malleable > 0 && (
-            <div className="relative group cursor-help">
-              <span className="text-green-300 bg-green-900/50 px-1 rounded">🌱鍛錬</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-green-300 mb-1">鍛錬</div>
-                <div className="text-[10px] text-slate-300">ダメージを受けるたび、<br/>ブロックを{enemy.statuses.malleable}得る。</div>
+            <div class="relative group cursor-help">
+              <span class="text-green-300 bg-green-900/50 px-1 rounded">🌱鍛錬</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-green-300 mb-1">鍛錬</div>
+                <div class="text-[10px] text-slate-300">ダメージを受けるたび、<br/>ブロックを{enemy.statuses.malleable}得る。</div>
               </div>
             </div>
           )}
           {enemy.statuses.barricade && (
-            <div className="relative group cursor-help">
-              <span className="text-blue-200 bg-blue-800/50 px-1 rounded">🛡️保持</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-blue-200 mb-1">防壁</div>
-                <div className="text-[10px] text-slate-300">ターン終了時に<br/>ブロックが消滅しない。</div>
+            <div class="relative group cursor-help">
+              <span class="text-blue-200 bg-blue-800/50 px-1 rounded">🛡️保持</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-blue-200 mb-1">防壁</div>
+                <div class="text-[10px] text-slate-300">ターン終了時に<br/>ブロックが消滅しない。</div>
               </div>
             </div>
           )}
           {enemy.statuses.explosion !== undefined && (
-            <div className="relative group cursor-help">
-              <span className="text-red-400 bg-red-900/50 px-1 rounded">💥{enemy.statuses.explosion}</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-red-400 mb-1">爆発</div>
-                <div className="text-[10px] text-slate-300">カウントが0になると自爆し、<br/>30ダメージを与える。</div>
+            <div class="relative group cursor-help">
+              <span class="text-red-400 bg-red-900/50 px-1 rounded">💥{enemy.statuses.explosion}</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-red-400 mb-1">爆発</div>
+                <div class="text-[10px] text-slate-300">カウントが0になると自爆し、<br/>30ダメージを与える。</div>
               </div>
             </div>
           )}
           {enemy.statuses.collapse !== undefined && (
-            <div className="relative group cursor-help">
-              <span className="text-purple-400 bg-purple-900/50 px-1 rounded">〽︎{enemy.statuses.collapse}</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-purple-400 mb-1">崩壊</div>
-                <div className="text-[10px] text-slate-300">カウントが0になると自爆する。</div>
+            <div class="relative group cursor-help">
+              <span class="text-purple-400 bg-purple-900/50 px-1 rounded">〽︎{enemy.statuses.collapse}</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-purple-400 mb-1">崩壊</div>
+                <div class="text-[10px] text-slate-300">カウントが0になると自爆する。</div>
               </div>
             </div>
           )}
           {enemy.statuses.lifesteal && (
-            <div className="relative group cursor-help">
-              <span className="text-red-500 bg-red-900/50 px-1 rounded">🩸血吸い</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-red-500 mb-1">血吸い</div>
-                <div className="text-[10px] text-slate-300">与えたダメージ分、<br/>HPを回復する。</div>
+            <div class="relative group cursor-help">
+              <span class="text-red-500 bg-red-900/50 px-1 rounded">🩸血吸い</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-red-500 mb-1">血吸い</div>
+                <div class="text-[10px] text-slate-300">与えたダメージ分、<br/>HPを回復する。</div>
               </div>
             </div>
           )}
           {enemy.statuses.sturdy > 0 && (
-            <div className="relative group cursor-help">
-              <span className="text-slate-300 bg-slate-700 px-1 rounded">🪨頑丈</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-slate-300 mb-1">頑丈</div>
-                <div className="text-[10px] text-slate-300">1ターンに{enemy.statuses.sturdy}ダメージまでしか<br/>受けない。</div>
+            <div class="relative group cursor-help">
+              <span class="text-slate-300 bg-slate-700 px-1 rounded">🪨頑丈</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-slate-300 mb-1">頑丈</div>
+                <div class="text-[10px] text-slate-300">1ターンに{enemy.statuses.sturdy}ダメージまでしか<br/>受けない。</div>
               </div>
             </div>
           )}
           {enemy.statuses.silence_aura && (
-            <div className="relative group cursor-help">
-              <span className="text-gray-400 bg-gray-800 px-1 rounded">🌪️沈黙のオーラ</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
-                <div className="font-bold text-gray-400 mb-1">沈黙のオーラ</div>
-                <div className="text-[10px] text-slate-300">3の倍数のターン、<br/>プレイヤーはアタックカードを使えない。</div>
+            <div class="relative group cursor-help">
+              <span class="text-gray-400 bg-gray-800 px-1 rounded">🌪️沈黙のオーラ</span>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                <div class="font-bold text-gray-400 mb-1">沈黙のオーラ</div>
+                <div class="text-[10px] text-slate-300">3の倍数のターン、<br/>プレイヤーはアタックカードを使えない。</div>
               </div>
             </div>
           )}
@@ -2227,9 +2206,9 @@ export default function App() {
 
   if (state.screen === 'TITLE') {
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center justify-center relative p-4">
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center justify-center relative p-4">
         
-        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex flex-col gap-1 sm:gap-2 items-end z-20 origin-top-right">
+        <div class="absolute top-2 right-2 sm:top-4 sm:right-4 flex flex-col gap-1 sm:gap-2 items-end z-20 origin-top-right">
           <button 
             onClick={() => { 
               setShowTutorial(true); 
@@ -2253,19 +2232,19 @@ export default function App() {
                 cheatClicksRef.current = [];
               }
             }}
-            className="px-2 py-1.5 sm:px-6 sm:py-2 text-[10px] sm:text-base bg-blue-800 hover:bg-blue-700 rounded-lg font-bold border border-blue-600 flex items-center gap-1 sm:gap-2 transition-colors shadow-lg shadow-blue-900/50">
-            <span>📚</span> <span className="hidden sm:inline">プレイの仕方完全指南</span><span className="sm:hidden">遊び方</span>
+            class="px-2 py-1.5 sm:px-6 sm:py-2 text-[10px] sm:text-base bg-blue-800 hover:bg-blue-700 rounded-lg font-bold border border-blue-600 flex items-center gap-1 sm:gap-2 transition-colors shadow-lg shadow-blue-900/50">
+            <span>📚</span> <span class="hidden sm:inline">プレイの仕方完全指南</span><span class="sm:hidden">遊び方</span>
           </button>
           
-          <div className="flex flex-col gap-1 sm:gap-2 w-24 sm:w-full sm:max-w-[150px]">
+          <div class="flex flex-col gap-1 sm:gap-2 w-24 sm:w-full sm:max-w-[150px]">
             <button 
               onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))}
-              className="px-2 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-base bg-slate-800 hover:bg-slate-700 rounded-lg font-bold border border-slate-600 flex items-center justify-center gap-1 sm:gap-2 transition-colors">
+              class="px-2 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-base bg-slate-800 hover:bg-slate-700 rounded-lg font-bold border border-slate-600 flex items-center justify-center gap-1 sm:gap-2 transition-colors">
               <span>📖</span> 図鑑
             </button>
             <button 
               onClick={() => setState(p => ({ ...p, screen: 'ACHIEVEMENTS' }))}
-              className="px-2 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-base bg-slate-800 hover:bg-slate-700 rounded-lg font-bold border border-slate-600 flex items-center justify-center gap-1 sm:gap-2 transition-colors">
+              class="px-2 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-base bg-slate-800 hover:bg-slate-700 rounded-lg font-bold border border-slate-600 flex items-center justify-center gap-1 sm:gap-2 transition-colors">
               <span>🏆</span> 実績
             </button>
             <button 
@@ -2275,50 +2254,50 @@ export default function App() {
                 setTransferInput('');
                 setTransferMessage('');
               }}
-              className="px-2 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-base bg-slate-800 hover:bg-slate-700 rounded-lg font-bold border border-slate-600 flex items-center justify-center gap-1 sm:gap-2 transition-colors whitespace-nowrap">
+              class="px-2 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-base bg-slate-800 hover:bg-slate-700 rounded-lg font-bold border border-slate-600 flex items-center justify-center gap-1 sm:gap-2 transition-colors whitespace-nowrap">
               <span>💾</span> データ引継
             </button>
           </div>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-extrabold mb-4 sm:mb-8 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 text-center mt-28 sm:mt-0">
+        <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 sm:mb-8 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 text-center mt-28 sm:mt-0">
           Slay the Web
         </h1>
-        <p className="mb-8 text-slate-400 text-sm sm:text-base text-center">ブラウザで遊べるローグライクカードゲーム</p>
+        <p class="mb-8 text-slate-400 text-sm sm:text-base text-center">ブラウザで遊べるローグライクカードゲーム</p>
         
-        <div className="flex flex-col items-center gap-4 w-full px-4">
+        <div class="flex flex-col items-center gap-4 w-full px-4">
           {hasSaveData && (
             <button 
               onClick={handleContinue} 
-              className="px-6 py-3 sm:px-8 sm:py-4 rounded-full text-lg sm:text-xl font-bold transition shadow-lg bg-blue-600 hover:bg-blue-500 shadow-blue-500/50 w-full max-w-[300px]">
+              class="px-6 py-3 sm:px-8 sm:py-4 rounded-full text-lg sm:text-xl font-bold transition shadow-lg bg-blue-600 hover:bg-blue-500 shadow-blue-500/50 w-full max-w-[300px]">
               コンティニュー
             </button>
           )}
           <button 
             onClick={startGame} 
             disabled={!hasSeenTutorial}
-            className={`px-6 py-3 sm:px-8 sm:py-4 rounded-full text-lg sm:text-xl font-bold transition shadow-lg w-full max-w-[300px] ${hasSeenTutorial ? 'bg-red-600 hover:bg-red-500 shadow-red-500/50' : 'bg-slate-600 text-slate-400 cursor-not-allowed shadow-none'}`}>
+            class={`px-6 py-3 sm:px-8 sm:py-4 rounded-full text-lg sm:text-xl font-bold transition shadow-lg w-full max-w-[300px] ${hasSeenTutorial ? 'bg-red-600 hover:bg-red-500 shadow-red-500/50' : 'bg-slate-600 text-slate-400 cursor-not-allowed shadow-none'}`}>
             {hasSaveData ? '初めから (セーブは消えます)' : '冒険を始める'}
           </button>
           {!hasSeenTutorial && (
-            <span className="text-yellow-400 text-xs sm:text-sm animate-pulse font-bold bg-slate-800 px-4 py-2 rounded border border-yellow-600 text-center">
+            <span class="text-yellow-400 text-xs sm:text-sm animate-pulse font-bold bg-slate-800 px-4 py-2 rounded border border-yellow-600 text-center">
               ※ 初回は右上の「プレイの仕方完全指南」をお読みください
             </span>
           )}
         </div>
 
         {showTutorial && (
-          <div className="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center p-4 sm:p-8 overflow-y-auto backdrop-blur-sm">
-            <div className="w-full max-w-4xl bg-slate-800 rounded-xl border-2 border-slate-600 p-4 sm:p-8 text-slate-200 mt-4 sm:mt-8 mb-8 shadow-2xl">
-              <div className="flex justify-between items-center mb-6 border-b border-slate-600 pb-4 sticky top-0 bg-slate-800 z-10 pt-2">
-                <h2 className="text-xl sm:text-3xl font-bold text-white flex items-center gap-2"><span>📚</span> プレイの仕方完全指南</h2>
-                <button onClick={() => setShowTutorial(false)} className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded font-bold border border-slate-500 text-sm sm:text-base shrink-0">閉じる</button>
+          <div class="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center p-4 sm:p-8 overflow-y-auto backdrop-blur-sm">
+            <div class="w-full max-w-4xl bg-slate-800 rounded-xl border-2 border-slate-600 p-4 sm:p-8 text-slate-200 mt-4 sm:mt-8 mb-8 shadow-2xl">
+              <div class="flex justify-between items-center mb-6 border-b border-slate-600 pb-4 sticky top-0 bg-slate-800 z-10 pt-2">
+                <h2 class="text-xl sm:text-3xl font-bold text-white flex items-center gap-2"><span>📚</span> プレイの仕方完全指南</h2>
+                <button onClick={() => setShowTutorial(false)} class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded font-bold border border-slate-500 text-sm sm:text-base shrink-0">閉じる</button>
               </div>
               
-              <div className="space-y-8">
+              <div class="space-y-8">
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-yellow-400 mb-3 border-l-4 border-yellow-400 pl-3">🔰 基本ルール</h3>
-                  <p className="text-sm sm:text-base leading-relaxed">
+                  <h3 class="text-lg sm:text-2xl font-bold text-yellow-400 mb-3 border-l-4 border-yellow-400 pl-3">🔰 基本ルール</h3>
+                  <p class="text-sm sm:text-base leading-relaxed">
                     このゲームはデッキ構築型ローグライクカードゲームです。第2層（全30階層）の最奥に待ち受けるボスを倒すことが目標です。<br/>
                     戦闘では、毎ターン全回復する「エナジー（⚡）」を消費して手札からカードを使用します。エナジーが足りなくなるか、出せるカードが無くなったら「ターン終了」ボタンを押してください。<br/>
                     ターン終了時、残った手札と使用したカードはすべて「捨て札」に行き、次のターンに山札から新しく5枚引きます。山札がゼロになると、捨て札をシャッフルして新しい山札にします。
@@ -2326,120 +2305,120 @@ export default function App() {
                 </section>
 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-blue-400 mb-3 border-l-4 border-blue-400 pl-3">🐋 ネオーのボーナス</h3>
-                  <p className="text-sm sm:text-base leading-relaxed">
+                  <h3 class="text-lg sm:text-2xl font-bold text-blue-400 mb-3 border-l-4 border-blue-400 pl-3">🐋 ネオーのボーナス</h3>
+                  <p class="text-sm sm:text-base leading-relaxed">
                     ゲーム開始直後、謎の存在「ネオー」からボーナスを受け取ることができます。<br/>
                     純粋に有利になる効果（✨）もあれば、ダメージなどの代償を伴う強力な効果（⚖️）もあります。現在の自分の戦略に合わせて選びましょう。
                   </p>
                 </section>
 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-green-400 mb-3 border-l-4 border-green-400 pl-3">🗺️ マップのマスについて</h3>
-                  <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
-                    <li><span className="font-bold text-slate-100">⚔️ 敵 (NORMAL)</span> : 通常のモンスターと戦闘します。</li>
-                    <li><span className="font-bold text-purple-400">👿 エリート (ELITE)</span> : 強力なモンスターと戦闘します。勝利すると「レリック」を獲得できます。</li>
-                    <li><span className="font-bold text-amber-600">📦 宝箱 (TREASURE)</span> : ランダムなレリックを獲得できます。</li>
-                    <li><span className="font-bold text-red-400">🔥 休憩所 (REST)</span> : HPを回復するか、カードを1枚強化できます。</li>
-                    <li><span className="font-bold text-yellow-400">🏪 ショップ (SHOP)</span> : ゴールドを消費してカードや回復薬を購入できます。</li>
-                    <li><span className="font-bold text-sky-400">❓ イベント (EVENT)</span> : 様々なランダムイベントが発生します。所持金やHPなど、条件を満たさないと選べない選択肢もあります。</li>
-                    <li><span className="font-bold text-red-600">👹 ボス (BOSS)</span> : 15階層、30階層の最後で待ち受ける強力な敵です。</li>
+                  <h3 class="text-lg sm:text-2xl font-bold text-green-400 mb-3 border-l-4 border-green-400 pl-3">🗺️ マップのマスについて</h3>
+                  <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                    <li><span class="font-bold text-slate-100">⚔️ 敵 (NORMAL)</span> : 通常のモンスターと戦闘します。</li>
+                    <li><span class="font-bold text-purple-400">👿 エリート (ELITE)</span> : 強力なモンスターと戦闘します。勝利すると「レリック」を獲得できます。</li>
+                    <li><span class="font-bold text-amber-600">📦 宝箱 (TREASURE)</span> : ランダムなレリックを獲得できます。</li>
+                    <li><span class="font-bold text-red-400">🔥 休憩所 (REST)</span> : HPを回復するか、カードを1枚強化できます。</li>
+                    <li><span class="font-bold text-yellow-400">🏪 ショップ (SHOP)</span> : ゴールドを消費してカードや回復薬を購入できます。</li>
+                    <li><span class="font-bold text-sky-400">❓ イベント (EVENT)</span> : 様々なランダムイベントが発生します。所持金やHPなど、条件を満たさないと選べない選択肢もあります。</li>
+                    <li><span class="font-bold text-red-600">👹 ボス (BOSS)</span> : 15階層、30階層の最後で待ち受ける強力な敵です。</li>
                   </ul>
                 </section>
 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-yellow-400 mb-3 border-l-4 border-yellow-400 pl-3">💰 ゴールドとショップ</h3>
-                  <p className="text-sm sm:text-base leading-relaxed">
+                  <h3 class="text-lg sm:text-2xl font-bold text-yellow-400 mb-3 border-l-4 border-yellow-400 pl-3">💰 ゴールドとショップ</h3>
+                  <p class="text-sm sm:text-base leading-relaxed">
                     敵を倒したり、特定のイベントをこなすことで「ゴールド」を獲得できます。<br/>
                     マップ上の「🏪 ショップ」では、集めたゴールドを使って新しいカードをデッキに追加したり、HPを回復する「回復薬」を購入することができます。
                   </p>
                 </section>
 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-orange-400 mb-3 border-l-4 border-orange-400 pl-3">⚒️ カードの強化（アップグレード）</h3>
-                  <p className="text-sm sm:text-base leading-relaxed">
+                  <h3 class="text-lg sm:text-2xl font-bold text-orange-400 mb-3 border-l-4 border-orange-400 pl-3">⚒️ カードの強化（アップグレード）</h3>
+                  <p class="text-sm sm:text-base leading-relaxed">
                     「🔥 休憩所」や一部のイベントでは、手持ちのカードを1枚選んで「強化（アップグレード）」することができます。<br/>
                     強化されたカードは名前の横に「+」が付き、ダメージやブロック値が増えたり、消費エナジーが減ったりと強力になります。ただし、一度強化したカードは基本的に再強化できません。
                   </p>
                 </section>
 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-blue-400 mb-3 border-l-4 border-blue-400 pl-3">👾 敵の行動（インテント）</h3>
-                  <p className="text-sm sm:text-base leading-relaxed mb-2">敵の頭上には、次のターンに行ってくる行動（インテント）がアイコンで表示されます。<b>アイコンを長押し（ホバー）すると、具体的な行動内容が確認できます。</b>これを見て戦略を立てましょう。</p>
-                  <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
-                    <li><span className="font-bold text-yellow-300">⚔️ (数値)</span> : 攻撃。表示されている数値分のダメージを受けます。</li>
-                    <li><span className="font-bold text-blue-300">🛡️</span> : 防御。敵がブロックを得てダメージを軽減しようとします。</li>
+                  <h3 class="text-lg sm:text-2xl font-bold text-blue-400 mb-3 border-l-4 border-blue-400 pl-3">👾 敵の行動（インテント）</h3>
+                  <p class="text-sm sm:text-base leading-relaxed mb-2">敵の頭上には、次のターンに行ってくる行動（インテント）がアイコンで表示されます。<b>アイコンを長押し（ホバー）すると、具体的な行動内容が確認できます。</b>これを見て戦略を立てましょう。</p>
+                  <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                    <li><span class="font-bold text-yellow-300">⚔️ (数値)</span> : 攻撃。表示されている数値分のダメージを受けます。</li>
+                    <li><span class="font-bold text-blue-300">🛡️</span> : 防御。敵がブロックを得てダメージを軽減しようとします。</li>
                     <li>
-                      <span className="font-bold text-purple-300">🌀</span> : 補助。敵自身の強化（バフ）や、プレイヤーへの妨害（デバフ・状態異常）を行います。<br/>
-                      <span className="text-xs sm:text-sm text-yellow-200">※アイコンをホバー（長押し）することで、それが強化か妨害か、具体的な内容（脱力付与など）まで分かります。</span>
+                      <span class="font-bold text-purple-300">🌀</span> : 補助。敵自身の強化（バフ）や、プレイヤーへの妨害（デバフ・状態異常）を行います。<br/>
+                      <span class="text-xs sm:text-sm text-yellow-200">※アイコンをホバー（長押し）することで、それが強化か妨害か、具体的な内容（脱力付与など）まで分かります。</span>
                     </li>
-                    <li><span className="font-bold text-gray-400">💤</span> : 睡眠。そのターンは何もしてきません。</li>
-                    <li><span className="font-bold text-slate-300">💨</span> : 逃走。戦闘から離脱します。</li>
+                    <li><span class="font-bold text-gray-400">💤</span> : 睡眠。そのターンは何もしてきません。</li>
+                    <li><span class="font-bold text-slate-300">💨</span> : 逃走。戦闘から離脱します。</li>
                   </ul>
                 </section>
 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-green-400 mb-3 border-l-4 border-green-400 pl-3">✨ ステータス効果</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base">
-                    <div className="bg-slate-900 p-3 rounded border border-slate-700">
-                      <div className="font-bold text-blue-300 mb-1">🛡️ ブロック</div>
+                  <h3 class="text-lg sm:text-2xl font-bold text-green-400 mb-3 border-l-4 border-green-400 pl-3">✨ ステータス効果</h3>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base">
+                    <div class="bg-slate-900 p-3 rounded border border-slate-700">
+                      <div class="font-bold text-blue-300 mb-1">🛡️ ブロック</div>
                       攻撃を受けた際、HPの代わりにダメージを肩代わりします。原則としてターン終了時にゼロに戻ります。
                     </div>
-                    <div className="bg-slate-900 p-3 rounded border border-slate-700">
-                      <div className="font-bold text-red-400 mb-1">💪 筋力</div>
+                    <div class="bg-slate-900 p-3 rounded border border-slate-700">
+                      <div class="font-bold text-red-400 mb-1">💪 筋力</div>
                       アタックカードで与えるダメージが、筋力の数値分だけ加算されます。
                     </div>
-                    <div className="bg-slate-900 p-3 rounded border border-slate-700">
-                      <div className="font-bold text-gray-400 mb-1">📉 脱力</div>
+                    <div class="bg-slate-900 p-3 rounded border border-slate-700">
+                      <div class="font-bold text-gray-400 mb-1">📉 脱力</div>
                       アタックカードで与えるダメージが 25% 減少します。
                     </div>
-                    <div className="bg-slate-900 p-3 rounded border border-slate-700">
-                      <div className="font-bold text-purple-400 mb-1">💔 弱点</div>
+                    <div class="bg-slate-900 p-3 rounded border border-slate-700">
+                      <div class="font-bold text-purple-400 mb-1">💔 弱点</div>
                       アタックによって受けるダメージが 1.5倍 に増加します。
                     </div>
-                    <div className="bg-slate-900 p-3 rounded border border-slate-700 sm:col-span-2">
-                      <div className="font-bold text-green-400 mb-1">🧪 毒</div>
+                    <div class="bg-slate-900 p-3 rounded border border-slate-700 sm:col-span-2">
+                      <div class="font-bold text-green-400 mb-1">🧪 毒</div>
                       ターン開始時に数値分のダメージを受けます。ダメージを与えた後、毒の数値は1減ります。
                     </div>
                   </div>
                 </section>
                 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-sky-400 mb-3 border-l-4 border-sky-400 pl-3">🎭 敵の特殊能力</h3>
-                  <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
-                    <li><span className="font-bold text-green-300">🌱 鍛錬</span> : ダメージを受けるたび、ブロックを得ます。</li>
-                    <li><span className="font-bold text-blue-200">🛡️ 保持 (防壁)</span> : ターン終了時にブロックが消滅しません。</li>
-                    <li><span className="font-bold text-red-400">💥 爆発</span> : カウントダウンが0になると自爆し、大ダメージを受けます。</li>
-                    <li><span className="font-bold text-purple-400">〽︎ 崩壊</span> : カウントダウンが0になると自爆し、死滅します。</li>
-                    <li><span className="font-bold text-red-500">🩸 血吸い</span> : プレイヤーに与えたダメージ分、HPを回復します。</li>
-                    <li><span className="font-bold text-slate-300">🪨 頑丈</span> : 1ターンに受けるダメージに上限があります。</li>
-                    <li><span className="font-bold text-gray-400">🌪️ 沈黙のオーラ</span> : 3の倍数のターン、プレイヤーのアタックカードが使用不可になります。</li>
+                  <h3 class="text-lg sm:text-2xl font-bold text-sky-400 mb-3 border-l-4 border-sky-400 pl-3">🎭 敵の特殊能力</h3>
+                  <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                    <li><span class="font-bold text-green-300">🌱 鍛錬</span> : ダメージを受けるたび、ブロックを得ます。</li>
+                    <li><span class="font-bold text-blue-200">🛡️ 保持 (防壁)</span> : ターン終了時にブロックが消滅しません。</li>
+                    <li><span class="font-bold text-red-400">💥 爆発</span> : カウントダウンが0になると自爆し、大ダメージを受けます。</li>
+                    <li><span class="font-bold text-purple-400">〽︎ 崩壊</span> : カウントダウンが0になると自爆し、死滅します。</li>
+                    <li><span class="font-bold text-red-500">🩸 血吸い</span> : プレイヤーに与えたダメージ分、HPを回復します。</li>
+                    <li><span class="font-bold text-slate-300">🪨 頑丈</span> : 1ターンに受けるダメージに上限があります。</li>
+                    <li><span class="font-bold text-gray-400">🌪️ 沈黙のオーラ</span> : 3の倍数のターン、プレイヤーのアタックカードが使用不可になります。</li>
                   </ul>
                 </section>
 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-red-400 mb-3 border-l-4 border-red-400 pl-3">🎴 カードの種類とレアリティ</h3>
-                  <p className="text-sm sm:text-base leading-relaxed mb-2">名前の色でレアリティが分かれています。<br/><span className="text-slate-100 font-bold">白色 (コモン)</span> / <span className="text-sky-300 font-bold">水色 (アンコモン)</span> / <span className="text-yellow-400 font-bold">金色 (レア)</span></p>
-                  <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
-                    <li><span className="font-bold text-red-300">アタック (赤色)</span> : 敵にダメージを与える攻撃カード。対象を選ぶ必要があります。</li>
-                    <li><span className="font-bold text-blue-300">スキル (青色)</span> : ブロックを得たり、カードを引いたりする補助カード。</li>
-                    <li><span className="font-bold text-purple-300">パワー (紫色)</span> : 戦闘中ずっと続く特殊な効果を得るカード。一度使うと戦闘が終わるまで使えません。</li>
-                    <li><span className="font-bold text-gray-400">呪い (黒色)</span> : イベント等で混入するお邪魔カード。プレイできず、手札にあると悪影響を及ぼします。</li>
+                  <h3 class="text-lg sm:text-2xl font-bold text-red-400 mb-3 border-l-4 border-red-400 pl-3">🎴 カードの種類とレアリティ</h3>
+                  <p class="text-sm sm:text-base leading-relaxed mb-2">名前の色でレアリティが分かれています。<br/><span class="text-slate-100 font-bold">白色 (コモン)</span> / <span class="text-sky-300 font-bold">水色 (アンコモン)</span> / <span class="text-yellow-400 font-bold">金色 (レア)</span></p>
+                  <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                    <li><span class="font-bold text-red-300">アタック (赤色)</span> : 敵にダメージを与える攻撃カード。対象を選ぶ必要があります。</li>
+                    <li><span class="font-bold text-blue-300">スキル (青色)</span> : ブロックを得たり、カードを引いたりする補助カード。</li>
+                    <li><span class="font-bold text-purple-300">パワー (紫色)</span> : 戦闘中ずっと続く特殊な効果を得るカード。一度使うと戦闘が終わるまで使えません。</li>
+                    <li><span class="font-bold text-gray-400">呪い (黒色)</span> : イベント等で混入するお邪魔カード。プレイできず、手札にあると悪影響を及ぼします。</li>
                   </ul>
-                  <p className="mt-2 text-sm sm:text-base text-slate-300">※カードに <span className="font-bold text-purple-300">廃棄</span> と書かれている場合、使用するとその戦闘中は山札に戻りません。</p>
-                  <p className="mt-1 text-sm sm:text-base text-slate-300">※カードに <span className="font-bold text-blue-300">エセリアル</span> と書かれている場合、使用せずにターンを終了すると、そのカードは自動的に廃棄されます。</p>
+                  <p class="mt-2 text-sm sm:text-base text-slate-300">※カードに <span class="font-bold text-purple-300">廃棄</span> と書かれている場合、使用するとその戦闘中は山札に戻りません。</p>
+                  <p class="mt-1 text-sm sm:text-base text-slate-300">※カードに <span class="font-bold text-blue-300">エセリアル</span> と書かれている場合、使用せずにターンを終了すると、そのカードは自動的に廃棄されます。</p>
                 </section>
 
                 <section>
-                  <h3 className="text-lg sm:text-2xl font-bold text-purple-400 mb-3 border-l-4 border-purple-400 pl-3">🎁 レリックについて</h3>
-                  <p className="text-sm sm:text-base leading-relaxed">
+                  <h3 class="text-lg sm:text-2xl font-bold text-purple-400 mb-3 border-l-4 border-purple-400 pl-3">🎁 レリックについて</h3>
+                  <p class="text-sm sm:text-base leading-relaxed">
                     マップ上の強敵「👿 エリート」を倒すと、「レリック」と呼ばれる強力なアーティファクトを獲得できます。<br/>
                     持っているだけで常に効果を発揮し、戦闘を有利に進めることができます。獲得したレリックは画面左上に表示され、タップ（ホバー）で効果を確認できます。
                   </p>
                 </section>
               </div>
               
-              <div className="mt-10 flex justify-center pb-4">
-                 <button onClick={() => setShowTutorial(false)} className="px-8 py-4 bg-red-600 hover:bg-red-500 text-white rounded-full font-bold text-lg sm:text-xl shadow-lg shadow-red-500/50 transition-colors">
+              <div class="mt-10 flex justify-center pb-4">
+                 <button onClick={() => setShowTutorial(false)} class="px-8 py-4 bg-red-600 hover:bg-red-500 text-white rounded-full font-bold text-lg sm:text-xl shadow-lg shadow-red-500/50 transition-colors">
                     閉じて冒険の準備をする
                  </button>
               </div>
@@ -2449,23 +2428,23 @@ export default function App() {
 
         {/* データ引き継ぎモーダル */}
         {showTransferMenu && (
-          <div className="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 sm:p-8 backdrop-blur-sm">
-            <div className="bg-slate-800 border-2 border-slate-600 rounded-xl p-6 sm:p-8 flex flex-col gap-6 shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-              <div className="flex justify-between items-center border-b border-slate-600 pb-2">
-                <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2"><span>💾</span> データ引継ぎ</h2>
-                <button onClick={() => setShowTransferMenu(false)} className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded font-bold border border-slate-500 text-sm">閉じる</button>
+          <div class="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 sm:p-8 backdrop-blur-sm">
+            <div class="bg-slate-800 border-2 border-slate-600 rounded-xl p-6 sm:p-8 flex flex-col gap-6 shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+              <div class="flex justify-between items-center border-b border-slate-600 pb-2">
+                <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2"><span>💾</span> データ引継ぎ</h2>
+                <button onClick={() => setShowTransferMenu(false)} class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded font-bold border border-slate-500 text-sm">閉じる</button>
               </div>
 
               {transferMessage && (
-                <div className="bg-slate-900 text-yellow-400 p-3 rounded text-center text-sm font-bold border border-yellow-600">
+                <div class="bg-slate-900 text-yellow-400 p-3 rounded text-center text-sm font-bold border border-yellow-600">
                   {transferMessage}
                 </div>
               )}
 
-              <div className="flex flex-col gap-2 bg-slate-900 p-4 rounded-lg border border-slate-700">
-                <h3 className="text-lg font-bold text-sky-300">📦 データをコードとして書き出し (エクスポート)</h3>
-                <p className="text-xs sm:text-sm text-slate-400 mb-2">現在の図鑑の解放状況と、ゲームのセーブデータを合体して文字コード化します。</p>
-                <button onClick={handleExport} className="py-2 bg-sky-700 hover:bg-sky-600 text-white font-bold rounded-lg transition-colors border border-sky-500 shadow-lg">
+              <div class="flex flex-col gap-2 bg-slate-900 p-4 rounded-lg border border-slate-700">
+                <h3 class="text-lg font-bold text-sky-300">📦 データをコードとして書き出し (エクスポート)</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mb-2">現在の図鑑の解放状況と、ゲームのセーブデータを合体して文字コード化します。</p>
+                <button onClick={handleExport} class="py-2 bg-sky-700 hover:bg-sky-600 text-white font-bold rounded-lg transition-colors border border-sky-500 shadow-lg">
                   コードを生成する
                 </button>
                 {transferOutput && (
@@ -2473,30 +2452,30 @@ export default function App() {
                     readOnly 
                     value={transferOutput} 
                     onClick={(e) => e.target.select()}
-                    className="w-full h-24 bg-slate-950 text-slate-300 text-xs p-3 rounded border border-slate-600 focus:outline-none focus:border-sky-500 mt-2 resize-none cursor-text font-mono"
+                    class="w-full h-24 bg-slate-950 text-slate-300 text-xs p-3 rounded border border-slate-600 focus:outline-none focus:border-sky-500 mt-2 resize-none cursor-text font-mono"
                     placeholder="ここにコードが表示されます..."
                   />
                 )}
               </div>
 
-              <div className="flex flex-col gap-2 bg-slate-900 p-4 rounded-lg border border-slate-700">
-                <h3 className="text-lg font-bold text-green-400">📥 コードからデータを復元 (インポート)</h3>
-                <p className="text-xs sm:text-sm text-slate-400 mb-2">保存したコードを貼り付けて復元します。<span className="text-red-400 font-bold">※現在のデータは上書きされます！</span></p>
+              <div class="flex flex-col gap-2 bg-slate-900 p-4 rounded-lg border border-slate-700">
+                <h3 class="text-lg font-bold text-green-400">📥 コードからデータを復元 (インポート)</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mb-2">保存したコードを貼り付けて復元します。<span class="text-red-400 font-bold">※現在のデータは上書きされます！</span></p>
                 <textarea 
                   value={transferInput}
                   onChange={(e) => setTransferInput(e.target.value)}
-                  className="w-full h-24 bg-slate-950 text-white text-xs p-3 rounded border border-slate-600 focus:outline-none focus:border-green-500 resize-none font-mono"
+                  class="w-full h-24 bg-slate-950 text-white text-xs p-3 rounded border border-slate-600 focus:outline-none focus:border-green-500 resize-none font-mono"
                   placeholder="ここにコードを貼り付けてください..."
                 />
-                <button onClick={handleImport} className="py-2 bg-green-700 hover:bg-green-600 text-white font-bold rounded-lg transition-colors border border-green-500 shadow-lg mt-2">
+                <button onClick={handleImport} class="py-2 bg-green-700 hover:bg-green-600 text-white font-bold rounded-lg transition-colors border border-green-500 shadow-lg mt-2">
                   コードを読み込んで復元
                 </button>
               </div>
 
-              <div className="flex flex-col gap-2 bg-red-900/20 p-4 rounded-lg border border-red-800/50 mt-2">
-                <h3 className="text-lg font-bold text-red-500 flex items-center gap-2"><span>⚠️</span> 全データ初期化</h3>
-                <p className="text-xs sm:text-sm text-slate-400 mb-2">セーブデータ、図鑑の解放状況、実績をすべて完全に消去します。</p>
-                <button onClick={() => setDeleteStep(1)} className="py-2 bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg transition-colors border border-red-600 shadow-lg">
+              <div class="flex flex-col gap-2 bg-red-900/20 p-4 rounded-lg border border-red-800/50 mt-2">
+                <h3 class="text-lg font-bold text-red-500 flex items-center gap-2"><span>⚠️</span> 全データ初期化</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mb-2">セーブデータ、図鑑の解放状況、実績をすべて完全に消去します。</p>
+                <button onClick={() => setDeleteStep(1)} class="py-2 bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg transition-colors border border-red-600 shadow-lg">
                   データを完全に削除する
                 </button>
               </div>
@@ -2506,18 +2485,18 @@ export default function App() {
 
         {/* データ削除警告モーダル */}
         {deleteStep > 0 && (
-          <div className="absolute inset-0 bg-slate-900/95 z-[60] flex flex-col items-center justify-center p-4 backdrop-blur-md">
-            <div className="bg-slate-800 border-2 border-red-600 rounded-xl p-6 sm:p-8 flex flex-col gap-6 shadow-[0_0_30px_rgba(220,38,38,0.3)] w-full max-w-md text-center">
-              <div className="text-5xl mb-2 animate-bounce">⚠️</div>
-              <h2 className="text-xl sm:text-2xl font-bold text-red-500">データ削除の確認 ({deleteStep}/5)</h2>
-              <p className="text-sm sm:text-base text-slate-300 font-bold leading-relaxed">
+          <div class="absolute inset-0 bg-slate-900/95 z-[60] flex flex-col items-center justify-center p-4 backdrop-blur-md">
+            <div class="bg-slate-800 border-2 border-red-600 rounded-xl p-6 sm:p-8 flex flex-col gap-6 shadow-[0_0_30px_rgba(220,38,38,0.3)] w-full max-w-md text-center">
+              <div class="text-5xl mb-2 animate-bounce">⚠️</div>
+              <h2 class="text-xl sm:text-2xl font-bold text-red-500">データ削除の確認 ({deleteStep}/5)</h2>
+              <p class="text-sm sm:text-base text-slate-300 font-bold leading-relaxed">
                 {deleteWarnings[deleteStep]}
               </p>
-              <div className="flex flex-col gap-3 mt-4">
-                <button onClick={handleDeleteData} className="w-full py-3 bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg transition-colors border border-red-500 shadow-lg">
+              <div class="flex flex-col gap-3 mt-4">
+                <button onClick={handleDeleteData} class="w-full py-3 bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg transition-colors border border-red-500 shadow-lg">
                   はい、削除します
                 </button>
-                <button onClick={cancelDelete} className="w-full py-3 bg-slate-600 hover:bg-slate-500 text-white font-bold rounded-lg transition-colors border border-slate-400 shadow-lg">
+                <button onClick={cancelDelete} class="w-full py-3 bg-slate-600 hover:bg-slate-500 text-white font-bold rounded-lg transition-colors border border-slate-400 shadow-lg">
                   いいえ、やめます
                 </button>
               </div>
@@ -2532,32 +2511,32 @@ export default function App() {
   if (state.screen === 'ACHIEVEMENTS') {
     const unlockedAchievements = state.unlocks?.achievements || [];
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
-        <div className="flex flex-wrap justify-between w-full max-w-4xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
-          <h1 className="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>🏆</span> 実績</h1>
-          <button onClick={() => setState(p => ({ ...p, screen: 'TITLE' }))} className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
+        <div class="flex flex-wrap justify-between w-full max-w-4xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
+          <h1 class="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>🏆</span> 実績</h1>
+          <button onClick={() => setState(p => ({ ...p, screen: 'TITLE' }))} class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
             戻る
           </button>
         </div>
 
-        <div className="w-full max-w-4xl flex flex-col gap-4 pb-8">
+        <div class="w-full max-w-4xl flex flex-col gap-4 pb-8">
           {Object.values(ACHIEVEMENTS_DB).map(ach => {
             const isUnlocked = unlockedAchievements.includes(ach.id);
             
             return (
-              <div key={ach.id} className={`flex items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl border-2 transition-all ${isUnlocked ? 'bg-slate-800 border-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.2)]' : 'bg-slate-900/50 border-slate-700 opacity-70 grayscale'}`}>
-                <div className={`text-4xl sm:text-5xl shrink-0 flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 ${isUnlocked ? 'bg-slate-900 border-yellow-500' : 'bg-slate-800 border-slate-600 text-slate-600'}`}>
+              <div key={ach.id} class={`flex items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl border-2 transition-all ${isUnlocked ? 'bg-slate-800 border-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.2)]' : 'bg-slate-900/50 border-slate-700 opacity-70 grayscale'}`}>
+                <div class={`text-4xl sm:text-5xl shrink-0 flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 ${isUnlocked ? 'bg-slate-900 border-yellow-500' : 'bg-slate-800 border-slate-600 text-slate-600'}`}>
                   {isUnlocked ? ach.icon : '🔒'}
                 </div>
-                <div className="flex flex-col flex-1">
-                  <h3 className={`text-xl sm:text-2xl font-bold mb-1 ${isUnlocked ? 'text-yellow-400' : 'text-slate-400'}`}>
+                <div class="flex flex-col flex-1">
+                  <h3 class={`text-xl sm:text-2xl font-bold mb-1 ${isUnlocked ? 'text-yellow-400' : 'text-slate-400'}`}>
                     {isUnlocked || !ach.secret ? ach.name : '？？？'}
                   </h3>
-                  <p className={`text-sm sm:text-base ${isUnlocked ? 'text-slate-300' : 'text-slate-500'}`}>
+                  <p class={`text-sm sm:text-base ${isUnlocked ? 'text-slate-300' : 'text-slate-500'}`}>
                     {isUnlocked || !ach.secret ? ach.desc : '条件は秘密にされている...'}
                   </p>
                 </div>
-                {isUnlocked && <div className="text-yellow-400 font-bold text-sm sm:text-base whitespace-nowrap bg-yellow-900/50 px-3 py-1 rounded-full border border-yellow-600">達成済</div>}
+                {isUnlocked && <div class="text-yellow-400 font-bold text-sm sm:text-base whitespace-nowrap bg-yellow-900/50 px-3 py-1 rounded-full border border-yellow-600">達成済</div>}
               </div>
             );
           })}
@@ -2580,32 +2559,32 @@ export default function App() {
     const eventRate = getCollectionRate('events', EVENTS);
 
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center justify-center p-4 sm:p-8">
-        <h1 className="text-3xl sm:text-5xl font-bold mb-8 text-center">図鑑メニュー</h1>
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center justify-center p-4 sm:p-8">
+        <h1 class="text-3xl sm:text-5xl font-bold mb-8 text-center">図鑑メニュー</h1>
         
         {/* 図鑑達成率パネル */}
-        <div className="bg-slate-800 border-2 border-slate-600 rounded-xl p-4 sm:p-6 shadow-lg text-sm sm:text-base text-slate-300 flex flex-col gap-2 sm:gap-3 mb-8 w-full max-w-md">
-          <div className="font-bold text-white border-b border-slate-600 pb-2 mb-2 text-center text-lg">全体の図鑑収集率</div>
-          <div className="flex justify-between gap-4 items-center"><span>🎴 カード:</span> <span className="font-mono text-white bg-slate-900 px-2 py-1 rounded">{cardRate.unlocked}/{cardRate.total} ({cardRate.rate}%)</span></div>
-          <div className="flex justify-between gap-4 items-center"><span>👾 敵:</span> <span className="font-mono text-white bg-slate-900 px-2 py-1 rounded">{enemyRate.unlocked}/{enemyRate.total} ({enemyRate.rate}%)</span></div>
-          <div className="flex justify-between gap-4 items-center"><span>🎁 レリック:</span> <span className="font-mono text-white bg-slate-900 px-2 py-1 rounded">{relicRate.unlocked}/{relicRate.total} ({relicRate.rate}%)</span></div>
-          <div className="flex justify-between gap-4 items-center"><span>📜 イベント:</span> <span className="font-mono text-white bg-slate-900 px-2 py-1 rounded">{eventRate.unlocked}/{eventRate.total} ({eventRate.rate}%)</span></div>
+        <div class="bg-slate-800 border-2 border-slate-600 rounded-xl p-4 sm:p-6 shadow-lg text-sm sm:text-base text-slate-300 flex flex-col gap-2 sm:gap-3 mb-8 w-full max-w-md">
+          <div class="font-bold text-white border-b border-slate-600 pb-2 mb-2 text-center text-lg">全体の図鑑収集率</div>
+          <div class="flex justify-between gap-4 items-center"><span>🎴 カード:</span> <span class="font-mono text-white bg-slate-900 px-2 py-1 rounded">{cardRate.unlocked}/{cardRate.total} ({cardRate.rate}%)</span></div>
+          <div class="flex justify-between gap-4 items-center"><span>👾 敵:</span> <span class="font-mono text-white bg-slate-900 px-2 py-1 rounded">{enemyRate.unlocked}/{enemyRate.total} ({enemyRate.rate}%)</span></div>
+          <div class="flex justify-between gap-4 items-center"><span>🎁 レリック:</span> <span class="font-mono text-white bg-slate-900 px-2 py-1 rounded">{relicRate.unlocked}/{relicRate.total} ({relicRate.rate}%)</span></div>
+          <div class="flex justify-between gap-4 items-center"><span>📜 イベント:</span> <span class="font-mono text-white bg-slate-900 px-2 py-1 rounded">{eventRate.unlocked}/{eventRate.total} ({eventRate.rate}%)</span></div>
         </div>
 
-        <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-md">
-          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM' }))} className="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold border-2 border-slate-600 flex items-center gap-4 transition-colors text-lg sm:text-xl">
-            <span className="text-3xl">🎴</span> カード図鑑
+        <div class="flex flex-col gap-3 sm:gap-4 w-full max-w-md">
+          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM' }))} class="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold border-2 border-slate-600 flex items-center gap-4 transition-colors text-lg sm:text-xl">
+            <span class="text-3xl">🎴</span> カード図鑑
           </button>
-          <button onClick={() => setState(p => ({ ...p, screen: 'ENEMY_DEX' }))} className="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold border-2 border-slate-600 flex items-center gap-4 transition-colors text-lg sm:text-xl">
-            <span className="text-3xl">👾</span> 敵図鑑
+          <button onClick={() => setState(p => ({ ...p, screen: 'ENEMY_DEX' }))} class="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold border-2 border-slate-600 flex items-center gap-4 transition-colors text-lg sm:text-xl">
+            <span class="text-3xl">👾</span> 敵図鑑
           </button>
-          <button onClick={() => setState(p => ({ ...p, screen: 'RELIC_DEX' }))} className="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold border-2 border-slate-600 flex items-center gap-4 transition-colors text-lg sm:text-xl">
-            <span className="text-3xl">🎁</span> レリック図鑑
+          <button onClick={() => setState(p => ({ ...p, screen: 'RELIC_DEX' }))} class="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold border-2 border-slate-600 flex items-center gap-4 transition-colors text-lg sm:text-xl">
+            <span class="text-3xl">🎁</span> レリック図鑑
           </button>
-          <button onClick={() => setState(p => ({ ...p, screen: 'EVENT_DEX' }))} className="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold border-2 border-slate-600 flex items-center gap-4 transition-colors text-lg sm:text-xl">
-            <span className="text-3xl">📜</span> イベント図鑑
+          <button onClick={() => setState(p => ({ ...p, screen: 'EVENT_DEX' }))} class="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold border-2 border-slate-600 flex items-center gap-4 transition-colors text-lg sm:text-xl">
+            <span class="text-3xl">📜</span> イベント図鑑
           </button>
-          <button onClick={() => setState(p => ({ ...p, screen: 'TITLE' }))} className="mt-4 p-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 transition-colors text-center text-sm sm:text-base">
+          <button onClick={() => setState(p => ({ ...p, screen: 'TITLE' }))} class="mt-4 p-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 transition-colors text-center text-sm sm:text-base">
             タイトルへ戻る
           </button>
         </div>
@@ -2643,42 +2622,42 @@ export default function App() {
     };
 
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
-        <div className="flex flex-wrap justify-between w-full max-w-6xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
-          <h1 className="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>📖</span> カード図鑑</h1>
-          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))} className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
+        <div class="flex flex-wrap justify-between w-full max-w-6xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
+          <h1 class="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>📖</span> カード図鑑</h1>
+          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))} class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
             戻る
           </button>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 w-full max-w-6xl">
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 w-full max-w-6xl">
           {Object.values(CHARACTERS).map(char => (
             <button key={char.id} onClick={() => setCompendiumTab(char.id)} 
-              className={`px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-bold flex items-center gap-2 border-2 transition-colors text-sm sm:text-base
+              class={`px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-bold flex items-center gap-2 border-2 transition-colors text-sm sm:text-base
               ${compendiumTab === char.id ? 'bg-slate-800 border-yellow-400 text-white' : 'bg-slate-900 border-slate-700 text-slate-400 hover:border-slate-500'}`}>
               <span>{char.icon}</span> {char.name}
             </button>
           ))}
           <button onClick={() => setCompendiumTab('CURSE')} 
-            className={`px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-bold flex items-center gap-2 border-2 transition-colors text-sm sm:text-base
+            class={`px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-bold flex items-center gap-2 border-2 transition-colors text-sm sm:text-base
             ${compendiumTab === 'CURSE' ? 'bg-slate-800 border-purple-500 text-white' : 'bg-slate-900 border-slate-700 text-slate-400 hover:border-slate-500'}`}>
             <span>👻</span> 呪い
           </button>
         </div>
 
         {compendiumTab !== 'CURSE' && (
-          <p className="text-slate-400 mb-6 text-xs sm:text-sm text-center">カードをタップするとアップグレード版に切り替わります</p>
+          <p class="text-slate-400 mb-6 text-xs sm:text-sm text-center">カードをタップするとアップグレード版に切り替わります</p>
         )}
 
         {compendiumTab === 'CURSE' ? (
-          <div className="flex flex-wrap gap-4 justify-center max-w-6xl pb-8">
+          <div class="flex flex-wrap gap-4 justify-center max-w-6xl pb-8">
             {displayCards.map(cardId => {
               const isUnlocked = state.unlocks && state.unlocks.cards && state.unlocks.cards.includes(cardId);
               if (!isUnlocked) {
                 return (
-                  <div key={cardId} className="relative shrink-0 w-28 h-40 sm:w-32 sm:h-44 lg:w-36 lg:h-48 rounded-lg border-2 border-slate-700 bg-slate-800 p-1 sm:p-2 flex flex-col items-center justify-center shadow-lg opacity-60">
-                     <div className="text-4xl opacity-30">❓</div>
-                     <div className="text-slate-400 font-bold mt-4 text-xs sm:text-sm">未発見</div>
+                  <div key={cardId} class="relative shrink-0 w-28 h-40 sm:w-32 sm:h-44 lg:w-36 lg:h-48 rounded-lg border-2 border-slate-700 bg-slate-800 p-1 sm:p-2 flex flex-col items-center justify-center shadow-lg opacity-60">
+                     <div class="text-4xl opacity-30">❓</div>
+                     <div class="text-slate-400 font-bold mt-4 text-xs sm:text-sm">未発見</div>
                   </div>
                 );
               }
@@ -2689,24 +2668,24 @@ export default function App() {
             })}
           </div>
         ) : (
-          <div className="w-full max-w-6xl pb-8 flex flex-col gap-8">
+          <div class="w-full max-w-6xl pb-8 flex flex-col gap-8">
             {['ATTACK', 'SKILL', 'POWER'].map(type => {
               const cards = groupedCards[type] || [];
               if (cards.length === 0) return null;
               return (
-                <div key={type} className="w-full">
-                  <h2 className="text-xl sm:text-2xl font-bold mb-4 border-b border-slate-700 pb-2 flex items-center gap-2">
+                <div key={type} class="w-full">
+                  <h2 class="text-xl sm:text-2xl font-bold mb-4 border-b border-slate-700 pb-2 flex items-center gap-2">
                     <span>{renderIcon(type)}</span>
                     {type === 'ATTACK' ? 'アタック' : type === 'SKILL' ? 'スキル' : 'パワー'}
                   </h2>
-                  <div className="flex flex-wrap gap-4 justify-start">
+                  <div class="flex flex-wrap gap-4 justify-start">
                     {cards.map(cardId => {
                       const isUnlocked = state.unlocks && state.unlocks.cards && state.unlocks.cards.includes(cardId);
                       if (!isUnlocked) {
                         return (
-                          <div key={cardId} className="relative shrink-0 w-28 h-40 sm:w-32 sm:h-44 lg:w-36 lg:h-48 rounded-lg border-2 border-slate-700 bg-slate-800 p-1 sm:p-2 flex flex-col items-center justify-center shadow-lg opacity-60">
-                             <div className="text-4xl opacity-30">❓</div>
-                             <div className="text-slate-400 font-bold mt-4 text-xs sm:text-sm">未発見</div>
+                          <div key={cardId} class="relative shrink-0 w-28 h-40 sm:w-32 sm:h-44 lg:w-36 lg:h-48 rounded-lg border-2 border-slate-700 bg-slate-800 p-1 sm:p-2 flex flex-col items-center justify-center shadow-lg opacity-60">
+                             <div class="text-4xl opacity-30">❓</div>
+                             <div class="text-slate-400 font-bold mt-4 text-xs sm:text-sm">未発見</div>
                           </div>
                         );
                       }
@@ -2727,41 +2706,41 @@ export default function App() {
 
   if (state.screen === 'ENEMY_DEX') {
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
-        <div className="flex flex-wrap justify-between w-full max-w-6xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
-          <h1 className="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>👾</span> 敵図鑑</h1>
-          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))} className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
+        <div class="flex flex-wrap justify-between w-full max-w-6xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
+          <h1 class="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>👾</span> 敵図鑑</h1>
+          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))} class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
             戻る
           </button>
         </div>
 
-        <div className="flex flex-wrap gap-6 justify-center max-w-6xl pb-8">
+        <div class="flex flex-wrap gap-6 justify-center max-w-6xl pb-8">
           {Object.entries(ENEMY_DB).map(([id, enemy]) => {
             const isUnlocked = state.unlocks && state.unlocks.enemies && state.unlocks.enemies.includes(id);
 
             if (!isUnlocked) {
               return (
-                <div key={id} className="w-64 bg-slate-800 border-2 border-slate-700 rounded-xl p-4 flex flex-col items-center shadow-lg relative shrink-0 opacity-50 grayscale">
-                  <div className="text-6xl mb-4 mt-4 drop-shadow-md">❓</div>
-                  <h3 className="text-xl font-bold text-slate-500 mb-2 text-center">未知の敵</h3>
-                  <div className="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex items-center justify-center border border-slate-700/50">
-                    <p className="text-sm text-slate-500 leading-relaxed font-medium">まだ遭遇していないモンスター</p>
+                <div key={id} class="w-64 bg-slate-800 border-2 border-slate-700 rounded-xl p-4 flex flex-col items-center shadow-lg relative shrink-0 opacity-50 grayscale">
+                  <div class="text-6xl mb-4 mt-4 drop-shadow-md">❓</div>
+                  <h3 class="text-xl font-bold text-slate-500 mb-2 text-center">未知の敵</h3>
+                  <div class="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex items-center justify-center border border-slate-700/50">
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium">まだ遭遇していないモンスター</p>
                   </div>
                 </div>
               );
             }
 
             return (
-              <div key={id} className="w-64 bg-slate-800 border-2 border-slate-600 rounded-xl p-4 flex flex-col items-center shadow-lg relative shrink-0">
-                {enemy.isBoss && <div className="absolute top-2 right-2 text-xs font-bold bg-red-600 px-2 py-1 rounded text-white shadow">BOSS</div>}
-                {enemy.isElite && <div className="absolute top-2 right-2 text-xs font-bold bg-purple-600 px-2 py-1 rounded text-white shadow">ELITE</div>}
+              <div key={id} class="w-64 bg-slate-800 border-2 border-slate-600 rounded-xl p-4 flex flex-col items-center shadow-lg relative shrink-0">
+                {enemy.isBoss && <div class="absolute top-2 right-2 text-xs font-bold bg-red-600 px-2 py-1 rounded text-white shadow">BOSS</div>}
+                {enemy.isElite && <div class="absolute top-2 right-2 text-xs font-bold bg-purple-600 px-2 py-1 rounded text-white shadow">ELITE</div>}
                 
-                <div className="text-6xl mb-4 mt-4 drop-shadow-md">{enemy.isBoss ? '👹' : enemy.isElite ? '👿' : (id === 'thief' ? '🥷' : '👾')}</div>
-                <h3 className="text-xl font-bold text-white mb-2 text-center">{enemy.name}</h3>
-                <div className="text-red-400 font-bold mb-4 bg-slate-900 px-3 py-1 rounded-full text-sm">❤️ HP: {enemy.hp}</div>
+                <div class="text-6xl mb-4 mt-4 drop-shadow-md">{enemy.isBoss ? '👹' : enemy.isElite ? '👿' : (id === 'thief' ? '🥷' : '👾')}</div>
+                <h3 class="text-xl font-bold text-white mb-2 text-center">{enemy.name}</h3>
+                <div class="text-red-400 font-bold mb-4 bg-slate-900 px-3 py-1 rounded-full text-sm">❤️ HP: {enemy.hp}</div>
                 
-                <div className="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex items-center justify-center border border-slate-700/50">
-                  <p className="text-sm text-slate-300 leading-relaxed font-medium">{enemy.desc}</p>
+                <div class="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex items-center justify-center border border-slate-700/50">
+                  <p class="text-sm text-slate-300 leading-relaxed font-medium">{enemy.desc}</p>
                 </div>
               </div>
             );
@@ -2793,49 +2772,49 @@ export default function App() {
     };
 
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
-        <div className="flex flex-wrap justify-between w-full max-w-6xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
-          <h1 className="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>🎁</span> レリック図鑑</h1>
-          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))} className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
+        <div class="flex flex-wrap justify-between w-full max-w-6xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
+          <h1 class="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>🎁</span> レリック図鑑</h1>
+          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))} class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
             戻る
           </button>
         </div>
 
-        <div className="w-full max-w-6xl pb-8 flex flex-col gap-8">
+        <div class="w-full max-w-6xl pb-8 flex flex-col gap-8">
           {['COMMON', 'UNCOMMON', 'RARE', 'EVENT'].map(rarity => {
             const relics = relicGroups[rarity];
             if (relics.length === 0) return null;
             const info = rarityTitles[rarity];
 
             return (
-              <div key={rarity} className="w-full">
-                <h2 className={`text-xl sm:text-2xl font-bold mb-4 border-b ${info.border} pb-2 flex items-center gap-2 ${info.color}`}>
+              <div key={rarity} class="w-full">
+                <h2 class={`text-xl sm:text-2xl font-bold mb-4 border-b ${info.border} pb-2 flex items-center gap-2 ${info.color}`}>
                   {info.title}
                 </h2>
-                <div className="flex flex-wrap gap-6 justify-start">
+                <div class="flex flex-wrap gap-6 justify-start">
                   {relics.map(relic => {
                     const isUnlocked = state.unlocks && state.unlocks.relics && state.unlocks.relics.includes(relic.id);
 
                     if (!isUnlocked) {
                       return (
-                        <div key={relic.id} className="w-64 bg-slate-800 border-2 border-slate-700 rounded-xl p-4 flex flex-col items-center shadow-lg relative shrink-0 opacity-50 grayscale">
-                          <div className="text-6xl mb-4 mt-4 drop-shadow-md">❓</div>
-                          <h3 className="text-xl font-bold text-slate-500 mb-2 text-center">未知のレリック</h3>
-                          <div className="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex items-center justify-center border border-slate-700/50">
-                            <p className="text-sm text-slate-500 leading-relaxed font-medium">まだ獲得していないレリック</p>
+                        <div key={relic.id} class="w-64 bg-slate-800 border-2 border-slate-700 rounded-xl p-4 flex flex-col items-center shadow-lg relative shrink-0 opacity-50 grayscale">
+                          <div class="text-6xl mb-4 mt-4 drop-shadow-md">❓</div>
+                          <h3 class="text-xl font-bold text-slate-500 mb-2 text-center">未知のレリック</h3>
+                          <div class="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex items-center justify-center border border-slate-700/50">
+                            <p class="text-sm text-slate-500 leading-relaxed font-medium">まだ獲得していないレリック</p>
                           </div>
                         </div>
                       );
                     }
 
                     return (
-                      <div key={relic.id} className={`w-64 bg-slate-800 border-2 ${getRelicBorderColor(relic.rarity)} rounded-xl p-4 flex flex-col items-center shadow-lg relative shrink-0`}>
-                        <div className="text-6xl mb-4 mt-4 drop-shadow-md">{relic.icon}</div>
-                        <h3 className={`text-xl font-bold ${getRelicColor(relic.rarity)} mb-4 text-center`}>{relic.name}</h3>
+                      <div key={relic.id} class={`w-64 bg-slate-800 border-2 ${getRelicBorderColor(relic.rarity)} rounded-xl p-4 flex flex-col items-center shadow-lg relative shrink-0`}>
+                        <div class="text-6xl mb-4 mt-4 drop-shadow-md">{relic.icon}</div>
+                        <h3 class={`text-xl font-bold ${getRelicColor(relic.rarity)} mb-4 text-center`}>{relic.name}</h3>
                         
-                        <div className="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex flex-col items-center justify-center border border-slate-700/50 gap-2">
-                          <p className="text-sm text-slate-300 leading-relaxed font-medium">{relic.desc.replace('${turn}', 'X')}</p>
-                          {relic.flavor && <p className="text-xs text-slate-500 italic border-t border-slate-700/50 pt-2 mt-2 w-full">"{relic.flavor}"</p>}
+                        <div class="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex flex-col items-center justify-center border border-slate-700/50 gap-2">
+                          <p class="text-sm text-slate-300 leading-relaxed font-medium">{relic.desc.replace('${turn}', 'X')}</p>
+                          {relic.flavor && <p class="text-xs text-slate-500 italic border-t border-slate-700/50 pt-2 mt-2 w-full">"{relic.flavor}"</p>}
                         </div>
                       </div>
                     );
@@ -2851,46 +2830,46 @@ export default function App() {
 
   if (state.screen === 'EVENT_DEX') {
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
-        <div className="flex flex-wrap justify-between w-full max-w-6xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
-          <h1 className="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>❓</span> イベント図鑑</h1>
-          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))} className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center p-4 sm:p-8">
+        <div class="flex flex-wrap justify-between w-full max-w-6xl mb-6 items-center border-b border-slate-700 pb-4 gap-4">
+          <h1 class="text-2xl sm:text-4xl font-bold flex items-center gap-3"><span>❓</span> イベント図鑑</h1>
+          <button onClick={() => setState(p => ({ ...p, screen: 'COMPENDIUM_MENU' }))} class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold border border-slate-500 text-sm sm:text-base">
             戻る
           </button>
         </div>
 
-        <div className="flex flex-wrap gap-6 justify-center max-w-6xl pb-8">
+        <div class="flex flex-wrap gap-6 justify-center max-w-6xl pb-8">
           {EVENTS.map((ev) => {
             const isUnlocked = state.unlocks && state.unlocks.events && state.unlocks.events.includes(ev.id);
 
             if (!isUnlocked) {
               return (
-                <div key={ev.id} className="w-80 bg-slate-800 border-2 border-slate-700 rounded-xl p-4 flex flex-col shadow-lg relative shrink-0 opacity-50 grayscale">
-                  <div className="text-6xl mb-4 mt-4 drop-shadow-md text-center">❓</div>
-                  <h3 className="text-xl font-bold text-slate-500 mb-2 text-center">未知のイベント</h3>
-                  <div className="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex items-center justify-center border border-slate-700/50">
-                    <p className="text-sm text-slate-500 leading-relaxed font-medium">まだ遭遇していないイベント</p>
+                <div key={ev.id} class="w-80 bg-slate-800 border-2 border-slate-700 rounded-xl p-4 flex flex-col shadow-lg relative shrink-0 opacity-50 grayscale">
+                  <div class="text-6xl mb-4 mt-4 drop-shadow-md text-center">❓</div>
+                  <h3 class="text-xl font-bold text-slate-500 mb-2 text-center">未知のイベント</h3>
+                  <div class="w-full text-center bg-slate-900/50 p-4 rounded-lg flex-1 flex items-center justify-center border border-slate-700/50">
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium">まだ遭遇していないイベント</p>
                   </div>
                 </div>
               );
             }
 
             return (
-              <div key={ev.id} className="w-80 bg-slate-800 border-2 border-sky-600 rounded-xl p-4 flex flex-col shadow-lg relative shrink-0">
-                <div className="text-4xl mb-2 drop-shadow-md text-center">📜</div>
-                <h3 className="text-xl font-bold text-sky-300 mb-2 text-center">{ev.name}</h3>
+              <div key={ev.id} class="w-80 bg-slate-800 border-2 border-sky-600 rounded-xl p-4 flex flex-col shadow-lg relative shrink-0">
+                <div class="text-4xl mb-2 drop-shadow-md text-center">📜</div>
+                <h3 class="text-xl font-bold text-sky-300 mb-2 text-center">{ev.name}</h3>
                 
-                <div className="w-full bg-slate-900/50 p-3 rounded-lg mb-3 border border-slate-700/50">
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{ev.desc}</p>
+                <div class="w-full bg-slate-900/50 p-3 rounded-lg mb-3 border border-slate-700/50">
+                  <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">{ev.desc}</p>
                 </div>
 
-                <div className="flex flex-col gap-2 mt-auto">
-                  <div className="text-xs text-slate-400 font-bold border-b border-slate-700 pb-1">選択肢</div>
+                <div class="flex flex-col gap-2 mt-auto">
+                  <div class="text-xs text-slate-400 font-bold border-b border-slate-700 pb-1">選択肢</div>
                   {ev.choices.map((c, i) => (
-                    <div key={i} className="bg-slate-700/50 p-2 rounded text-[10px] sm:text-xs">
-                      <span className="text-blue-300 font-bold">{c.text}</span>
+                    <div key={i} class="bg-slate-700/50 p-2 rounded text-[10px] sm:text-xs">
+                      <span class="text-blue-300 font-bold">{c.text}</span>
                       <br/>
-                      <span className="text-slate-400">{c.desc}</span>
+                      <span class="text-slate-400">{c.desc}</span>
                     </div>
                   ))}
                 </div>
@@ -2904,17 +2883,17 @@ export default function App() {
 
   if (state.screen === 'CHAR_SELECT') {
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center justify-center p-4 sm:p-8">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">キャラクターを選択</h1>
-        <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center justify-center p-4 sm:p-8">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">キャラクターを選択</h1>
+        <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
           {Object.values(CHARACTERS).map(char => (
             <div key={char.id} 
-              className="w-72 sm:w-80 bg-slate-800 border-2 border-slate-600 rounded-xl p-4 sm:p-6 flex flex-col items-center cursor-pointer hover:border-yellow-400 hover:-translate-y-2 transition shadow-lg shrink-0"
+              class="w-72 sm:w-80 bg-slate-800 border-2 border-slate-600 rounded-xl p-4 sm:p-6 flex flex-col items-center cursor-pointer hover:border-yellow-400 hover:-translate-y-2 transition shadow-lg shrink-0"
               onClick={() => selectCharacter(char.id)}>
-              <div className="text-5xl sm:text-6xl mb-4">{char.icon}</div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-2">{char.name}</h2>
-              <div className="text-red-400 font-bold mb-4">HP: {char.hp}</div>
-              <p className="text-slate-300 text-sm sm:text-base text-center">{char.desc}</p>
+              <div class="text-5xl sm:text-6xl mb-4">{char.icon}</div>
+              <h2 class="text-xl sm:text-2xl font-bold mb-2">{char.name}</h2>
+              <div class="text-red-400 font-bold mb-4">HP: {char.hp}</div>
+              <p class="text-slate-300 text-sm sm:text-base text-center">{char.desc}</p>
             </div>
           ))}
         </div>
@@ -2924,16 +2903,16 @@ export default function App() {
 
   if (state.screen === 'GAMEOVER' || state.screen === 'VICTORY') {
     return (
-      <div className="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center justify-center p-4">
-        <h1 className={`text-4xl sm:text-6xl font-bold mb-4 text-center ${state.screen === 'VICTORY' ? 'text-yellow-400' : 'text-red-500'}`}>
+      <div class="h-screen w-full overflow-y-auto bg-slate-900 text-white flex flex-col items-center justify-center p-4">
+        <h1 class={`text-4xl sm:text-6xl font-bold mb-4 text-center ${state.screen === 'VICTORY' ? 'text-yellow-400' : 'text-red-500'}`}>
           {state.screen === 'VICTORY' ? 'VICTORY!' : 'GAME OVER'}
         </h1>
-        <p className="mb-8 text-lg sm:text-xl">到達階層: {state.act === 2 ? state.floor + 15 : state.floor} 階</p>
+        <p class="mb-8 text-lg sm:text-xl">到達階層: {state.act === 2 ? state.floor + 15 : state.floor} 階</p>
         <button onClick={() => {
           try { localStorage.removeItem('slay_the_web_save'); } catch(e) {}
           setHasSaveData(false);
           setState(p=>({...p, screen:'TITLE'}));
-        }} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base">
+        }} class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base">
           タイトルへ戻る
         </button>
       </div>
@@ -2941,22 +2920,22 @@ export default function App() {
   }
 
   return (
-    <div className="h-screen w-full bg-slate-900 text-slate-100 flex flex-col font-sans select-none overflow-hidden relative">
+    <div class="h-screen w-full bg-slate-900 text-slate-100 flex flex-col font-sans select-none overflow-hidden relative">
       
       {/* デッキ確認モーダル */}
       {showDeckView && (
-        <div className="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center p-4 sm:p-8 overflow-y-auto backdrop-blur-sm">
-          <div className="flex justify-between w-full max-w-5xl mb-6 items-center border-b border-slate-700 pb-2 sm:pb-4 shrink-0 mt-4">
-            <h2 className="text-xl sm:text-3xl font-bold text-white">
+        <div class="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center p-4 sm:p-8 overflow-y-auto backdrop-blur-sm">
+          <div class="flex justify-between w-full max-w-5xl mb-6 items-center border-b border-slate-700 pb-2 sm:pb-4 shrink-0 mt-4">
+            <h2 class="text-xl sm:text-3xl font-bold text-white">
               現在のデッキ ({state.player.deck.length}枚)
             </h2>
-            <button onClick={() => setShowDeckView(false)} className="px-4 py-1 sm:px-6 sm:py-2 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-colors border border-slate-500 text-sm sm:text-base">
+            <button onClick={() => setShowDeckView(false)} class="px-4 py-1 sm:px-6 sm:py-2 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-colors border border-slate-500 text-sm sm:text-base">
               閉じる
             </button>
           </div>
-          <div className="flex flex-wrap gap-2 sm:gap-4 justify-center max-w-5xl pb-16">
+          <div class="flex flex-wrap gap-2 sm:gap-4 justify-center max-w-5xl pb-16">
             {[...state.player.deck].sort((a,b)=>a.name.localeCompare(b.name, 'ja')).map((card, idx) => (
-              <div key={card.uniqueId || idx} className="scale-90 sm:scale-95 origin-top hover:scale-100 transition-transform shrink-0">
+              <div key={card.uniqueId || idx} class="scale-90 sm:scale-95 origin-top hover:scale-100 transition-transform shrink-0">
                 {renderCard(card, idx, false)}
               </div>
             ))}
@@ -2966,16 +2945,16 @@ export default function App() {
 
       {/* メニューモーダル */}
       {showMenu && (
-        <div className="absolute inset-0 bg-slate-900/80 z-50 flex flex-col items-center justify-center p-4 backdrop-blur-sm">
-          <div className="bg-slate-800 border-2 border-slate-600 rounded-xl p-6 sm:p-8 flex flex-col gap-4 shadow-2xl w-full max-w-sm">
-            <h2 className="text-2xl font-bold text-center text-white mb-4">メニュー</h2>
-            <button onClick={() => setShowMenu(false)} className="w-full px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-colors border border-slate-500">
+        <div class="absolute inset-0 bg-slate-900/80 z-50 flex flex-col items-center justify-center p-4 backdrop-blur-sm">
+          <div class="bg-slate-800 border-2 border-slate-600 rounded-xl p-6 sm:p-8 flex flex-col gap-4 shadow-2xl w-full max-w-sm">
+            <h2 class="text-2xl font-bold text-center text-white mb-4">メニュー</h2>
+            <button onClick={() => setShowMenu(false)} class="w-full px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-colors border border-slate-500">
               ゲームに戻る
             </button>
-            <button onClick={saveAndQuit} className="w-full px-4 py-3 bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg transition-colors border border-red-600 mt-2 shadow-lg shadow-red-900/50">
+            <button onClick={saveAndQuit} class="w-full px-4 py-3 bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg transition-colors border border-red-600 mt-2 shadow-lg shadow-red-900/50">
               セーブしてタイトルへ戻る
             </button>
-            <div className="text-xs text-slate-400 text-center mt-2">
+            <div class="text-xs text-slate-400 text-center mt-2">
               ※ タイトル画面の「コンティニュー」から再開できます。<br/>
               ※ 状態を完全に保存して終了します。
             </div>
@@ -2984,33 +2963,33 @@ export default function App() {
       )}
 
       {/* Top Bar: Player Stats & Relics */}
-      <div className="bg-slate-950 p-2 sm:p-3 flex flex-wrap justify-between items-center border-b border-slate-700 shadow-md shrink-0 z-10 gap-y-2">
+      <div class="bg-slate-950 p-2 sm:p-3 flex flex-wrap justify-between items-center border-b border-slate-700 shadow-md shrink-0 z-10 gap-y-2">
         
-        <div className="flex flex-wrap gap-2 sm:gap-6 items-center text-xs sm:text-base">
-          <div className="font-bold text-white whitespace-nowrap">階層: {state.act === 2 ? state.floor + 15 : state.floor}/30</div>
+        <div class="flex flex-wrap gap-2 sm:gap-6 items-center text-xs sm:text-base">
+          <div class="font-bold text-white whitespace-nowrap">階層: {state.act === 2 ? state.floor + 15 : state.floor}/30</div>
           {state.player.characterId && (
-            <div className="font-bold text-slate-300 ml-1 sm:ml-2 whitespace-nowrap">
+            <div class="font-bold text-slate-300 ml-1 sm:ml-2 whitespace-nowrap">
               {CHARACTERS[state.player.characterId].icon} {CHARACTERS[state.player.characterId].name}
             </div>
           )}
           
           {/* Relics Display */}
-          <div className="flex flex-wrap gap-1 sm:gap-2 ml-2 sm:ml-4">
+          <div class="flex flex-wrap gap-1 sm:gap-2 ml-2 sm:ml-4">
             {state.player.relics.map(relicId => {
               const relic = RELICS_DB[relicId];
               let desc = relic.desc;
               if (relicId === 'starClock') desc = desc.replace('${turn}', state.player.relicStates.starClockTurn);
               
               return (
-                <div key={relicId} className="relative group cursor-pointer z-50">
-                  <div className={`text-sm sm:text-xl bg-slate-800 border ${getRelicBorderColor(relic.rarity)} rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center hover:scale-110 transition-all`}>
+                <div key={relicId} class="relative group cursor-pointer z-50">
+                  <div class={`text-sm sm:text-xl bg-slate-800 border ${getRelicBorderColor(relic.rarity)} rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center hover:scale-110 transition-all`}>
                     {relic.icon}
                   </div>
                   {/* Tooltip */}
-                  <div className="absolute top-8 left-0 w-56 p-3 bg-slate-800 border-2 border-slate-600 rounded-lg text-xs sm:text-sm hidden group-hover:block shadow-2xl z-50">
-                    <div className={`font-bold ${getRelicColor(relic.rarity)} mb-1`}>{relic.name}</div>
-                    <div className="text-slate-300 mb-2">{desc}</div>
-                    {relic.flavor && <div className="text-slate-500 italic text-[10px] sm:text-xs">"{relic.flavor}"</div>}
+                  <div class="absolute top-8 left-0 w-56 p-3 bg-slate-800 border-2 border-slate-600 rounded-lg text-xs sm:text-sm hidden group-hover:block shadow-2xl z-50">
+                    <div class={`font-bold ${getRelicColor(relic.rarity)} mb-1`}>{relic.name}</div>
+                    <div class="text-slate-300 mb-2">{desc}</div>
+                    {relic.flavor && <div class="text-slate-500 italic text-[10px] sm:text-xs">"{relic.flavor}"</div>}
                   </div>
                 </div>
               );
@@ -3018,38 +2997,38 @@ export default function App() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3 sm:gap-6 items-center text-xs sm:text-base">
-          <div className="flex items-center gap-1 text-red-400 font-bold whitespace-nowrap">
+        <div class="flex flex-wrap gap-3 sm:gap-6 items-center text-xs sm:text-base">
+          <div class="flex items-center gap-1 text-red-400 font-bold whitespace-nowrap">
             ❤️ {state.player.hp} / {state.player.maxHp}
           </div>
-          <div className="flex items-center gap-1 text-yellow-400 font-bold whitespace-nowrap">
+          <div class="flex items-center gap-1 text-yellow-400 font-bold whitespace-nowrap">
             💰 {state.player.gold}
           </div>
           <div 
-            className="text-slate-400 whitespace-nowrap cursor-pointer hover:text-white transition-colors underline decoration-slate-500 underline-offset-4"
+            class="text-slate-400 whitespace-nowrap cursor-pointer hover:text-white transition-colors underline decoration-slate-500 underline-offset-4"
             onClick={() => setShowDeckView(true)}
           >
             デッキ: {state.player.deck.length}枚
           </div>
-          <button onClick={() => setShowMenu(true)} className="ml-1 sm:ml-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-slate-800 hover:bg-slate-700 rounded text-sm sm:text-base border border-slate-600 transition-colors shadow flex items-center gap-1">
-            <span>⚙️</span> <span className="hidden sm:inline">メニュー</span>
+          <button onClick={() => setShowMenu(true)} class="ml-1 sm:ml-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-slate-800 hover:bg-slate-700 rounded text-sm sm:text-base border border-slate-600 transition-colors shadow flex items-center gap-1">
+            <span>⚙️</span> <span class="hidden sm:inline">メニュー</span>
           </button>
         </div>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 relative overflow-y-auto flex flex-col">
+      <div class="flex-1 relative overflow-y-auto flex flex-col">
         
         {state.screen === 'NEOW' && (
-          <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-8 min-h-full">
-            <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 animate-bounce drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">🐋</div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-blue-300">ネオー</h2>
-            <p className="text-slate-400 mb-8 sm:mb-12 text-center text-sm sm:text-lg leading-relaxed">
+          <div class="flex-1 flex flex-col items-center justify-center p-4 sm:p-8 min-h-full">
+            <div class="text-6xl sm:text-7xl mb-4 sm:mb-6 animate-bounce drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">🐋</div>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-2 text-blue-300">ネオー</h2>
+            <p class="text-slate-400 mb-8 sm:mb-12 text-center text-sm sm:text-lg leading-relaxed">
               「ハジメマシテ……」<br/>
               「チイサキモノヨ……」
             </p>
 
-            <div className="flex flex-col gap-4 w-full max-w-xl">
+            <div class="flex flex-col gap-4 w-full max-w-xl">
               {state.neowChoices.map((choice, idx) => (
                 <button
                   key={idx}
@@ -3059,10 +3038,10 @@ export default function App() {
                     if (result.unlockRelics) unlockData('relics', result.unlockRelics);
                     setState({ ...result.newState, screen: 'MAP' });
                   }}
-                  className="w-full p-4 border-2 border-slate-600 bg-slate-800 hover:bg-slate-700 hover:border-yellow-400 rounded-xl text-left transition-colors flex items-center gap-4 shadow-lg"
+                  class="w-full p-4 border-2 border-slate-600 bg-slate-800 hover:bg-slate-700 hover:border-yellow-400 rounded-xl text-left transition-colors flex items-center gap-4 shadow-lg"
                 >
-                  <span className="text-2xl sm:text-3xl">{choice.type === 'BUFF' ? '✨' : '⚖️'}</span>
-                  <span className={`font-bold text-base sm:text-xl ${choice.type === 'BUFF' ? 'text-white' : 'text-purple-300'}`}>
+                  <span class="text-2xl sm:text-3xl">{choice.type === 'BUFF' ? '✨' : '⚖️'}</span>
+                  <span class={`font-bold text-base sm:text-xl ${choice.type === 'BUFF' ? 'text-white' : 'text-purple-300'}`}>
                     {choice.text}
                   </span>
                 </button>
@@ -3072,11 +3051,11 @@ export default function App() {
         )}
 
         {state.screen === 'MAP' && state.mapData && (
-          <div ref={mapRef} className="flex-1 w-full overflow-y-auto bg-slate-950 relative scroll-smooth p-4">
-            <div className="relative w-full max-w-4xl mx-auto" style={{ height: `${MAP_HEIGHT}px` }}>
+          <div ref={mapRef} class="flex-1 w-full overflow-y-auto bg-slate-950 relative scroll-smooth p-4">
+            <div class="relative w-full max-w-4xl mx-auto" style={{ height: `${MAP_HEIGHT}px` }}>
               
               {/* Lines */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
+              <svg class="absolute inset-0 w-full h-full pointer-events-none z-0">
                 {Object.values(state.mapData).map(node => {
                   return node.next.map(nextId => {
                     const nextNode = state.mapData[nextId];
@@ -3131,10 +3110,10 @@ export default function App() {
                     onTouchEnd={handleNodeInteractionEnd}
                     onTouchCancel={handleNodeInteractionEnd}
                     style={{ left: `${getMapX(node.x, node.floor)}%`, top: `${getMapY(node.floor)}px`, transform: 'translate(-50%, -50%)' }}
-                    className={`absolute z-10 flex flex-col items-center justify-center w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 transition-all shadow-lg ${bgClass}`}
+                    class={`absolute z-10 flex flex-col items-center justify-center w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 transition-all shadow-lg ${bgClass}`}
                   >
-                    <span className="text-lg sm:text-2xl drop-shadow-md">{icon}</span>
-                    {isSelectable && <span className="absolute -bottom-4 sm:-bottom-5 text-[9px] sm:text-[10px] font-bold text-yellow-400 whitespace-nowrap bg-slate-900/80 px-1 rounded">{node.type}</span>}
+                    <span class="text-lg sm:text-2xl drop-shadow-md">{icon}</span>
+                    {isSelectable && <span class="absolute -bottom-4 sm:-bottom-5 text-[9px] sm:text-[10px] font-bold text-yellow-400 whitespace-nowrap bg-slate-900/80 px-1 rounded">{node.type}</span>}
                   </div>
                 );
               })}
@@ -3143,31 +3122,31 @@ export default function App() {
         )}
 
         {state.screen === 'REST' && (
-          <div className="flex-1 flex flex-col items-center justify-center p-4 min-h-full">
-            <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">🔥</div>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">休憩所</h2>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
+          <div class="flex-1 flex flex-col items-center justify-center p-4 min-h-full">
+            <div class="text-5xl sm:text-6xl mb-4 sm:mb-6">🔥</div>
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">休憩所</h2>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-8">
               <button onClick={() => {
                   setState(p => {
                     return { ...p, screen: 'MAP', player: {...p.player, hp: Math.min(p.player.maxHp, p.player.hp + Math.floor(p.player.maxHp * 0.3))} };
                   });
-                }} className="flex flex-col items-center p-4 sm:p-6 w-40 sm:w-48 bg-slate-800 rounded-xl hover:bg-slate-700 border-2 border-transparent hover:border-green-400 shrink-0">
-                <span className="text-3xl sm:text-4xl mb-2">💤</span>
-                <span className="font-bold text-lg sm:text-xl">休む</span>
-                <span className="text-xs sm:text-sm text-slate-400 text-center mt-1">最大HPの30%回復</span>
+                }} class="flex flex-col items-center p-4 sm:p-6 w-40 sm:w-48 bg-slate-800 rounded-xl hover:bg-slate-700 border-2 border-transparent hover:border-green-400 shrink-0">
+                <span class="text-3xl sm:text-4xl mb-2">💤</span>
+                <span class="font-bold text-lg sm:text-xl">休む</span>
+                <span class="text-xs sm:text-sm text-slate-400 text-center mt-1">最大HPの30%回復</span>
               </button>
               <button onClick={() => setState(p => ({ ...p, screen: 'UPGRADE' }))} 
-                className="flex flex-col items-center p-4 sm:p-6 w-40 sm:w-48 bg-slate-800 rounded-xl hover:bg-slate-700 border-2 border-transparent hover:border-blue-400 shrink-0">
-                <span className="text-3xl sm:text-4xl mb-2">⚒️</span>
-                <span className="font-bold text-lg sm:text-xl">鍛錬</span>
-                <span className="text-xs sm:text-sm text-slate-400 text-center mt-1">カードを1枚アップグレード</span>
+                class="flex flex-col items-center p-4 sm:p-6 w-40 sm:w-48 bg-slate-800 rounded-xl hover:bg-slate-700 border-2 border-transparent hover:border-blue-400 shrink-0">
+                <span class="text-3xl sm:text-4xl mb-2">⚒️</span>
+                <span class="font-bold text-lg sm:text-xl">鍛錬</span>
+                <span class="text-xs sm:text-sm text-slate-400 text-center mt-1">カードを1枚アップグレード</span>
               </button>
               {state.player.relics.includes('umiwatari') && (
                 <button onClick={() => setState(p => ({ ...p, screen: 'REMOVE_CARD' }))} 
-                  className="flex flex-col items-center p-4 sm:p-6 w-40 sm:w-48 bg-slate-800 rounded-xl hover:bg-slate-700 border-2 border-transparent hover:border-red-400 shrink-0">
-                  <span className="text-3xl sm:text-4xl mb-2">🗑️</span>
-                  <span className="font-bold text-lg sm:text-xl">忘却</span>
-                  <span className="text-xs sm:text-sm text-slate-400 text-center mt-1">デッキからカードを1枚削除する</span>
+                  class="flex flex-col items-center p-4 sm:p-6 w-40 sm:w-48 bg-slate-800 rounded-xl hover:bg-slate-700 border-2 border-transparent hover:border-red-400 shrink-0">
+                  <span class="text-3xl sm:text-4xl mb-2">🗑️</span>
+                  <span class="font-bold text-lg sm:text-xl">忘却</span>
+                  <span class="text-xs sm:text-sm text-slate-400 text-center mt-1">デッキからカードを1枚削除する</span>
                 </button>
               )}
             </div>
@@ -3175,46 +3154,46 @@ export default function App() {
         )}
 
         {state.screen === 'UPGRADE' && (
-          <div className="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full relative">
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">アップグレードするカードを選択</h2>
-            <div className="flex flex-wrap gap-4 justify-center max-w-4xl pb-8">
+          <div class="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full relative">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">アップグレードするカードを選択</h2>
+            <div class="flex flex-wrap gap-4 justify-center max-w-4xl pb-8">
               {state.player.deck.map((card, idx) => (
                 <div key={idx} onClick={() => {
                   if (card.upgraded || card.type === 'CURSE') return;
                   setUpgradePreviewIndex(idx);
-                }} className={card.upgraded || card.type === 'CURSE' ? 'opacity-50 grayscale cursor-not-allowed' : 'cursor-pointer hover:-translate-y-2 transition'}>
+                }} class={card.upgraded || card.type === 'CURSE' ? 'opacity-50 grayscale cursor-not-allowed' : 'cursor-pointer hover:-translate-y-2 transition'}>
                   {renderCard(card, idx)}
                 </div>
               ))}
             </div>
 
-            <div className="mt-4 mb-8">
+            <div class="mt-4 mb-8">
               <button onClick={() => {
                 setState(p => ({ ...p, screen: 'MAP' }));
-              }} className="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base border border-slate-500">
+              }} class="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base border border-slate-500">
                 やめる
               </button>
             </div>
 
             {upgradePreviewIndex !== null && (
-              <div className="fixed inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 sm:p-8 backdrop-blur-sm overflow-y-auto">
-                <div className="flex flex-col items-center justify-center min-h-full w-full py-8">
-                  <h2 className="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center">このカードをアップグレードしますか？</h2>
+              <div class="fixed inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 sm:p-8 backdrop-blur-sm overflow-y-auto">
+                <div class="flex flex-col items-center justify-center min-h-full w-full py-8">
+                  <h2 class="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center">このカードをアップグレードしますか？</h2>
                   
-                  <div className="flex flex-wrap justify-center gap-4 sm:gap-16 items-center mb-8 sm:mb-12">
-                    <div className="flex flex-col items-center opacity-70">
-                      <span className="mb-2 sm:mb-4 text-xs sm:text-sm text-slate-400 font-bold">強化前</span>
+                  <div class="flex flex-wrap justify-center gap-4 sm:gap-16 items-center mb-8 sm:mb-12">
+                    <div class="flex flex-col items-center opacity-70">
+                      <span class="mb-2 sm:mb-4 text-xs sm:text-sm text-slate-400 font-bold">強化前</span>
                       {renderCard(state.player.deck[upgradePreviewIndex], upgradePreviewIndex, false)}
                     </div>
-                    <div className="text-3xl sm:text-5xl text-yellow-400 font-bold animate-pulse rotate-90 sm:rotate-0">➡️</div>
-                    <div className="flex flex-col items-center sm:scale-110">
-                      <span className="mb-2 sm:mb-4 text-xs sm:text-sm text-green-400 font-bold">強化後</span>
+                    <div class="text-3xl sm:text-5xl text-yellow-400 font-bold animate-pulse rotate-90 sm:rotate-0">➡️</div>
+                    <div class="flex flex-col items-center sm:scale-110">
+                      <span class="mb-2 sm:mb-4 text-xs sm:text-sm text-green-400 font-bold">強化後</span>
                       {renderCard({ ...state.player.deck[upgradePreviewIndex], upgraded: true }, upgradePreviewIndex, false)}
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap justify-center gap-4 sm:gap-8 sticky bottom-4 z-10">
-                    <button onClick={() => setUpgradePreviewIndex(null)} className="px-6 py-3 sm:px-8 sm:py-4 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-xl border-2 border-slate-500 transition-colors text-sm sm:text-xl shrink-0 shadow-xl">
+                  <div class="flex flex-wrap justify-center gap-4 sm:gap-8 sticky bottom-4 z-10">
+                    <button onClick={() => setUpgradePreviewIndex(null)} class="px-6 py-3 sm:px-8 sm:py-4 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-xl border-2 border-slate-500 transition-colors text-sm sm:text-xl shrink-0 shadow-xl">
                       考え直す
                     </button>
                     <button onClick={() => {
@@ -3224,7 +3203,7 @@ export default function App() {
                       setState(p => {
                         return { ...p, screen: 'MAP', player: {...p.player, deck: newDeck} };
                       });
-                    }} className="px-6 py-3 sm:px-8 sm:py-4 bg-green-700 hover:bg-green-600 text-white font-bold rounded-xl border-2 border-green-400 transition-colors shadow-xl shadow-green-500/50 text-sm sm:text-xl shrink-0">
+                    }} class="px-6 py-3 sm:px-8 sm:py-4 bg-green-700 hover:bg-green-600 text-white font-bold rounded-xl border-2 border-green-400 transition-colors shadow-xl shadow-green-500/50 text-sm sm:text-xl shrink-0">
                       決定 (OK)
                     </button>
                   </div>
@@ -3235,39 +3214,39 @@ export default function App() {
         )}
 
         {state.screen === 'REMOVE_CARD' && (
-          <div className="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full relative">
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-red-400">デッキから削除するカードを選択</h2>
-            <div className="flex flex-wrap gap-4 justify-center max-w-4xl pb-8">
+          <div class="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full relative">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-red-400">デッキから削除するカードを選択</h2>
+            <div class="flex flex-wrap gap-4 justify-center max-w-4xl pb-8">
               {state.player.deck.map((card, idx) => (
                 <div key={idx} onClick={() => {
                   setRemovePreviewIndex(idx);
-                }} className="cursor-pointer hover:-translate-y-2 transition">
+                }} class="cursor-pointer hover:-translate-y-2 transition">
                   {renderCard(card, idx)}
                 </div>
               ))}
             </div>
 
-            <div className="mt-4 mb-8">
+            <div class="mt-4 mb-8">
               <button onClick={() => {
                 setState(p => ({ ...p, screen: p.returnScreen || 'MAP', returnScreen: null, removeCost: null }));
-              }} className="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base border border-slate-500">
+              }} class="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base border border-slate-500">
                 やめる
               </button>
             </div>
 
             {removePreviewIndex !== null && (
-              <div className="fixed inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 sm:p-8 backdrop-blur-sm overflow-y-auto">
-                <div className="flex flex-col items-center justify-center min-h-full w-full py-8">
-                  <h2 className="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center text-red-400">このカードを削除しますか？</h2>
+              <div class="fixed inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 sm:p-8 backdrop-blur-sm overflow-y-auto">
+                <div class="flex flex-col items-center justify-center min-h-full w-full py-8">
+                  <h2 class="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 text-center text-red-400">このカードを削除しますか？</h2>
                   
-                  <div className="flex flex-wrap justify-center gap-4 sm:gap-16 items-center mb-8 sm:mb-12">
-                    <div className="flex flex-col items-center">
+                  <div class="flex flex-wrap justify-center gap-4 sm:gap-16 items-center mb-8 sm:mb-12">
+                    <div class="flex flex-col items-center">
                       {renderCard(state.player.deck[removePreviewIndex], removePreviewIndex, false)}
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap justify-center gap-4 sm:gap-8 sticky bottom-4 z-10">
-                    <button onClick={() => setRemovePreviewIndex(null)} className="px-6 py-3 sm:px-8 sm:py-4 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-xl border-2 border-slate-500 transition-colors text-sm sm:text-xl shrink-0 shadow-xl">
+                  <div class="flex flex-wrap justify-center gap-4 sm:gap-8 sticky bottom-4 z-10">
+                    <button onClick={() => setRemovePreviewIndex(null)} class="px-6 py-3 sm:px-8 sm:py-4 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-xl border-2 border-slate-500 transition-colors text-sm sm:text-xl shrink-0 shadow-xl">
                       考え直す
                     </button>
                     <button onClick={() => {
@@ -3279,7 +3258,7 @@ export default function App() {
                         const newGold = p.player.gold - cost;
                         return { ...p, screen: p.returnScreen || 'MAP', player: {...p.player, deck: newDeck, gold: newGold}, returnScreen: null, removeCost: null, shopRemovedCard: p.returnScreen === 'SHOP' ? true : p.shopRemovedCard };
                       });
-                    }} className="px-6 py-3 sm:px-8 sm:py-4 bg-red-700 hover:bg-red-600 text-white font-bold rounded-xl border-2 border-red-400 transition-colors shadow-xl shadow-red-500/50 text-sm sm:text-xl shrink-0">
+                    }} class="px-6 py-3 sm:px-8 sm:py-4 bg-red-700 hover:bg-red-600 text-white font-bold rounded-xl border-2 border-red-400 transition-colors shadow-xl shadow-red-500/50 text-sm sm:text-xl shrink-0">
                       決定 (削除)
                     </button>
                   </div>
@@ -3291,13 +3270,13 @@ export default function App() {
 
         {/* 宝箱画面 */}
         {state.screen === 'TREASURE' && (
-          <div className="flex-1 flex flex-col items-center justify-center p-4 min-h-full">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-8">宝箱部屋</h2>
+          <div class="flex-1 flex flex-col items-center justify-center p-4 min-h-full">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-8">宝箱部屋</h2>
             
             {!state.treasureInfo.opened ? (
-              <div className="flex flex-col items-center">
+              <div class="flex flex-col items-center">
                 <div 
-                  className={`text-6xl sm:text-8xl mb-6 cursor-pointer hover:scale-110 transition-all ${
+                  class={`text-6xl sm:text-8xl mb-6 cursor-pointer hover:scale-110 transition-all ${
                     state.treasureInfo.rarity === 'RARE' ? 'drop-shadow-[0_0_30px_rgba(250,204,21,0.8)]' : 
                     state.treasureInfo.rarity === 'UNCOMMON' ? 'drop-shadow-[0_0_20px_rgba(56,189,248,0.6)]' :
                     'drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]'
@@ -3306,13 +3285,13 @@ export default function App() {
                 >
                   {state.treasureInfo.rarity === 'RARE' ? '🏆' : state.treasureInfo.rarity === 'UNCOMMON' ? '🧰' : '📦'}
                 </div>
-                <p className="text-slate-400 font-bold animate-pulse">タップして開ける</p>
+                <p class="text-slate-400 font-bold animate-pulse">タップして開ける</p>
               </div>
             ) : (
-              <div className="flex flex-col items-center w-full max-w-sm">
+              <div class="flex flex-col items-center w-full max-w-sm">
                 {state.treasureInfo.relicId ? (
-                  <>
-                    <h3 className="text-xl mb-6 text-white font-bold">レリックを獲得した！</h3>
+                  
+                    <h3 class="text-xl mb-6 text-white font-bold">レリックを獲得した！</h3>
                     <div onClick={() => {
                       const relicId = state.treasureInfo.relicId;
                       unlockData('relics', [relicId]);
@@ -3333,24 +3312,24 @@ export default function App() {
                           treasureInfo: null
                         };
                       });
-                    }} className={`cursor-pointer bg-slate-800 p-4 rounded-xl border-2 ${getRelicBorderColor(RELICS_DB[state.treasureInfo.relicId].rarity)} hover:bg-slate-700 flex items-center gap-4 transition-transform hover:scale-105 w-full justify-center shadow-xl`}>
-                      <div className="text-5xl shrink-0">{RELICS_DB[state.treasureInfo.relicId].icon}</div>
-                      <div className="text-left flex-1 min-w-0">
-                        <div className={`font-bold ${getRelicColor(RELICS_DB[state.treasureInfo.relicId].rarity)} text-lg mb-1 truncate`}>{RELICS_DB[state.treasureInfo.relicId].name}</div>
-                        <div className="text-xs sm:text-sm text-slate-300 leading-tight">
+                    }} class={`cursor-pointer bg-slate-800 p-4 rounded-xl border-2 ${getRelicBorderColor(RELICS_DB[state.treasureInfo.relicId].rarity)} hover:bg-slate-700 flex items-center gap-4 transition-transform hover:scale-105 w-full justify-center shadow-xl`}>
+                      <div class="text-5xl shrink-0">{RELICS_DB[state.treasureInfo.relicId].icon}</div>
+                      <div class="text-left flex-1 min-w-0">
+                        <div class={`font-bold ${getRelicColor(RELICS_DB[state.treasureInfo.relicId].rarity)} text-lg mb-1 truncate`}>{RELICS_DB[state.treasureInfo.relicId].name}</div>
+                        <div class="text-xs sm:text-sm text-slate-300 leading-tight">
                           {RELICS_DB[state.treasureInfo.relicId].desc.replace('${turn}', state.player.relicStates.starClockTurn)}
                         </div>
                       </div>
                     </div>
-                  </>
+                  
                 ) : (
-                  <>
-                    <div className="text-6xl mb-4">💨</div>
-                    <h3 className="text-xl mb-4 text-slate-400">宝箱は空っぽだった...</h3>
-                    <button onClick={() => setState(p => ({...p, screen: 'MAP', treasureInfo: null}))} className="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded font-bold">
+                  
+                    <div class="text-6xl mb-4">💨</div>
+                    <h3 class="text-xl mb-4 text-slate-400">宝箱は空っぽだった...</h3>
+                    <button onClick={() => setState(p => ({...p, screen: 'MAP', treasureInfo: null}))} class="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded font-bold">
                       進む
                     </button>
-                  </>
+                  
                 )}
               </div>
             )}
@@ -3358,12 +3337,12 @@ export default function App() {
         )}
 
         {state.screen === 'EVENT' && (
-          <div className="flex-1 flex flex-col items-center justify-center text-center p-4 sm:p-8 min-h-full">
-            <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">❓</div>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4">{state.eventInfo.name}</h2>
-            <p className="text-sm sm:text-xl text-slate-300 mb-8 sm:mb-12 max-w-2xl px-4">{state.eventInfo.desc}</p>
+          <div class="flex-1 flex flex-col items-center justify-center text-center p-4 sm:p-8 min-h-full">
+            <div class="text-5xl sm:text-6xl mb-4 sm:mb-6">❓</div>
+            <h2 class="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4">{state.eventInfo.name}</h2>
+            <p class="text-sm sm:text-xl text-slate-300 mb-8 sm:mb-12 max-w-2xl px-4">{state.eventInfo.desc}</p>
             
-            <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xl px-4">
+            <div class="flex flex-col gap-3 sm:gap-4 w-full max-w-xl px-4">
               {state.eventInfo.choices.map((choice, idx) => {
                 const canSelect = !choice.condition || choice.condition(state);
                 return (
@@ -3385,15 +3364,15 @@ export default function App() {
                       
                       setState(nextState);
                     }} 
-                    className={`w-full p-3 sm:p-4 border-2 rounded-xl text-left flex flex-col transition-colors
+                    class={`w-full p-3 sm:p-4 border-2 rounded-xl text-left flex flex-col transition-colors
                       ${canSelect 
                         ? 'bg-slate-800 hover:bg-slate-700 border-slate-600 hover:border-blue-400 cursor-pointer' 
                         : 'bg-slate-900 border-slate-800 opacity-50 cursor-not-allowed'}`}
                   >
-                    <span className={`font-bold text-base sm:text-xl mb-1 ${canSelect ? 'text-blue-300' : 'text-slate-500'}`}>
+                    <span class={`font-bold text-base sm:text-xl mb-1 ${canSelect ? 'text-blue-300' : 'text-slate-500'}`}>
                       {choice.text}
                     </span>
-                    <span className={`text-xs sm:text-sm ${canSelect ? 'text-slate-400' : 'text-slate-600'}`}>
+                    <span class={`text-xs sm:text-sm ${canSelect ? 'text-slate-400' : 'text-slate-600'}`}>
                       {choice.desc}
                     </span>
                   </button>
@@ -3404,14 +3383,14 @@ export default function App() {
         )}
 
         {state.screen === 'SHOP' && (
-          <div className="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full">
-            <div className="text-4xl sm:text-6xl mb-2 sm:mb-4 mt-4">🏪</div>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-2">ショップ</h2>
-            <p className="text-yellow-400 mb-6 sm:mb-8 text-sm sm:text-base">所持金: {state.player.gold}G</p>
+          <div class="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full">
+            <div class="text-4xl sm:text-6xl mb-2 sm:mb-4 mt-4">🏪</div>
+            <h2 class="text-2xl sm:text-3xl font-bold mb-2">ショップ</h2>
+            <p class="text-yellow-400 mb-6 sm:mb-8 text-sm sm:text-base">所持金: {state.player.gold}G</p>
             
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8 max-w-4xl">
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8 max-w-4xl">
               {state.shopItems.map((card, idx) => (
-                <div key={idx} className="flex flex-col items-center shrink-0">
+                <div key={idx} class="flex flex-col items-center shrink-0">
                   {renderCard(card, idx)}
                   <button 
                     disabled={state.player.gold < card.price}
@@ -3421,149 +3400,149 @@ export default function App() {
                       newShop.splice(idx, 1);
                       setState(p => ({ ...p, shopItems: newShop, player: {...p.player, gold: p.player.gold - card.price, deck: [...p.player.deck, card]} }));
                     }}
-                    className={`mt-2 sm:mt-4 px-3 py-1 sm:px-4 sm:py-1 rounded font-bold text-xs sm:text-sm ${state.player.gold >= card.price ? 'bg-yellow-600 hover:bg-yellow-500 text-white' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}>
+                    class={`mt-2 sm:mt-4 px-3 py-1 sm:px-4 sm:py-1 rounded font-bold text-xs sm:text-sm ${state.player.gold >= card.price ? 'bg-yellow-600 hover:bg-yellow-500 text-white' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}>
                     {card.price}Gで購入
                   </button>
                 </div>
               ))}
               
-              <div className="w-28 h-40 sm:w-32 sm:h-44 lg:w-36 lg:h-48 border-2 border-red-600 bg-red-900/50 rounded-lg flex flex-col items-center justify-center p-2 sm:p-4 shrink-0">
-                <span className="text-3xl sm:text-4xl mb-1 sm:mb-2">🗑️</span>
-                <span className="font-bold mb-1 sm:mb-2 text-xs sm:text-sm">カード削除</span>
-                <span className="text-[10px] sm:text-xs text-center mb-2 sm:mb-4 text-slate-300">デッキからカードを<br/>1枚削除する</span>
+              <div class="w-28 h-40 sm:w-32 sm:h-44 lg:w-36 lg:h-48 border-2 border-red-600 bg-red-900/50 rounded-lg flex flex-col items-center justify-center p-2 sm:p-4 shrink-0">
+                <span class="text-3xl sm:text-4xl mb-1 sm:mb-2">🗑️</span>
+                <span class="font-bold mb-1 sm:mb-2 text-xs sm:text-sm">カード削除</span>
+                <span class="text-[10px] sm:text-xs text-center mb-2 sm:mb-4 text-slate-300">デッキからカードを<br/>1枚削除する</span>
                 <button 
                     disabled={state.player.gold < 40 || state.shopRemovedCard}
                     onClick={() => {
                       setState(p => ({ ...p, screen: 'REMOVE_CARD', returnScreen: 'SHOP', removeCost: 40 }));
                     }}
-                    className={`px-2 py-1 sm:px-4 sm:py-1 rounded font-bold text-[10px] sm:text-sm ${(state.player.gold >= 40 && !state.shopRemovedCard) ? 'bg-yellow-600 hover:bg-yellow-500 text-white' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}>
+                    class={`px-2 py-1 sm:px-4 sm:py-1 rounded font-bold text-[10px] sm:text-sm ${(state.player.gold >= 40 && !state.shopRemovedCard) ? 'bg-yellow-600 hover:bg-yellow-500 text-white' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}>
                     {state.shopRemovedCard ? '売切' : '40Gで購入'}
                 </button>
               </div>
             </div>
 
-            <button onClick={skipReward} className="px-6 py-2 sm:px-8 sm:py-3 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base mb-8">
+            <button onClick={skipReward} class="px-6 py-2 sm:px-8 sm:py-3 bg-slate-700 hover:bg-slate-600 rounded font-bold text-sm sm:text-base mb-8">
               店を出る
             </button>
           </div>
         )}
 
         {state.screen === 'REWARD' && (
-          <div className="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8 text-white mt-4">戦闘勝利！</h2>
+          <div class="flex-1 flex flex-col items-center p-4 sm:p-8 min-h-full">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8 text-white mt-4">戦闘勝利！</h2>
             
-            <p className="text-sm sm:text-xl mb-6 text-yellow-400 font-bold bg-slate-800 px-4 py-2 sm:px-6 sm:py-2 rounded-full border border-yellow-600">
+            <p class="text-sm sm:text-xl mb-6 text-yellow-400 font-bold bg-slate-800 px-4 py-2 sm:px-6 sm:py-2 rounded-full border border-yellow-600">
               💰 {state.rewards.gold} ゴールド獲得
             </p>
 
             {/* レリック報酬UI */}
             {state.rewards.relic && (
-              <div className="mb-8 flex flex-col items-center w-full max-w-sm px-4">
-                <h3 className="text-base sm:text-xl mb-2 sm:mb-3 text-purple-300 font-bold">未知のレリックを発見！</h3>
-                <div onClick={claimRelic} className={`cursor-pointer bg-slate-800 p-3 sm:p-4 rounded-xl border-2 ${getRelicBorderColor(RELICS_DB[state.rewards.relic].rarity)} hover:bg-slate-700 flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 transition-transform hover:scale-105 shadow-lg shadow-slate-900/50 w-full justify-center`}>
-                  <div className="text-4xl sm:text-5xl shrink-0">{RELICS_DB[state.rewards.relic].icon}</div>
-                  <div className="text-center sm:text-left flex-1 min-w-[150px]">
-                    <div className={`font-bold ${getRelicColor(RELICS_DB[state.rewards.relic].rarity)} text-base sm:text-lg mb-0.5 sm:mb-1`}>{RELICS_DB[state.rewards.relic].name}</div>
-                    <div className="text-xs sm:text-sm text-slate-300 leading-tight mb-1">
+              <div class="mb-8 flex flex-col items-center w-full max-w-sm px-4">
+                <h3 class="text-base sm:text-xl mb-2 sm:mb-3 text-purple-300 font-bold">未知のレリックを発見！</h3>
+                <div onClick={claimRelic} class={`cursor-pointer bg-slate-800 p-3 sm:p-4 rounded-xl border-2 ${getRelicBorderColor(RELICS_DB[state.rewards.relic].rarity)} hover:bg-slate-700 flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 transition-transform hover:scale-105 shadow-lg shadow-slate-900/50 w-full justify-center`}>
+                  <div class="text-4xl sm:text-5xl shrink-0">{RELICS_DB[state.rewards.relic].icon}</div>
+                  <div class="text-center sm:text-left flex-1 min-w-[150px]">
+                    <div class={`font-bold ${getRelicColor(RELICS_DB[state.rewards.relic].rarity)} text-base sm:text-lg mb-0.5 sm:mb-1`}>{RELICS_DB[state.rewards.relic].name}</div>
+                    <div class="text-xs sm:text-sm text-slate-300 leading-tight mb-1">
                       {RELICS_DB[state.rewards.relic].desc.replace('${turn}', state.player.relicStates.starClockTurn)}
                     </div>
-                    {RELICS_DB[state.rewards.relic].flavor && <div className="text-[10px] text-slate-500 italic">"{RELICS_DB[state.rewards.relic].flavor}"</div>}
+                    {RELICS_DB[state.rewards.relic].flavor && <div class="text-[10px] text-slate-500 italic">"{RELICS_DB[state.rewards.relic].flavor}"</div>}
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-green-400 animate-pulse shrink-0">取得する</div>
+                  <div class="text-xs sm:text-sm font-bold text-green-400 animate-pulse shrink-0">取得する</div>
                 </div>
               </div>
             )}
 
-            <h3 className="text-sm sm:text-xl mb-4 text-white text-center">カードを1枚デッキに追加できます</h3>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
+            <h3 class="text-sm sm:text-xl mb-4 text-white text-center">カードを1枚デッキに追加できます</h3>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
               {state.rewards.cards.map((card, idx) => (
-                <div key={idx} onClick={() => claimCard(card)} className="cursor-pointer hover:-translate-y-2 transition shrink-0">
+                <div key={idx} onClick={() => claimCard(card)} class="cursor-pointer hover:-translate-y-2 transition shrink-0">
                   {renderCard(card, idx)}
                 </div>
               ))}
             </div>
             
-            <button onClick={skipReward} className="px-4 py-2 sm:px-6 sm:py-2 text-sm sm:text-base text-slate-400 hover:text-white transition-colors border border-transparent hover:border-slate-500 rounded mb-8">
+            <button onClick={skipReward} class="px-4 py-2 sm:px-6 sm:py-2 text-sm sm:text-base text-slate-400 hover:text-white transition-colors border border-transparent hover:border-slate-500 rounded mb-8">
               {state.player.relics.includes('singingBowl') ? '🌸 カードをスキップ (最大HP+2, HP+2)' : 'カードをスキップ'}
             </button>
           </div>
         )}
 
         {state.screen === 'COMBAT' && state.combat && (
-          <div className="flex-1 flex flex-col justify-between p-2 md:p-4 bg-slate-900 min-h-full">
+          <div class="flex-1 flex flex-col justify-between p-2 md:p-4 bg-slate-900 min-h-full">
             
-            <div className="flex flex-wrap justify-center items-end gap-2 sm:gap-4 lg:gap-12 mt-2 lg:mt-4 shrink-0 min-h-[120px] md:min-h-[160px] mb-4">
+            <div class="flex flex-wrap justify-center items-end gap-2 sm:gap-4 lg:gap-12 mt-2 lg:mt-4 shrink-0 min-h-[120px] md:min-h-[160px] mb-4">
               {state.combat.enemies.map((enemy, idx) => renderEnemy(enemy, idx))}
             </div>
 
-            <div className="flex justify-between items-end mb-2 md:mb-4 px-1 md:px-4 lg:px-8 flex-1 min-h-0 gap-1 md:gap-2">
+            <div class="flex justify-between items-end mb-2 md:mb-4 px-1 md:px-4 lg:px-8 flex-1 min-h-0 gap-1 md:gap-2">
               
-              <div className="w-1/3 max-w-[200px] flex flex-col justify-end shrink-0">
-                <div className="text-[10px] md:text-sm text-slate-400 mb-0.5 md:mb-1">戦闘ログ:</div>
-                <div className="bg-slate-950 p-1 md:p-2 rounded text-[9px] sm:text-[10px] md:text-sm text-slate-300 h-16 md:h-24 overflow-y-auto border border-slate-800 leading-tight">
-                  {state.combat.logs.map((log, i) => <div key={i} className="mb-0.5">{log}</div>)}
+              <div class="w-1/3 max-w-[200px] flex flex-col justify-end shrink-0">
+                <div class="text-[10px] md:text-sm text-slate-400 mb-0.5 md:mb-1">戦闘ログ:</div>
+                <div class="bg-slate-950 p-1 md:p-2 rounded text-[9px] sm:text-[10px] md:text-sm text-slate-300 h-16 md:h-24 overflow-y-auto border border-slate-800 leading-tight">
+                  {state.combat.logs.map((log, i) => <div key={i} class="mb-0.5">{log}</div>)}
                 </div>
               </div>
 
-              <div className="flex flex-col items-center shrink-0 mx-1">
-                <div className="text-2xl sm:text-3xl md:text-5xl mb-1">{state.player.characterId ? CHARACTERS[state.player.characterId].icon : '🧙‍♂️'}</div>
+              <div class="flex flex-col items-center shrink-0 mx-1">
+                <div class="text-2xl sm:text-3xl md:text-5xl mb-1">{state.player.characterId ? CHARACTERS[state.player.characterId].icon : '🧙‍♂️'}</div>
                 
-                <div className="flex flex-wrap justify-center gap-1 mb-1 text-[9px] sm:text-[10px] md:text-sm font-bold">
-                  {state.combat.playerBlock > 0 && <span className="text-blue-300 bg-blue-900/50 px-1 sm:px-2 rounded">🛡️{state.combat.playerBlock}</span>}
-                  {state.combat.playerStatuses.strength !== 0 && <span className={`${state.combat.playerStatuses.strength > 0 ? 'text-red-400 bg-red-900/50' : 'text-blue-400 bg-blue-900/50'} px-1 sm:px-2 rounded`}>💪{state.combat.playerStatuses.strength}</span>}
-                  {state.combat.playerStatuses.weak > 0 && <span className="text-gray-400 bg-gray-800 px-1 sm:px-2 rounded">📉{state.combat.playerStatuses.weak}</span>}
-                  {state.combat.playerStatuses.vulnerable > 0 && <span className="text-purple-400 bg-purple-900/50 px-1 sm:px-2 rounded">💔{state.combat.playerStatuses.vulnerable}</span>}
-                  {state.combat.playerStatuses.poison > 0 && <span className="text-green-400 bg-green-900/50 px-1 sm:px-2 rounded">🧪{state.combat.playerStatuses.poison}</span>}
+                <div class="flex flex-wrap justify-center gap-1 mb-1 text-[9px] sm:text-[10px] md:text-sm font-bold">
+                  {state.combat.playerBlock > 0 && <span class="text-blue-300 bg-blue-900/50 px-1 sm:px-2 rounded">🛡️{state.combat.playerBlock}</span>}
+                  {state.combat.playerStatuses.strength !== 0 && <span class={`${state.combat.playerStatuses.strength > 0 ? 'text-red-400 bg-red-900/50' : 'text-blue-400 bg-blue-900/50'} px-1 sm:px-2 rounded`}>💪{state.combat.playerStatuses.strength}</span>}
+                  {state.combat.playerStatuses.weak > 0 && <span class="text-gray-400 bg-gray-800 px-1 sm:px-2 rounded">📉{state.combat.playerStatuses.weak}</span>}
+                  {state.combat.playerStatuses.vulnerable > 0 && <span class="text-purple-400 bg-purple-900/50 px-1 sm:px-2 rounded">💔{state.combat.playerStatuses.vulnerable}</span>}
+                  {state.combat.playerStatuses.poison > 0 && <span class="text-green-400 bg-green-900/50 px-1 sm:px-2 rounded">🧪{state.combat.playerStatuses.poison}</span>}
                 </div>
               </div>
 
-              <div className="flex flex-col items-end gap-1 md:gap-3 w-1/3 max-w-[200px] shrink-0">
-                <div className="text-xl sm:text-2xl md:text-4xl font-extrabold text-blue-400 drop-shadow-md whitespace-nowrap">
+              <div class="flex flex-col items-end gap-1 md:gap-3 w-1/3 max-w-[200px] shrink-0">
+                <div class="text-xl sm:text-2xl md:text-4xl font-extrabold text-blue-400 drop-shadow-md whitespace-nowrap">
                   ⚡ {state.combat.energy}
                 </div>
-                <button disabled={state.combat.discardSelectCount > 0} onClick={endTurn} className={`px-2 sm:px-4 lg:px-8 py-2 md:py-4 font-bold rounded-lg md:rounded-xl shadow-lg border-2 transition-colors text-[10px] sm:text-sm lg:text-xl whitespace-nowrap ${state.combat.discardSelectCount > 0 ? 'bg-slate-700 text-slate-500 border-slate-600 cursor-not-allowed' : 'bg-red-800 hover:bg-red-700 text-white border-red-900'}`}>
+                <button disabled={state.combat.discardSelectCount > 0} onClick={endTurn} class={`px-2 sm:px-4 lg:px-8 py-2 md:py-4 font-bold rounded-lg md:rounded-xl shadow-lg border-2 transition-colors text-[10px] sm:text-sm lg:text-xl whitespace-nowrap ${state.combat.discardSelectCount > 0 ? 'bg-slate-700 text-slate-500 border-slate-600 cursor-not-allowed' : 'bg-red-800 hover:bg-red-700 text-white border-red-900'}`}>
                   ターン終了
                 </button>
               </div>
             </div>
 
-            <div className="flex items-start justify-between lg:justify-center gap-1 sm:gap-2 lg:gap-8 bg-slate-800/50 p-1 sm:p-2 lg:p-4 rounded-xl border border-slate-700 shrink-0 w-full">
-              <div className="flex flex-col items-center text-slate-400 cursor-pointer hover:text-white transition-colors shrink-0 px-1 sm:px-2 mt-2" onClick={() => setViewPile('DRAW')}>
-                <div className="text-xl sm:text-2xl lg:text-3xl">🗂️</div>
-                <div className="font-bold text-sm lg:text-xl">{state.combat.drawPile.length}</div>
-                <div className="text-[9px] sm:text-xs">山札</div>
+            <div class="flex items-start justify-between lg:justify-center gap-1 sm:gap-2 lg:gap-8 bg-slate-800/50 p-1 sm:p-2 lg:p-4 rounded-xl border border-slate-700 shrink-0 w-full">
+              <div class="flex flex-col items-center text-slate-400 cursor-pointer hover:text-white transition-colors shrink-0 px-1 sm:px-2 mt-2" onClick={() => setViewPile('DRAW')}>
+                <div class="text-xl sm:text-2xl lg:text-3xl">🗂️</div>
+                <div class="font-bold text-sm lg:text-xl">{state.combat.drawPile.length}</div>
+                <div class="text-[9px] sm:text-xs">山札</div>
               </div>
               
-              <div className="flex justify-center items-center gap-1 sm:gap-2 w-full py-2 px-1 overflow-hidden">
+              <div class="flex justify-center items-center gap-1 sm:gap-2 w-full py-2 px-1 overflow-hidden">
                 {state.combat.hand.map((card, idx) => renderCard(card, idx, true))}
               </div>
 
-              <div className="flex flex-col items-center text-slate-400 cursor-pointer hover:text-white transition-colors shrink-0 px-1 sm:px-2 mt-2" onClick={() => setViewPile('DISCARD')}>
-                <div className="text-xl sm:text-2xl lg:text-3xl opacity-50">🗑️</div>
-                <div className="font-bold text-sm lg:text-xl">{state.combat.discardPile.length}</div>
-                <div className="text-[9px] sm:text-xs">捨て札</div>
+              <div class="flex flex-col items-center text-slate-400 cursor-pointer hover:text-white transition-colors shrink-0 px-1 sm:px-2 mt-2" onClick={() => setViewPile('DISCARD')}>
+                <div class="text-xl sm:text-2xl lg:text-3xl opacity-50">🗑️</div>
+                <div class="font-bold text-sm lg:text-xl">{state.combat.discardPile.length}</div>
+                <div class="text-[9px] sm:text-xs">捨て札</div>
               </div>
             </div>
 
             {viewPile && (
-              <div className="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center p-4 sm:p-8 overflow-y-auto backdrop-blur-sm">
-                <div className="flex justify-between w-full max-w-5xl mb-6 items-center border-b border-slate-700 pb-2 sm:pb-4">
-                  <h2 className="text-xl sm:text-3xl font-bold text-white">
+              <div class="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center p-4 sm:p-8 overflow-y-auto backdrop-blur-sm">
+                <div class="flex justify-between w-full max-w-5xl mb-6 items-center border-b border-slate-700 pb-2 sm:pb-4">
+                  <h2 class="text-xl sm:text-3xl font-bold text-white">
                     {viewPile === 'DRAW' ? '山札' : '捨て札'} ({viewPile === 'DRAW' ? state.combat.drawPile.length : state.combat.discardPile.length}枚)
                   </h2>
-                  <button onClick={() => setViewPile(null)} className="px-4 py-1 sm:px-6 sm:py-2 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-colors border border-slate-500 text-sm sm:text-base">
+                  <button onClick={() => setViewPile(null)} class="px-4 py-1 sm:px-6 sm:py-2 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-colors border border-slate-500 text-sm sm:text-base">
                     閉じる
                   </button>
                 </div>
-                <div className="flex flex-wrap gap-2 sm:gap-4 justify-center max-w-5xl pb-16">
+                <div class="flex flex-wrap gap-2 sm:gap-4 justify-center max-w-5xl pb-16">
                   {((viewPile === 'DRAW' ? state.combat.drawPile : state.combat.discardPile).length === 0) ? (
-                    <div className="text-slate-500 text-sm sm:text-xl mt-12">カードがありません</div>
+                    <div class="text-slate-500 text-sm sm:text-xl mt-12">カードがありません</div>
                   ) : (
                     (viewPile === 'DRAW' 
                       ? [...state.combat.drawPile].sort((a,b)=>a.name.localeCompare(b.name)) 
                       : [...state.combat.discardPile].sort((a,b)=>a.name.localeCompare(b.name))
                     ).map((card, idx) => (
-                      <div key={card.uniqueId || idx} className="scale-90 sm:scale-95 origin-top hover:scale-100 transition-transform shrink-0">
+                      <div key={card.uniqueId || idx} class="scale-90 sm:scale-95 origin-top hover:scale-100 transition-transform shrink-0">
                         {renderCard(card, idx, false)}
                       </div>
                     ))
@@ -3573,14 +3552,14 @@ export default function App() {
             )}
 
             {state.combat.discardSelectCount > 0 && (
-              <div className="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 backdrop-blur-sm">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">
+              <div class="absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center p-4 backdrop-blur-sm">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">
                   捨てるカードを選択してください<br/>
-                  <span className="text-sm sm:text-lg text-slate-400">あと {state.combat.discardSelectCount} 枚</span>
+                  <span class="text-sm sm:text-lg text-slate-400">あと {state.combat.discardSelectCount} 枚</span>
                 </h2>
-                <div className="flex flex-wrap justify-center gap-4 max-w-5xl">
+                <div class="flex flex-wrap justify-center gap-4 max-w-5xl">
                   {state.combat.hand.map((card, idx) => (
-                    <div key={card.uniqueId} onClick={() => handleDiscardSelect(idx)} className="cursor-pointer hover:-translate-y-2 transition shrink-0 scale-90 sm:scale-100">
+                    <div key={card.uniqueId} onClick={() => handleDiscardSelect(idx)} class="cursor-pointer hover:-translate-y-2 transition shrink-0 scale-90 sm:scale-100">
                       {renderCard(card, idx, false)}
                     </div>
                   ))}
@@ -3594,9 +3573,6 @@ export default function App() {
     </div>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
-  </script>
+</script>
 </body>
 </html>
