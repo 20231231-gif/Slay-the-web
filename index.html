@@ -194,17 +194,17 @@
       guardian: { name: 'ガーディアン(BOSS)', hp: 250, isBoss: true, desc: '圧倒的なHPと、猛烈な連撃、強固な防御を誇る階層の主。', intents: [{type: 'attack', val: 20}, {type: 'defend', val: 20}, {type: 'attack', val: 10, times: 2}] },
 
       // Act 2
-      sphere_guardian: { name: 'スフィアガーディアン', hp: 20, desc: '強固なシールドを張る球体。', startingBlock: 10, intents: [{type: 'defend', val: 20}, {type: 'attack', val: 10}] },
-      rotten_plant: { name: '腐ったプラント', hp: 60, desc: '攻撃を受けると硬くなる植物。', statuses: { malleable: 3 }, intents: [{type: 'attack', val: 8}] },
-      fly_bomb: { name: 'フライボム', hp: 70, desc: '一定時間経過で自爆する危険な爆弾。', statuses: { explosion: 7 }, intents: [{type: 'attack', val: 3}, {type: 'attack_heal', val: 5, heal: 5}, {type: 'attack', val: 5}] },
-      wall_vortex: { name: '壁の渦', hp: 999, desc: '崩壊間際に巨大な一撃を放つ渦。', statuses: { collapse: 3 }, intents: [{type: 'attack', val: 1}, {type: 'attack', val: 2}, {type: 'attack', val: 20}] },
-      caboon: { name: 'カブーン', hp: 20, desc: '血を吸って回復する蚊。', statuses: { lifesteal: true }, intents: [{type: 'attack', val: 4}, {type: 'attack', val: 6}] },
+      sphere_guardian: { name: 'スフィアガーディアン', hp: 20, desc: '強固なシールドを張る球体。', startingBlock: 10, statuses: { barricade: true }, intents: [{type: 'defend', val: 20}, {type: 'attack', val: 12}] },
+      rotten_plant: { name: '腐ったプラント', hp: 60, desc: '攻撃を受けると硬くなる植物。', statuses: { malleable: 3 }, intents: [{type: 'attack', val: 10}, {type: 'poison', val: 2}, {type: 'attack', val: 5, times: 2}] },
+      fly_bomb: { name: 'フライボム', hp: 70, desc: '一定時間経過で自爆する危険な爆弾。', statuses: { explosion: 7 }, intents: [{type: 'attack', val: 5}, {type: 'attack_heal', val: 7, heal: 5}, {type: 'attack', val: 7}] },
+      wall_vortex: { name: '壁の渦', hp: 999, desc: '崩壊間際に巨大な一撃を放つ渦。', statuses: { collapse: 3 }, intents: [{type: 'attack', val: 3}, {type: 'attack', val: 4}, {type: 'attack', val: 22}] },
+      caboon: { name: 'カブーン', hp: 30, desc: '血を吸って回復する蚊。', statuses: { lifesteal: true }, intents: [{type: 'attack', val: 6}, {type: 'debuff', stat: 'vulnerable', val: 1}, {type: 'attack', val: 8}] },
       
-      boss_thief: { name: '親玉', hp: 80, isElite: true, desc: '盗賊を束ねる悪の元締め。', intents: [{type: 'debuff', stat: 'weak', val: 2}, {type: 'attack', val: 12}] },
-      floating_rock: { name: '浮遊する岩', hp: 100, isElite: true, desc: '非常に硬く、1ターンに少しのダメージしか受けない。', statuses: { sturdy: 25 }, intents: [{type: 'attack', val: 10}, {type: 'attack', val: 15}] },
-      angry_nob: { name: '激昂するノブ', hp: 100, isElite: true, desc: '怒り狂ったグレムリンノブ。', intents: [{type: 'attack', val: 18}, {type: 'attack', val: 24}] },
+      boss_thief: { name: '親玉', hp: 80, isElite: true, desc: '盗賊を束ねる悪の元締め。', intents: [{type: 'debuff', stat: 'weak', val: 2}, {type: 'attack', val: 14}] },
+      floating_rock: { name: '浮遊する岩', hp: 100, isElite: true, desc: '非常に硬く、1ターンに少しのダメージしか受けない。', statuses: { sturdy: 25 }, intents: [{type: 'attack', val: 12}, {type: 'attack', val: 17}] },
+      angry_nob: { name: '激昂するノブ', hp: 100, isElite: true, desc: '怒り狂ったグレムリンノブ。', intents: [{type: 'attack', val: 20}, {type: 'attack', val: 26}] },
       
-      silent: { name: 'サイレント(BOSS)', hp: 200, isBoss: true, desc: '沈黙を強いる第2層の主。', statuses: { silence_aura: true }, intents: [{type: 'debuff', stat: 'weak', val: 2}, {type: 'attack', val: 8}, {type: 'buff', stat: 'strength', val: 2}] }
+      silent: { name: 'サイレント(BOSS)', hp: 200, isBoss: true, desc: '沈黙を強いる第2層の主。', statuses: { silence_aura: true }, intents: [{type: 'debuff', stat: 'weak', val: 2}, {type: 'attack', val: 10}, {type: 'buff', stat: 'strength', val: 2}] }
     };
 
     const EVENTS = [
@@ -608,6 +608,8 @@
       const [transferOutput, setTransferOutput] = useState('');
       const [transferMessage, setTransferMessage] = useState('');
 
+      const [deleteStep, setDeleteStep] = useState(0);
+
       const mapRef = useRef(null);
       const cheatClicksRef = useRef([]); 
       const bossCheatTimerRef = useRef(null);
@@ -822,6 +824,37 @@
         } catch (e) {
           setTransferMessage('エラー: 無効なコード、または形式が間違っています。');
         }
+      };
+
+      const deleteWarnings = [
+        "",
+        "本当に全データを削除しますか？",
+        "図鑑の解放状況もすべて消滅します。本当によろしいですか？",
+        "獲得した実績もすべてゼロになります。取り返しがつきません。",
+        "セーブデータも完全に消去されます。後悔しませんね？",
+        "これが最後の警告です。本当に、全データを削除して初期化しますか？"
+      ];
+
+      const handleDeleteData = () => {
+        if (deleteStep < 5) {
+          setDeleteStep(deleteStep + 1);
+        } else {
+          try {
+            localStorage.removeItem('slay_the_web_unlocks');
+            localStorage.removeItem('slay_the_web_save');
+          } catch(e) {}
+          setHasSaveData(false);
+          setState(p => ({
+            ...p,
+            unlocks: { cards: [], enemies: [], relics: [], events: [], achievements: [] }
+          }));
+          setDeleteStep(0);
+          setShowTransferMenu(false);
+        }
+      };
+
+      const cancelDelete = () => {
+        setDeleteStep(0);
       };
 
       const selectCharacter = (charId) => {
@@ -1516,7 +1549,9 @@
         for (let enemy of newCombat.enemies) {
           if (enemy.hp <= 0) continue;
 
-          enemy.block = 0; 
+          if (!enemy.statuses.barricade) {
+            enemy.block = 0; 
+          }
 
           if (enemy.statuses.poison > 0) {
             enemy.hp -= enemy.statuses.poison;
@@ -1617,7 +1652,7 @@
               }
             }
             
-            if (intent.type.includes('buff')) {
+            if (intent.type.startsWith('buff')) {
               if (intent.type === 'buff_heal') {
                   enemy.hp = Math.min(enemy.maxHp, enemy.hp + intent.val);
                   addLog(`${enemy.name}が${intent.val}回復した！`, newCombat);
@@ -2114,6 +2149,15 @@
                   </div>
                 </div>
               )}
+              {enemy.statuses.barricade && (
+                <div className="relative group cursor-help">
+                  <span className="text-blue-200 bg-blue-800/50 px-1 rounded">🛡️保持</span>
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-2 bg-slate-900 border border-slate-500 rounded text-xs text-white hidden group-hover:block z-50 text-center shadow-xl">
+                    <div className="font-bold text-blue-200 mb-1">防壁</div>
+                    <div className="text-[10px] text-slate-300">ターン終了時に<br/>ブロックが消滅しない。</div>
+                  </div>
+                </div>
+              )}
               {enemy.statuses.explosion !== undefined && (
                 <div className="relative group cursor-help">
                   <span className="text-red-400 bg-red-900/50 px-1 rounded">💥{enemy.statuses.explosion}</span>
@@ -2359,6 +2403,7 @@
                       <h3 className="text-lg sm:text-2xl font-bold text-sky-400 mb-3 border-l-4 border-sky-400 pl-3">🎭 敵の特殊能力</h3>
                       <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
                         <li><span className="font-bold text-green-300">🌱 鍛錬</span> : ダメージを受けるたび、ブロックを得ます。</li>
+                        <li><span className="font-bold text-blue-200">🛡️ 保持 (防壁)</span> : ターン終了時にブロックが消滅しません。</li>
                         <li><span className="font-bold text-red-400">💥 爆発</span> : カウントダウンが0になると自爆し、大ダメージを受けます。</li>
                         <li><span className="font-bold text-purple-400">〽︎ 崩壊</span> : カウントダウンが0になると自爆し、死滅します。</li>
                         <li><span className="font-bold text-red-500">🩸 血吸い</span> : プレイヤーに与えたダメージ分、HPを回復します。</li>
@@ -2368,12 +2413,12 @@
                     </section>
 
                     <section>
-                      <h3 className="text-lg sm:text-2xl font-bold text-red-400 mb-3 border-l-4 border-red-400 pl-3">🎴 カードの種類とレアリティ</h3>
-                      <p className="text-sm sm:text-base leading-relaxed mb-2">名前の色でレアリティが分かれています。<br/><span className="text-slate-100 font-bold">白色 (コモン)</span> / <span className="text-sky-300 font-bold">水色 (アンコモン)</span> / <span className="text-yellow-400 font-bold">金色 (レア)</span></p>
+                      <h3 className="text-lg sm:text-2xl font-bold text-sky-400 mb-3 border-l-4 border-sky-400 pl-3">🎭 敵の特殊能力</h3>
                       <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
-                        <li><span className="font-bold text-red-300">アタック (赤色)</span> : 敵にダメージを与える攻撃カード。対象を選ぶ必要があります。</li>
-                        <li><span className="font-bold text-blue-300">スキル (青色)</span> : ブロックを得たり、カードを引いたりする補助カード。</li>
-                        <li><span className="font-bold text-purple-300">パワー (紫色)</span> : 戦闘中ずっと続く特殊な効果を得るカード。一度使うと戦闘が終わるまで使えません。</li>
+                        <li><span className="font-bold text-green-300">🌱 鍛錬</span> : ダメージを受けるたび、ブロックを得ます。</li>
+                        <li><span className="font-bold text-blue-200">🛡️ 保持 (防壁)</span> : ターン終了時にブロックが消滅しません。</li>
+                        <li><span className="font-bold text-red-400">💥 爆発</span> : カウントダウンが0になると自爆し、大ダメージを受けます。</li>
+                        <li><span className="font-bold text-purple-400">〽︎ 崩壊</span> : カウントダウンが0になると自爆し、死滅します。</li>
                         <li><span className="font-bold text-gray-400">呪い (黒色)</span> : イベント等で混入するお邪魔カード。プレイできず、手札にあると悪影響を及ぼします。</li>
                       </ul>
                       <p className="mt-2 text-sm sm:text-base text-slate-300">※カードに <span className="font-bold text-purple-300">廃棄</span> と書かれている場合、使用するとその戦闘中は山札に戻りません。</p>
@@ -2441,6 +2486,35 @@
                     />
                     <button onClick={handleImport} className="py-2 bg-green-700 hover:bg-green-600 text-white font-bold rounded-lg transition-colors border border-green-500 shadow-lg mt-2">
                       コードを読み込んで復元
+                    </button>
+                  </div>
+
+                  <div className="flex flex-col gap-2 bg-red-900/20 p-4 rounded-lg border border-red-800/50 mt-2">
+                    <h3 className="text-lg font-bold text-red-500 flex items-center gap-2"><span>⚠️</span> 全データ初期化</h3>
+                    <p className="text-xs sm:text-sm text-slate-400 mb-2">セーブデータ、図鑑の解放状況、実績をすべて完全に消去します。</p>
+                    <button onClick={() => setDeleteStep(1)} className="py-2 bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg transition-colors border border-red-600 shadow-lg">
+                      データを完全に削除する
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* データ削除警告モーダル */}
+            {deleteStep > 0 && (
+              <div className="absolute inset-0 bg-slate-900/95 z-[60] flex flex-col items-center justify-center p-4 backdrop-blur-md">
+                <div className="bg-slate-800 border-2 border-red-600 rounded-xl p-6 sm:p-8 flex flex-col gap-6 shadow-[0_0_30px_rgba(220,38,38,0.3)] w-full max-w-md text-center">
+                  <div className="text-5xl mb-2 animate-bounce">⚠️</div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-red-500">データ削除の確認 ({deleteStep}/5)</h2>
+                  <p className="text-sm sm:text-base text-slate-300 font-bold leading-relaxed">
+                    {deleteWarnings[deleteStep]}
+                  </p>
+                  <div className="flex flex-col gap-3 mt-4">
+                    <button onClick={handleDeleteData} className="w-full py-3 bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg transition-colors border border-red-500 shadow-lg">
+                      はい、削除します
+                    </button>
+                    <button onClick={cancelDelete} className="w-full py-3 bg-slate-600 hover:bg-slate-500 text-white font-bold rounded-lg transition-colors border border-slate-400 shadow-lg">
+                      いいえ、やめます
                     </button>
                   </div>
                 </div>
