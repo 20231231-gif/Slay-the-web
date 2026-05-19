@@ -210,7 +210,7 @@
         name: '癒しの泉',
         desc: '苔生した岩壁の奥に、青白く発光する清らかな泉があった。水底には奇妙な紋様が刻まれている。古き神々の祝福が溶け込んだこの水は、傷ついた肉体をも再生させるというが…。',
         choices: [
-          { text: '泉の水を飲む', desc: 'HPを20回復する', effect: (state) => ({ ...state, player: { ...state.player, hp: Math.min(state.player.maxHp, state.player.hp + 20) } }) }
+          { text: '泉の水を飲む', desc: 'HPを10回復する', effect: (state) => ({ ...state, player: { ...state.player, hp: Math.min(state.player.maxHp, state.player.hp + 10) } }) }
         ]
       },
       {
@@ -409,7 +409,9 @@
       ironclad_victory: { id: 'ironclad_victory', name: '鉄の覇者', desc: 'アイアンクラッドでゲームをクリアする。', secret: false, icon: '🌋' },
       poison_victory: { id: 'poison_victory', name: '猛毒の達人', desc: 'ポイズンニキでゲームをクリアする。', secret: false, icon: '☠️' },
       unlucky: { id: 'unlucky', name: '不運な冒険者', desc: '1回の冒険中、イベント等で合計30ダメージ以上受ける。', secret: false, icon: '🩸' },
-      absolute_defense: { id: 'absolute_defense', name: '絶対防御', desc: '戦闘中にブロックを100以上得る。', secret: true, icon: '🛡️' },
+      absolute_defense: { id: 'absolute_defense', name: '絶対防御', desc: '戦闘中にブロックを75以上得る。', secret: false, icon: '🛡️' },
+      toxic_master: { id: 'toxic_master', name: '猛毒', desc: '敵単体に毒を75以上付与する。', secret: false, icon: '☣️' },
+      pacifist: { id: 'pacifist', name: '平和主義？', desc: '攻撃カードを1枚も使わずに戦闘に勝利する。', secret: false, icon: '🕊️' },
       completionist: { id: 'completionist', name: '完全無欠', desc: '全ての図鑑収集率を100%にする。', secret: false, icon: '👑' },
       true_master: { id: 'true_master', name: '真の伝説', desc: 'この実績以外のすべての実績を獲得する。', secret: false, icon: '✨' }
     };
@@ -743,12 +745,21 @@
       }, [state.player.gold, state.player.deck.length, state.player.eventDamageTaken, state.unlocks, unlockData]);
 
       useEffect(() => {
-        if (state.combat && state.combat.playerBlock >= 100) {
+        if (state.combat && state.combat.playerBlock >= 75) {
           if (!state.unlocks?.achievements?.includes('absolute_defense')) {
             unlockData('achievements', ['absolute_defense']);
           }
         }
       }, [state.combat?.playerBlock, state.unlocks, unlockData]);
+
+      useEffect(() => {
+        if (state.combat && state.combat.enemies) {
+          const hasHighPoison = state.combat.enemies.some(e => e.statuses.poison >= 75);
+          if (hasHighPoison && !state.unlocks?.achievements?.includes('toxic_master')) {
+            unlockData('achievements', ['toxic_master']);
+          }
+        }
+      }, [state.combat?.enemies, state.unlocks, unlockData]);
 
       const startGame = () => {
         try {
@@ -1103,7 +1114,8 @@
               },
               discardSelectCount: 0,
               turn: 1,
-              logs: initialLogs
+              logs: initialLogs,
+              usedAttackThisCombat: false
             }
           };
         });
@@ -1144,6 +1156,10 @@
         newCombat.hand.splice(cardIdx, 1);
 
         const isExhaust = card.upgraded && card.upExhaust !== undefined ? card.upExhaust : card.exhaust;
+
+        if (card.type === 'ATTACK') {
+          newCombat.usedAttackThisCombat = true;
+        }
 
         if (card.type === 'POWER' || isExhaust) {
           addLog(`${card.name}を使用した。(廃棄)`, newCombat);
@@ -1440,7 +1456,7 @@
         setSelectedCardIndex(null);
 
         if (newCombat.enemies.every(e => e.hp <= 0)) {
-           handleVictory(newCombat.enemies[0], newPlayer);
+           handleVictory(newCombat.enemies[0], newPlayer, newCombat);
         }
       };
 
@@ -1802,13 +1818,13 @@
         checkEnemiesDead(newCombat, newPlayer);
 
         if (newCombat.enemies.every(e => e.hp <= 0)) {
-          handleVictory(newCombat.enemies[0], newPlayer);
+          handleVictory(newCombat.enemies[0], newPlayer, newCombat);
         } else {
           setState(p => ({ ...p, combat: newCombat, player: newPlayer }));
         }
       };
 
-      const handleVictory = (enemyData, finalPlayerState) => {
+      const handleVictory = (enemyData, finalPlayerState, combatState) => {
         // 実績: 初陣
         if (!state.unlocks?.achievements?.includes('first_blood')) {
           unlockData('achievements', ['first_blood']);
@@ -1816,6 +1832,10 @@
         // 実績: エリートキラー
         if (enemyData.isElite && !state.unlocks?.achievements?.includes('elite_killer')) {
           unlockData('achievements', ['elite_killer']);
+        }
+        // 実績: 平和主義？
+        if (combatState && !combatState.usedAttackThisCombat && !state.unlocks?.achievements?.includes('pacifist')) {
+          unlockData('achievements', ['pacifist']);
         }
 
         const isBoss = enemyData.name.includes('BOSS');
